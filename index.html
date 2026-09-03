@@ -32,11 +32,15 @@
       padding: 0;
     }
 
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       background-color: var(--bg-void);
       color: #f1f5f9;
       font-family: var(--font-body);
-      overflow-x: hidden;
       selection-background-color: var(--accent-mangekyo);
       selection-color: #ffffff;
     }
@@ -64,8 +68,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: clamp(260px, 34vw, 440px);
-      height: clamp(260px, 34vw, 440px);
+      width: clamp(210px, 42vw, 420px);
+      height: clamp(210px, 42vw, 420px);
       pointer-events: none;
       z-index: 1;
       display: flex;
@@ -83,8 +87,8 @@
       overflow: hidden;
       border: 3px solid rgba(220, 38, 38, 0.5);
       box-shadow: 
-        0 0 50px rgba(220, 38, 38, 0.4),
-        0 0 100px rgba(220, 38, 38, 0.2),
+        0 0 40px rgba(220, 38, 38, 0.4),
+        0 0 80px rgba(220, 38, 38, 0.2),
         inset 0 0 40px rgba(0, 0, 0, 0.9);
       background: #000000;
     }
@@ -100,17 +104,17 @@
     /* Outer Concentric Chakra Aura Rings */
     .chakra-ring-outer {
       position: absolute;
-      inset: -20px;
+      inset: -16px;
       border-radius: 50%;
       border: 1px dashed rgba(220, 38, 38, 0.35);
       animation: spinSlow 35s linear infinite;
     }
     .chakra-ring-pulse {
       position: absolute;
-      inset: -8px;
+      inset: -6px;
       border-radius: 50%;
       border: 1.5px solid rgba(239, 68, 68, 0.3);
-      box-shadow: 0 0 25px rgba(220, 38, 38, 0.3);
+      box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
     }
 
     @keyframes spinSlow {
@@ -167,14 +171,15 @@
       color: #ffffff;
       font-family: var(--font-mono);
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
       font-size: 11px;
-      padding: 10px 22px;
+      padding: 10px 20px;
       border-radius: 4px;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      gap: 8px;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       border: 1px solid var(--accent-mangekyo);
       box-shadow: 0 0 15px rgba(220, 38, 38, 0.4);
@@ -191,14 +196,15 @@
       color: #cbd5e1;
       font-family: var(--font-mono);
       font-size: 11px;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      padding: 10px 22px;
+      padding: 10px 20px;
       border-radius: 4px;
       border: 1px solid rgba(255, 255, 255, 0.12);
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
     }
     .btn-stealth:hover {
@@ -242,26 +248,26 @@
   <canvas id="crowsCanvas"></canvas>
 
   <!-- TOP HUD BAR -->
-  <header class="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-[#050608]/90 backdrop-blur-md px-6 py-3.5">
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-[#050608]/90 backdrop-blur-md px-4 sm:px-6 py-3">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="#hero" class="flex items-center gap-3">
-        <div class="w-3 h-3 bg-red-600 rounded-full shadow-[0_0_8px_#dc2626]"></div>
-        <span class="font-mono text-xs font-bold uppercase tracking-widest text-white">JIGGY B. PALCONIT</span>
-        <span class="text-xs font-mono text-slate-500 hidden sm:inline-block">/ / SHARINGAN CORE</span>
+      <a href="#hero" class="flex items-center gap-2 sm:gap-3">
+        <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-red-600 rounded-full shadow-[0_0_8px_#dc2626]"></div>
+        <span class="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white">JIGGY B. PALCONIT</span>
+        <span class="text-[11px] font-mono text-slate-500 hidden md:inline-block">/ / SHARINGAN CORE</span>
       </a>
 
-      <div class="hidden md:flex items-center gap-8 text-xs font-mono tracking-wider uppercase text-slate-400">
+      <div class="hidden lg:flex items-center gap-8 text-xs font-mono tracking-wider uppercase text-slate-400">
         <a href="#production" class="hover:text-red-400 transition-colors">01. Production</a>
         <a href="#systems" class="hover:text-red-400 transition-colors">02. Arsenal</a>
         <a href="#credentials" class="hover:text-red-400 transition-colors">03. Credentials</a>
       </div>
 
-      <div class="flex items-center gap-3">
-        <div class="hidden sm:flex items-center gap-2 font-mono text-[10px] text-red-400 px-2 py-1 bg-red-500/10 border border-red-500/20 rounded">
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="hidden sm:flex items-center gap-1.5 font-mono text-[10px] text-red-400 px-2 py-1 bg-red-500/10 border border-red-500/20 rounded">
           <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
           VIAJERO DEV • 1 YR EXP
         </div>
-        <a href="#contact" class="btn-crimson !py-1.5 !px-3 !text-[10px]">
+        <a href="#contact" class="btn-crimson !py-1 !px-2.5 sm:!py-1.5 sm:!px-3 !text-[10px]">
           Transmit
         </a>
       </div>
@@ -272,29 +278,32 @@
   <main class="relative z-10 w-full max-w-full overflow-x-hidden">
 
     <!-- HERO SECTION -->
-    <section id="hero" class="min-h-[100dvh] flex flex-col justify-center items-center px-6 pt-24 pb-16 text-center max-w-6xl mx-auto">
+    <section id="hero" class="min-h-[100dvh] flex flex-col justify-center items-center px-4 sm:px-6 pt-20 pb-14 text-center max-w-5xl mx-auto">
       
-      <!-- Eyebrow Badge -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 bg-red-950/40 border border-red-500/30 rounded text-[11px] font-mono tracking-widest uppercase text-red-400 mb-8 backdrop-blur-md">
+      <!-- Responsive Eyebrow Badge -->
+      <div class="inline-flex flex-wrap justify-center items-center gap-1.5 sm:gap-2 px-3 py-1.5 bg-red-950/40 border border-red-500/30 rounded text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-red-400 mb-6 backdrop-blur-md max-w-[95vw]">
         <span>Software Developer</span>
-        <span class="text-red-600">■</span>
+        <span class="text-red-600 hidden xs:inline">■</span>
         <span class="text-slate-300">Viajero Motorcycles Inc.</span>
-        <span class="text-red-600">■</span>
-        <span class="text-red-400 font-bold">Production Engineer</span>
+        <span class="text-red-600 hidden xs:inline">■</span>
+        <span class="text-red-400 font-bold">1 Yr Exp</span>
       </div>
 
-      <!-- HERO HEADLINE -->
-      <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase font-black text-white leading-[0.98] mb-8">
+      <!-- HERO HEADLINE (FLUID & MOBILE-CALIBRATED) -->
+      <h1 class="font-display text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase font-black text-white leading-[1.04] mb-6 max-w-full break-words">
         MASTERING LOGIC. <br>
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-rose-500 to-white">COMMANDING CODE.</span>
       </h1>
 
-      <p class="max-w-2xl mx-auto text-slate-300 text-sm sm:text-base md:text-lg font-mono leading-relaxed mb-10">
-        Enterprise Java engineer, cross-platform Flutter architect, and MySQL database specialist. Developing high-integrity business applications with surgical precision.
-      </p>
+      <!-- Mobile Backdrop Card for Maximum Text Legibility Over Center Eye -->
+      <div class="max-w-2xl mx-auto p-3 sm:p-0 rounded-lg backdrop-blur-sm sm:backdrop-blur-none bg-black/40 sm:bg-transparent mb-8">
+        <p class="text-slate-200 sm:text-slate-300 text-xs sm:text-base md:text-lg font-mono leading-relaxed">
+          Enterprise Java engineer, cross-platform Flutter architect, and MySQL database specialist. Developing high-integrity business applications with surgical precision.
+        </p>
+      </div>
 
       <!-- Action Buttons -->
-      <div class="flex flex-wrap justify-center items-center gap-4">
+      <div class="flex flex-col xs:flex-row justify-center items-stretch xs:items-center gap-3 w-full max-w-xs xs:max-w-none">
         <a href="#production" class="btn-crimson">
           <span>View Production Code</span>
           <span>&gt;&gt;</span>
@@ -306,64 +315,64 @@
       </div>
 
       <!-- Telemetry Strip -->
-      <div class="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-4xl border-t border-red-900/30 pt-6 text-left font-mono">
+      <div class="mt-14 sm:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-4xl border-t border-red-900/30 pt-5 sm:pt-6 text-left font-mono">
         <div>
-          <div class="text-[10px] text-slate-500 uppercase">Specialization</div>
-          <div class="text-xs font-bold text-white mt-0.5">Enterprise Java & DB</div>
+          <div class="text-[9px] sm:text-[10px] text-slate-500 uppercase">Specialization</div>
+          <div class="text-[11px] sm:text-xs font-bold text-white mt-0.5">Enterprise Java & DB</div>
         </div>
         <div>
-          <div class="text-[10px] text-slate-500 uppercase">Core Stack</div>
-          <div class="text-xs font-bold text-red-400 mt-0.5">Java • Flutter • MySQL</div>
+          <div class="text-[9px] sm:text-[10px] text-slate-500 uppercase">Core Stack</div>
+          <div class="text-[11px] sm:text-xs font-bold text-red-400 mt-0.5">Java • Flutter • MySQL</div>
         </div>
         <div>
-          <div class="text-[10px] text-slate-500 uppercase">Ocular Engine</div>
-          <div class="text-xs font-bold text-red-500 mt-0.5">Sharingan &gt; Itachi Mangekyō</div>
+          <div class="text-[9px] sm:text-[10px] text-slate-500 uppercase">Ocular Engine</div>
+          <div class="text-[11px] sm:text-xs font-bold text-red-500 mt-0.5">Itachi Mangekyō & EMS</div>
         </div>
         <div>
-          <div class="text-[10px] text-slate-500 uppercase">Location</div>
-          <div class="text-xs font-bold text-white mt-0.5">General Santos, PH</div>
+          <div class="text-[9px] sm:text-[10px] text-slate-500 uppercase">Location</div>
+          <div class="text-[11px] sm:text-xs font-bold text-white mt-0.5">General Santos, PH</div>
         </div>
       </div>
     </section>
 
     <!-- SECTION 01: PRODUCTION EXPERIENCE -->
-    <section id="production" class="py-28 px-6 max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 border-b border-red-900/30 pb-6">
+    <section id="production" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-3 border-b border-red-900/30 pb-5">
         <div>
           <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-1">// ACTIVE BATTLEGROUND</div>
-          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl uppercase text-white font-black">
+          <h2 class="font-display text-2xl sm:text-4xl md:text-5xl uppercase text-white font-black">
             Production Software Engineering
           </h2>
         </div>
-        <div class="text-right font-mono text-xs text-slate-500">
+        <div class="text-left md:text-right font-mono text-xs text-slate-500">
           STATUS: PRODUCTION VERIFIED
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
         
         <!-- Primary Work: Viajero Motorcycles Inc. (Span 8) -->
-        <div class="lg:col-span-8 uchiha-card p-8 flex flex-col justify-between">
+        <div class="lg:col-span-8 uchiha-card p-5 sm:p-8 flex flex-col justify-between">
           <div>
-            <div class="flex flex-wrap justify-between items-center gap-2 mb-6">
-              <span class="px-2.5 py-1 bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-[11px] font-bold uppercase">
+            <div class="flex flex-wrap justify-between items-center gap-2 mb-4 sm:mb-6">
+              <span class="px-2.5 py-1 bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-[10px] sm:text-[11px] font-bold uppercase">
                 Software Developer • Active Duty
               </span>
-              <span class="font-mono text-xs text-slate-400">Feb 2026 — Present (~1 Year)</span>
+              <span class="font-mono text-[11px] sm:text-xs text-slate-400">Feb 2026 — Present (~1 Year)</span>
             </div>
 
-            <h3 class="font-display text-2xl sm:text-3xl text-white uppercase mb-2">
+            <h3 class="font-display text-xl sm:text-3xl text-white uppercase mb-1 sm:mb-2">
               Viajero Motorcycles Inc.
             </h3>
-            <div class="font-mono text-xs text-red-400 mb-6 uppercase tracking-wider">
+            <div class="font-mono text-xs text-red-400 mb-4 sm:mb-6 uppercase tracking-wider">
               Core Enterprise Systems • Java / Swing • MySQL • Data Integrity
             </div>
 
-            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
               Leading the development, debugging, and continuous modernization of enterprise dealership workflows. Directly responsible for system feature deployment, legacy Java 7/8 code maintenance, desktop UI modules (Java Swing), and resolving high-impact software issues.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 my-4 sm:my-6">
               <div class="p-3 bg-black/40 border border-white/10 rounded">
                 <div class="font-mono text-xs font-bold text-white uppercase">Legacy Overhaul</div>
                 <div class="text-[11px] font-mono text-slate-400 mt-1">Refactoring & maintaining mission-critical Java 7/8 modules.</div>
@@ -379,7 +388,7 @@
             </div>
           </div>
 
-          <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2 text-[11px] font-mono text-slate-400">
+          <div class="pt-4 border-t border-white/10 flex flex-wrap gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] font-mono text-slate-400">
             <span class="px-2 py-0.5 bg-white/5 border border-white/10">Java Swing</span>
             <span class="px-2 py-0.5 bg-white/5 border border-white/10">MySQL</span>
             <span class="px-2 py-0.5 bg-white/5 border border-white/10">Flutter/Dart</span>
@@ -389,24 +398,24 @@
         </div>
 
         <!-- Cross-Platform Flutter Stack (Span 4) -->
-        <div class="lg:col-span-4 uchiha-card p-8 flex flex-col justify-between">
+        <div class="lg:col-span-4 uchiha-card p-5 sm:p-8 flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-center mb-6">
+            <div class="flex justify-between items-center mb-4 sm:mb-6">
               <span class="font-mono text-xs text-red-400 uppercase tracking-wider">Mobile & Multi-OS</span>
               <span class="text-slate-500 font-mono text-xs">[SYS_02]</span>
             </div>
 
-            <h3 class="font-display text-2xl text-white uppercase mb-2">
+            <h3 class="font-display text-xl sm:text-2xl text-white uppercase mb-2">
               Flutter & Dart Mobile
             </h3>
             <div class="font-mono text-xs text-slate-400 mb-4">Cross-Platform Architecture</div>
 
-            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
               Building modular, offline-first client applications powered by reactive state management, asynchronous background synchronization, and SQLite caching.
             </p>
 
-            <div class="p-4 bg-black/50 border border-white/10 font-mono text-xs text-slate-400 space-y-1 mb-6 rounded">
-              <div class="text-red-400">&gt; state_management: Provider / BLoC</div>
+            <div class="p-3 sm:p-4 bg-black/50 border border-white/10 font-mono text-xs text-slate-400 space-y-1 mb-6 rounded">
+              <div class="text-red-400">&gt; state_mgmt: Provider / BLoC</div>
               <div>&gt; local_storage: SQLite / Hive</div>
               <div>&gt; target: Android / Desktop</div>
             </div>
@@ -418,50 +427,50 @@
         </div>
 
         <!-- Technical VA Experience (Span 5) -->
-        <div class="lg:col-span-5 uchiha-card p-8 flex flex-col justify-between">
+        <div class="lg:col-span-5 uchiha-card p-5 sm:p-8 flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-center mb-4">
               <span class="font-mono text-xs text-red-400 uppercase tracking-wider">Infrastructure & Ops</span>
               <span class="font-mono text-xs text-slate-500">2024 — 2025</span>
             </div>
 
-            <h3 class="font-display text-xl text-white uppercase mb-1">
+            <h3 class="font-display text-lg sm:text-xl text-white uppercase mb-1">
               Technical Support VA
             </h3>
-            <div class="font-mono text-xs text-slate-400 mb-4">Prime Developments (Quezon City)</div>
+            <div class="font-mono text-xs text-slate-400 mb-3">Prime Developments (Quezon City)</div>
 
-            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
               Live technical support, ticket escalation, in-game server maintenance, and operational problem solving. Cultivated relentless diagnostic rigor under pressure.
             </p>
           </div>
 
-          <div class="font-mono text-[11px] text-slate-500 pt-4 border-t border-white/10">
+          <div class="font-mono text-[10px] sm:text-[11px] text-slate-500 pt-3 border-t border-white/10">
             LGU Gensan-ICTD Alumni (Network Routing & Hardware Diagnostics)
           </div>
         </div>
 
         <!-- Full Stack & Web (Span 7) -->
-        <div class="lg:col-span-7 uchiha-card p-8 flex flex-col justify-between">
+        <div class="lg:col-span-7 uchiha-card p-5 sm:p-8 flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-center mb-4">
               <span class="font-mono text-xs text-red-400 uppercase tracking-wider">Full-Stack Web</span>
               <span class="font-mono text-xs text-slate-500">[SYS_03]</span>
             </div>
 
-            <h3 class="font-display text-xl sm:text-2xl text-white uppercase mb-1">
+            <h3 class="font-display text-lg sm:text-2xl text-white uppercase mb-1">
               MERN Stack & Web Systems
             </h3>
-            <div class="font-mono text-xs text-slate-400 mb-4">React • Node.js • Express • MongoDB / MySQL</div>
+            <div class="font-mono text-xs text-slate-400 mb-3">React • Node.js • Express • MongoDB / MySQL</div>
 
-            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
               Designing full-stack applications with clean RESTful endpoints, responsive frontend components, and bulletproof database connectivity. Rooted in real web production since early graphic/web work at DPI Print Solutions.
             </p>
           </div>
 
-          <div class="flex gap-2 flex-wrap pt-4 border-t border-white/10 font-mono text-xs">
-            <span class="px-2 py-1 bg-white/5 border border-white/10 text-white">Full-Stack REST APIs</span>
-            <span class="px-2 py-1 bg-white/5 border border-white/10 text-white">Responsive CSS</span>
-            <span class="px-2 py-1 bg-white/5 border border-white/10 text-white">Git Versioning</span>
+          <div class="flex gap-1.5 sm:gap-2 flex-wrap pt-3 border-t border-white/10 font-mono text-[11px] sm:text-xs">
+            <span class="px-2 py-0.5 bg-white/5 border border-white/10 text-white">Full-Stack REST APIs</span>
+            <span class="px-2 py-0.5 bg-white/5 border border-white/10 text-white">Responsive CSS</span>
+            <span class="px-2 py-0.5 bg-white/5 border border-white/10 text-white">Git Versioning</span>
           </div>
         </div>
 
@@ -469,82 +478,82 @@
     </section>
 
     <!-- SECTION 02: HARDWARE & TECHNICAL ARSENAL -->
-    <section id="systems" class="py-28 px-6 max-w-7xl mx-auto border-t border-red-900/30">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+    <section id="systems" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto border-t border-red-900/30">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-3">
         <div>
           <div class="text-xs font-mono text-red-400 uppercase tracking-widest mb-1">// JUTSU ARSENAL</div>
-          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl uppercase text-white font-black">
+          <h2 class="font-display text-2xl sm:text-4xl md:text-5xl uppercase text-white font-black">
             Hardware & Software Matrix
           </h2>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
         
-        <div class="uchiha-card p-8">
+        <div class="uchiha-card p-5 sm:p-8">
           <div class="font-mono text-xs text-red-500 uppercase tracking-wider mb-2">Core Pillar 01</div>
-          <h3 class="font-display text-xl text-white uppercase mb-4">Enterprise Backend</h3>
-          <ul class="space-y-3 font-mono text-xs text-slate-300">
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+          <h3 class="font-display text-lg sm:text-xl text-white uppercase mb-4">Enterprise Backend</h3>
+          <ul class="space-y-2.5 font-mono text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>Java 7, 8, 17, 21 Core Engineering</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>Java Swing GUI & Custom Components</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>Enterprise Logic & Demand Calculations</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>Multithreading & Desktop Concurrency</span>
             </li>
           </ul>
         </div>
 
-        <div class="uchiha-card p-8">
+        <div class="uchiha-card p-5 sm:p-8">
           <div class="font-mono text-xs text-red-500 uppercase tracking-wider mb-2">Core Pillar 02</div>
-          <h3 class="font-display text-xl text-white uppercase mb-4">Data Persistence</h3>
-          <ul class="space-y-3 font-mono text-xs text-slate-300">
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+          <h3 class="font-display text-lg sm:text-xl text-white uppercase mb-4">Data Persistence</h3>
+          <ul class="space-y-2.5 font-mono text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>MySQL Relational Schema Architecture</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>SQLite Embedded Storage (Mobile/Desktop)</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>Query Tuning, Indexing & Data Validation</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>Sales, Inventory & Payroll Data Pipelines</span>
             </li>
           </ul>
         </div>
 
-        <div class="uchiha-card p-8">
+        <div class="uchiha-card p-5 sm:p-8">
           <div class="font-mono text-xs text-red-500 uppercase tracking-wider mb-2">Core Pillar 03</div>
-          <h3 class="font-display text-xl text-white uppercase mb-4">Client & Mobile</h3>
-          <ul class="space-y-3 font-mono text-xs text-slate-300">
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+          <h3 class="font-display text-lg sm:text-xl text-white uppercase mb-4">Client & Mobile</h3>
+          <ul class="space-y-2.5 font-mono text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>Flutter + Dart Cross-Platform Mobile</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>React.js / Node / Express Web Apps</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>Hardware Diagnostics (CSS NC II Certified)</span>
             </li>
-            <li class="flex items-center gap-2">
-              <span class="text-red-500">▶</span>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">▶</span>
               <span>SAP Business One Core Logistics & Finance</span>
             </li>
           </ul>
@@ -554,66 +563,66 @@
     </section>
 
     <!-- SECTION 03: ACCREDITATIONS -->
-    <section id="credentials" class="py-28 px-6 max-w-7xl mx-auto border-t border-red-900/30">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+    <section id="credentials" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto border-t border-red-900/30">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
         <div class="md:col-span-5">
           <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-1">// ACCREDITATIONS</div>
-          <h2 class="font-display text-3xl sm:text-4xl uppercase text-white font-black mb-4">
+          <h2 class="font-display text-2xl sm:text-4xl uppercase text-white font-black mb-3 sm:mb-4">
             Education & Certifications
           </h2>
-          <p class="text-slate-400 text-sm font-mono leading-relaxed">
+          <p class="text-slate-400 text-xs sm:text-sm font-mono leading-relaxed">
             Formally trained in Information Technology with government scholarship backing and industry-recognized certifications.
           </p>
         </div>
 
         <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="uchiha-card p-6">
-            <div class="font-mono text-xs text-red-400 uppercase mb-1">Degree Conferred</div>
-            <div class="font-display text-lg text-white uppercase">BS in Information Technology</div>
+          <div class="uchiha-card p-5 sm:p-6">
+            <div class="font-mono text-[11px] sm:text-xs text-red-400 uppercase mb-1">Degree Conferred</div>
+            <div class="font-display text-base sm:text-lg text-white uppercase">BS in Information Technology</div>
             <div class="text-xs text-slate-300 mt-1">STI College General Santos City</div>
-            <div class="text-[11px] font-mono text-slate-500 mt-2">Class of 2019 — 2024 • TESDA Scholar (DICT)</div>
+            <div class="text-[10px] sm:text-[11px] font-mono text-slate-500 mt-2">Class of 2019 — 2024 • TESDA Scholar (DICT)</div>
           </div>
 
-          <div class="uchiha-card p-6">
-            <div class="font-mono text-xs text-red-400 uppercase mb-1">National Certification</div>
-            <div class="font-display text-lg text-white uppercase">Computer System Servicing NC II</div>
+          <div class="uchiha-card p-5 sm:p-6">
+            <div class="font-mono text-[11px] sm:text-xs text-red-400 uppercase mb-1">National Certification</div>
+            <div class="font-display text-base sm:text-lg text-white uppercase">Computer System Servicing NC II</div>
             <div class="text-xs text-slate-300 mt-1">Technical Hardware & Networking</div>
-            <div class="text-[11px] font-mono text-slate-500 mt-2">Certified Practitioner</div>
+            <div class="text-[10px] sm:text-[11px] font-mono text-slate-500 mt-2">Certified Practitioner</div>
           </div>
 
-          <div class="uchiha-card p-6">
-            <div class="font-mono text-xs text-red-400 uppercase mb-1">Enterprise Training</div>
-            <div class="font-display text-lg text-white uppercase">SAP Business One</div>
+          <div class="uchiha-card p-5 sm:p-6">
+            <div class="font-mono text-[11px] sm:text-xs text-red-400 uppercase mb-1">Enterprise Training</div>
+            <div class="font-display text-base sm:text-lg text-white uppercase">SAP Business One</div>
             <div class="text-xs text-slate-300 mt-1">Logistics & Financials Foundation</div>
-            <div class="text-[11px] font-mono text-slate-500 mt-2">ERP Systems Training</div>
+            <div class="text-[10px] sm:text-[11px] font-mono text-slate-500 mt-2">ERP Systems Training</div>
           </div>
 
-          <div class="uchiha-card p-6">
-            <div class="font-mono text-xs text-red-400 uppercase mb-1">Location Base</div>
-            <div class="font-display text-lg text-white uppercase">General Santos City</div>
+          <div class="uchiha-card p-5 sm:p-6">
+            <div class="font-mono text-[11px] sm:text-xs text-red-400 uppercase mb-1">Location Base</div>
+            <div class="font-display text-base sm:text-lg text-white uppercase">General Santos City</div>
             <div class="text-xs text-slate-300 mt-1">Philippines</div>
-            <div class="text-[11px] font-mono text-slate-500 mt-2">Available for On-site & Remote</div>
+            <div class="text-[10px] sm:text-[11px] font-mono text-slate-500 mt-2">Available for On-site & Remote</div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="py-28 px-6 max-w-4xl mx-auto text-center border-t border-red-900/30">
-      <div class="uchiha-card p-10 md:p-16">
-        <div class="inline-block px-3 py-1 bg-red-950/40 border border-red-500/30 text-red-400 font-mono text-[11px] uppercase tracking-widest mb-6">
+    <section id="contact" class="py-20 sm:py-28 px-4 sm:px-6 max-w-4xl mx-auto text-center border-t border-red-900/30">
+      <div class="uchiha-card p-6 sm:p-12 md:p-16">
+        <div class="inline-block px-3 py-1 bg-red-950/40 border border-red-500/30 text-red-400 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest mb-5">
           Direct Transmission Line
         </div>
 
-        <h2 class="font-display text-3xl sm:text-5xl uppercase text-white font-black mb-6">
+        <h2 class="font-display text-2xl sm:text-4xl md:text-5xl uppercase text-white font-black mb-4 sm:mb-6">
           Ready to Deploy Software Power?
         </h2>
 
-        <p class="text-slate-300 font-mono text-sm max-w-xl mx-auto mb-10 leading-relaxed">
+        <p class="text-slate-300 font-mono text-xs sm:text-sm max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed">
           Whether you need an enterprise Java engineer, Flutter developer, or full-stack software problem solver—reach out directly.
         </p>
 
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <div class="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-3 sm:gap-4">
           <a href="mailto:jigspals025@gmail.com" class="btn-crimson">
             <span>jigspals025@gmail.com</span>
             <span>&gt;&gt;</span>
@@ -624,9 +633,9 @@
         </div>
       </div>
 
-      <footer class="mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs font-mono text-slate-500 gap-4">
+      <footer class="mt-12 sm:mt-16 pt-5 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-[10px] sm:text-xs font-mono text-slate-500 gap-3">
         <div>© 2026 JIGGY B. PALCONIT. ALL RIGHTS RESERVED.</div>
-        <div class="flex gap-6">
+        <div class="flex gap-4 sm:gap-6">
           <a href="https://github.com/jiggy025" target="_blank" rel="noopener" class="hover:text-red-400 transition-colors">GITHUB: JIGGY025</a>
           <a href="#hero" class="hover:text-red-400 transition-colors">TOP [▲]</a>
         </div>
@@ -637,12 +646,6 @@
 
   <!-- INTERACTIVE CENTER EYE PARALLAX & SWARMING CROWS CANVAS SCRIPT -->
   <script>
-    /**
-     * CENTER EYE PARALLAX + PROCEDURAL ITACHI CROWS (KARASU BUNSHIN)
-     * Eye reacts to mouse tracking and scroll depth.
-     * Crows swoop downwards in 3D perspective with scroll speed boosts.
-     */
-
     const centerEye = document.getElementById('centerEye');
     const canvas = document.getElementById('crowsCanvas');
     const ctx = canvas.getContext('2d', { alpha: true });
@@ -685,7 +688,7 @@
     }, { passive: true });
 
     // 32 SWARMING SILHOUETTE CROWS
-    const CROW_COUNT = 32;
+    const CROW_COUNT = window.innerWidth < 640 ? 20 : 32;
     const crows = [];
 
     class Crow {
@@ -699,7 +702,7 @@
         this.z = Math.random() * 0.85 + 0.35;
         this.speedY = (Math.random() * 2.8 + 2.4) * this.z;
         this.speedX = (Math.random() - 0.5) * 2.4 * this.z;
-        this.size = (Math.random() * 12 + 15) * this.z;
+        this.size = (Math.random() * 10 + 13) * this.z;
         this.wingPhase = Math.random() * Math.PI * 2;
         this.wingSpeed = Math.random() * 0.16 + 0.18;
         this.angle = Math.atan2(this.speedY, this.speedX) - Math.PI / 2;
@@ -730,10 +733,10 @@
 
         // Torso & Tail
         ctx.beginPath();
-        ctx.moveTo(0, -s * 0.75); // Beak
+        ctx.moveTo(0, -s * 0.75);
         ctx.lineTo(-s * 0.22, -s * 0.2);
         ctx.lineTo(-s * 0.15, s * 0.65);
-        ctx.lineTo(0, s * 0.9); // Tail tip
+        ctx.lineTo(0, s * 0.9);
         ctx.lineTo(s * 0.15, s * 0.65);
         ctx.lineTo(s * 0.22, -s * 0.2);
         ctx.closePath();
@@ -765,8 +768,8 @@
       crows.push(new Crow());
     }
 
-    // 24 FLOATING GLOWING CRIMSON FEATHERS
-    const FEATHER_COUNT = 24;
+    // 20 FLOATING CRIMSON FEATHERS
+    const FEATHER_COUNT = window.innerWidth < 640 ? 14 : 24;
     const feathers = [];
     for (let i = 0; i < FEATHER_COUNT; i++) {
       feathers.push({
@@ -776,7 +779,7 @@
         vx: (Math.random() - 0.5) * 1.2,
         rot: Math.random() * Math.PI * 2,
         rotSpeed: (Math.random() - 0.5) * 0.04,
-        size: Math.random() * 6 + 4
+        size: Math.random() * 5 + 3
       });
     }
 
@@ -785,10 +788,10 @@
       scrollSpeed *= 0.92;
 
       // Update Center Eye Parallax & Scale
-      eyeGazeX += (mouseX * 35 - eyeGazeX) * 0.06;
-      eyeGazeY += (mouseY * 25 - eyeGazeY) * 0.06;
+      eyeGazeX += (mouseX * 30 - eyeGazeX) * 0.06;
+      eyeGazeY += (mouseY * 20 - eyeGazeY) * 0.06;
 
-      const eyeScale = 0.92 + Math.min(0.25, smoothScroll * 0.35);
+      const eyeScale = 0.92 + Math.min(0.2, smoothScroll * 0.3);
       centerEye.style.transform = `translate(calc(-50% + ${eyeGazeX}px), calc(-50% + ${eyeGazeY}px)) scale(${eyeScale})`;
 
       // Canvas Render
