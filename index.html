@@ -56,70 +56,39 @@
       height: 100vh;
       pointer-events: none;
       z-index: 40;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.32) 50%), 
-                  linear-gradient(90deg, rgba(220, 38, 38, 0.02), rgba(0, 0, 0, 0.01), rgba(220, 38, 38, 0.02));
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.28) 50%), 
+                  linear-gradient(90deg, rgba(220, 38, 38, 0.015), rgba(0, 0, 0, 0.01), rgba(220, 38, 38, 0.015));
       background-size: 100% 3px, 6px 100%;
-      opacity: 0.75;
+      opacity: 0.65;
     }
 
-    /* Fixed Center Middle Animation Eye (Sharingan Evolution Video) */
-    .center-eye-anchor {
+    /* Full-Atmosphere Cinematic Itachi Sharingan Video Layer */
+    .cinematic-bg-container {
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: clamp(210px, 42vw, 420px);
-      height: clamp(210px, 42vw, 420px);
-      pointer-events: none;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      will-change: transform;
-      transition: transform 0.15s ease-out;
-    }
-
-    .eye-disc {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
       overflow: hidden;
-      border: 3px solid rgba(220, 38, 38, 0.5);
-      box-shadow: 
-        0 0 40px rgba(220, 38, 38, 0.4),
-        0 0 80px rgba(220, 38, 38, 0.2),
-        inset 0 0 40px rgba(0, 0, 0, 0.9);
-      background: #000000;
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform;
+      background: #050608;
     }
 
-    .eye-disc video {
+    .cinematic-video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: contrast(135%) saturate(125%) brightness(1.05);
-      border-radius: 50%;
+      object-position: center;
+      filter: none;
     }
 
-    /* Outer Concentric Chakra Aura Rings */
-    .chakra-ring-outer {
+    /* Subtle edge fade so headers/footers blend while keeping the video center 100% untouched */
+    .cinematic-vignette {
       position: absolute;
-      inset: -16px;
-      border-radius: 50%;
-      border: 1px dashed rgba(220, 38, 38, 0.35);
-      animation: spinSlow 35s linear infinite;
-    }
-    .chakra-ring-pulse {
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(239, 68, 68, 0.3);
-      box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
-    }
-
-    @keyframes spinSlow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(5, 6, 8, 0.4) 0%, transparent 15%, transparent 85%, rgba(5, 6, 8, 0.7) 100%);
+      pointer-events: none;
     }
 
     /* Zero-Lag Swarming Crows Canvas */
@@ -134,19 +103,20 @@
       will-change: transform;
     }
 
-    /* Dark Tactical Cards */
+    /* Dark Tactical Glass Cards */
     .uchiha-card {
       background: rgba(11, 13, 19, 0.88);
       border: 1px solid var(--border-subtle);
       border-radius: 6px;
       position: relative;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
     .uchiha-card:hover {
       border-color: var(--accent-mangekyo);
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px -10px rgba(220, 38, 38, 0.25);
+      box-shadow: 0 10px 30px -10px rgba(220, 38, 38, 0.3);
     }
     .uchiha-card::before {
       content: '■';
@@ -182,17 +152,17 @@
       gap: 8px;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       border: 1px solid var(--accent-mangekyo);
-      box-shadow: 0 0 15px rgba(220, 38, 38, 0.4);
+      box-shadow: 0 0 18px rgba(220, 38, 38, 0.45);
     }
     .btn-crimson:hover {
       background: #b91c1c;
       border-color: #ef4444;
-      box-shadow: 0 0 25px rgba(239, 68, 68, 0.6);
+      box-shadow: 0 0 28px rgba(239, 68, 68, 0.7);
       transform: scale(1.02);
     }
 
     .btn-stealth {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(15, 17, 24, 0.7);
       color: #cbd5e1;
       font-family: var(--font-mono);
       font-size: 11px;
@@ -200,24 +170,25 @@
       text-transform: uppercase;
       padding: 10px 20px;
       border-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      backdrop-filter: blur(8px);
     }
     .btn-stealth:hover {
       border-color: var(--accent-mangekyo);
       color: #ffffff;
-      background: rgba(220, 38, 38, 0.1);
+      background: rgba(220, 38, 38, 0.15);
     }
 
     .bg-grid {
       background-size: 44px 44px;
       background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
     }
   </style>
 </head>
@@ -226,22 +197,20 @@
   <!-- Scanlines Overlay -->
   <div class="scanlines"></div>
 
-  <!-- THE MIDDLE ANIMATION THINGY: AUTHENTIC SHARINGAN EVOLUTION EYE -->
-  <div id="centerEye" class="center-eye-anchor">
-    <div class="chakra-ring-outer"></div>
-    <div class="chakra-ring-pulse"></div>
-    <div class="eye-disc">
-      <video 
-        id="sharinganVideo"
-        autoplay 
-        loop 
-        muted 
-        playsinline 
-        preload="auto">
-        <source src="sharingan_evolution.mp4" type="video/mp4">
-        Your browser does not support video.
-      </video>
-    </div>
+  <!-- THE CINEMATIC UNYIELDING ITACHI SHARINGAN BACKGROUND -->
+  <div id="cinematicBg" class="cinematic-bg-container">
+    <video 
+      id="itachiVideo"
+      class="cinematic-video"
+      autoplay 
+      loop 
+      muted 
+      playsinline 
+      preload="auto">
+      <source src="unyielding-itachis-sharingan.1920x1080.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="cinematic-vignette"></div>
   </div>
 
   <!-- Procedural 32-Crow Flapping Canvas Layer -->
@@ -253,7 +222,7 @@
       <a href="#hero" class="flex items-center gap-2 sm:gap-3">
         <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-red-600 rounded-full shadow-[0_0_8px_#dc2626]"></div>
         <span class="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white">JIGGY B. PALCONIT</span>
-        <span class="text-[11px] font-mono text-slate-500 hidden md:inline-block">/ / SHARINGAN CORE</span>
+        <span class="text-[11px] font-mono text-slate-500 hidden md:inline-block">/ / UCHIHA PROTOCOL</span>
       </a>
 
       <div class="hidden lg:flex items-center gap-8 text-xs font-mono tracking-wider uppercase text-slate-400">
@@ -278,25 +247,25 @@
   <main class="relative z-10 w-full max-w-full overflow-x-hidden">
 
     <!-- HERO SECTION -->
-    <section id="hero" class="min-h-[100dvh] flex flex-col justify-center items-center px-4 sm:px-6 pt-20 pb-14 text-center max-w-5xl mx-auto">
+    <section id="hero" class="min-h-[100dvh] flex flex-col justify-center items-center px-4 sm:px-6 pt-24 pb-16 text-center max-w-5xl mx-auto">
       
       <!-- Responsive Eyebrow Badge -->
-      <div class="inline-flex flex-wrap justify-center items-center gap-1.5 sm:gap-2 px-3 py-1.5 bg-red-950/40 border border-red-500/30 rounded text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-red-400 mb-6 backdrop-blur-md max-w-[95vw]">
+      <div class="inline-flex flex-wrap justify-center items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 bg-black/60 border border-red-500/40 rounded text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-red-400 mb-6 backdrop-blur-md max-w-[95vw] shadow-[0_0_15px_rgba(220,38,38,0.25)]">
         <span>Software Developer</span>
         <span class="text-red-600 hidden xs:inline">■</span>
-        <span class="text-slate-300">Viajero Motorcycles Inc.</span>
+        <span class="text-slate-200">Viajero Motorcycles Inc.</span>
         <span class="text-red-600 hidden xs:inline">■</span>
-        <span class="text-red-400 font-bold">1 Yr Exp</span>
+        <span class="text-red-400 font-bold">1 Yr Experience</span>
       </div>
 
       <!-- HERO HEADLINE (FLUID & MOBILE-CALIBRATED) -->
-      <h1 class="font-display text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase font-black text-white leading-[1.04] mb-6 max-w-full break-words">
+      <h1 class="font-display text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase font-black text-white leading-[1.04] mb-6 max-w-full break-words drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
         MASTERING LOGIC. <br>
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-rose-500 to-white">COMMANDING CODE.</span>
       </h1>
 
-      <!-- Mobile Backdrop Card for Maximum Text Legibility Over Center Eye -->
-      <div class="max-w-2xl mx-auto p-3 sm:p-0 rounded-lg backdrop-blur-sm sm:backdrop-blur-none bg-black/40 sm:bg-transparent mb-8">
+      <!-- Frosted Tactical Glass Bio Card -->
+      <div class="max-w-2xl mx-auto p-4 sm:p-5 rounded-lg backdrop-blur-md bg-black/50 border border-white/10 mb-8 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
         <p class="text-slate-200 sm:text-slate-300 text-xs sm:text-base md:text-lg font-mono leading-relaxed">
           Enterprise Java engineer, cross-platform Flutter architect, and MySQL database specialist. Developing high-integrity business applications with surgical precision.
         </p>
@@ -315,21 +284,21 @@
       </div>
 
       <!-- Telemetry Strip -->
-      <div class="mt-14 sm:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-4xl border-t border-red-900/30 pt-5 sm:pt-6 text-left font-mono">
+      <div class="mt-14 sm:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-4xl border-t border-red-900/40 pt-5 sm:pt-6 text-left font-mono backdrop-blur-sm bg-black/30 p-3 sm:p-4 rounded-b">
         <div>
-          <div class="text-[9px] sm:text-[10px] text-slate-500 uppercase">Specialization</div>
+          <div class="text-[9px] sm:text-[10px] text-slate-400 uppercase">Specialization</div>
           <div class="text-[11px] sm:text-xs font-bold text-white mt-0.5">Enterprise Java & DB</div>
         </div>
         <div>
-          <div class="text-[9px] sm:text-[10px] text-slate-500 uppercase">Core Stack</div>
+          <div class="text-[9px] sm:text-[10px] text-slate-400 uppercase">Core Stack</div>
           <div class="text-[11px] sm:text-xs font-bold text-red-400 mt-0.5">Java • Flutter • MySQL</div>
         </div>
         <div>
-          <div class="text-[9px] sm:text-[10px] text-slate-500 uppercase">Ocular Engine</div>
-          <div class="text-[11px] sm:text-xs font-bold text-red-500 mt-0.5">Itachi Mangekyō & EMS</div>
+          <div class="text-[9px] sm:text-[10px] text-slate-400 uppercase">Cinematic Focus</div>
+          <div class="text-[11px] sm:text-xs font-bold text-red-500 mt-0.5">Unyielding Sharingan</div>
         </div>
         <div>
-          <div class="text-[9px] sm:text-[10px] text-slate-500 uppercase">Location</div>
+          <div class="text-[9px] sm:text-[10px] text-slate-400 uppercase">Location</div>
           <div class="text-[11px] sm:text-xs font-bold text-white mt-0.5">General Santos, PH</div>
         </div>
       </div>
@@ -337,14 +306,14 @@
 
     <!-- SECTION 01: PRODUCTION EXPERIENCE -->
     <section id="production" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-3 border-b border-red-900/30 pb-5">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-3 border-b border-red-900/40 pb-5">
         <div>
           <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-1">// ACTIVE BATTLEGROUND</div>
           <h2 class="font-display text-2xl sm:text-4xl md:text-5xl uppercase text-white font-black">
             Production Software Engineering
           </h2>
         </div>
-        <div class="text-left md:text-right font-mono text-xs text-slate-500">
+        <div class="text-left md:text-right font-mono text-xs text-slate-400">
           STATUS: PRODUCTION VERIFIED
         </div>
       </div>
@@ -373,15 +342,15 @@
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 my-4 sm:my-6">
-              <div class="p-3 bg-black/40 border border-white/10 rounded">
+              <div class="p-3 bg-black/50 border border-white/10 rounded">
                 <div class="font-mono text-xs font-bold text-white uppercase">Legacy Overhaul</div>
                 <div class="text-[11px] font-mono text-slate-400 mt-1">Refactoring & maintaining mission-critical Java 7/8 modules.</div>
               </div>
-              <div class="p-3 bg-black/40 border border-white/10 rounded">
+              <div class="p-3 bg-black/50 border border-white/10 rounded">
                 <div class="font-mono text-xs font-bold text-red-400 uppercase">Database Ops</div>
                 <div class="text-[11px] font-mono text-slate-400 mt-1">Complex SQL handling, schema validation, and reporting runs.</div>
               </div>
-              <div class="p-3 bg-black/40 border border-white/10 rounded">
+              <div class="p-3 bg-black/50 border border-white/10 rounded">
                 <div class="font-mono text-xs font-bold text-white uppercase">Zero Regressions</div>
                 <div class="text-[11px] font-mono text-slate-400 mt-1">Systematic verification, defensive coding, and root-cause fixes.</div>
               </div>
@@ -414,7 +383,7 @@
               Building modular, offline-first client applications powered by reactive state management, asynchronous background synchronization, and SQLite caching.
             </p>
 
-            <div class="p-3 sm:p-4 bg-black/50 border border-white/10 font-mono text-xs text-slate-400 space-y-1 mb-6 rounded">
+            <div class="p-3 sm:p-4 bg-black/60 border border-white/10 font-mono text-xs text-slate-400 space-y-1 mb-6 rounded">
               <div class="text-red-400">&gt; state_mgmt: Provider / BLoC</div>
               <div>&gt; local_storage: SQLite / Hive</div>
               <div>&gt; target: Android / Desktop</div>
@@ -478,7 +447,7 @@
     </section>
 
     <!-- SECTION 02: HARDWARE & TECHNICAL ARSENAL -->
-    <section id="systems" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto border-t border-red-900/30">
+    <section id="systems" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto border-t border-red-900/40">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-3">
         <div>
           <div class="text-xs font-mono text-red-400 uppercase tracking-widest mb-1">// JUTSU ARSENAL</div>
@@ -563,7 +532,7 @@
     </section>
 
     <!-- SECTION 03: ACCREDITATIONS -->
-    <section id="credentials" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto border-t border-red-900/30">
+    <section id="credentials" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto border-t border-red-900/40">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
         <div class="md:col-span-5">
           <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-1">// ACCREDITATIONS</div>
@@ -608,9 +577,9 @@
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="py-20 sm:py-28 px-4 sm:px-6 max-w-4xl mx-auto text-center border-t border-red-900/30">
+    <section id="contact" class="py-20 sm:py-28 px-4 sm:px-6 max-w-4xl mx-auto text-center border-t border-red-900/40">
       <div class="uchiha-card p-6 sm:p-12 md:p-16">
-        <div class="inline-block px-3 py-1 bg-red-950/40 border border-red-500/30 text-red-400 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest mb-5">
+        <div class="inline-block px-3 py-1 bg-red-950/50 border border-red-500/40 text-red-400 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest mb-5">
           Direct Transmission Line
         </div>
 
@@ -644,9 +613,15 @@
 
   </main>
 
-  <!-- INTERACTIVE CENTER EYE PARALLAX & SWARMING CROWS CANVAS SCRIPT -->
+  <!-- INTERACTIVE PARALLAX & SWARMING CROWS CANVAS SCRIPT -->
   <script>
-    const centerEye = document.getElementById('centerEye');
+    /**
+     * UNYIELDING ITACHI SHARINGAN ATMOSPHERE
+     * Video background with subtle mouse parallax and scroll zoom.
+     * Procedural Karasu Bunshin crows & floating ash embers.
+     */
+
+    const videoElement = document.getElementById('itachiVideo');
     const canvas = document.getElementById('crowsCanvas');
     const ctx = canvas.getContext('2d', { alpha: true });
 
@@ -659,7 +634,7 @@
     let scrollSpeed = 0;
 
     let mouseX = 0, mouseY = 0;
-    let eyeGazeX = 0, eyeGazeY = 0;
+    let parallaxX = 0, parallaxY = 0;
 
     function resize() {
       dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -688,7 +663,7 @@
     }, { passive: true });
 
     // 32 SWARMING SILHOUETTE CROWS
-    const CROW_COUNT = window.innerWidth < 640 ? 20 : 32;
+    const CROW_COUNT = window.innerWidth < 640 ? 18 : 32;
     const crows = [];
 
     class Crow {
@@ -702,7 +677,7 @@
         this.z = Math.random() * 0.85 + 0.35;
         this.speedY = (Math.random() * 2.8 + 2.4) * this.z;
         this.speedX = (Math.random() - 0.5) * 2.4 * this.z;
-        this.size = (Math.random() * 10 + 13) * this.z;
+        this.size = (Math.random() * 11 + 14) * this.z;
         this.wingPhase = Math.random() * Math.PI * 2;
         this.wingSpeed = Math.random() * 0.16 + 0.18;
         this.angle = Math.atan2(this.speedY, this.speedX) - Math.PI / 2;
@@ -728,7 +703,7 @@
         const s = this.size;
 
         ctx.fillStyle = '#06080e';
-        ctx.strokeStyle = 'rgba(220, 38, 38, 0.5)';
+        ctx.strokeStyle = 'rgba(220, 38, 38, 0.45)';
         ctx.lineWidth = 1;
 
         // Torso & Tail
@@ -768,17 +743,17 @@
       crows.push(new Crow());
     }
 
-    // 20 FLOATING CRIMSON FEATHERS
-    const FEATHER_COUNT = window.innerWidth < 640 ? 14 : 24;
+    // 24 FLOATING GLOWING ASH / FEATHER EMBERS
+    const FEATHER_COUNT = window.innerWidth < 640 ? 14 : 26;
     const feathers = [];
     for (let i = 0; i < FEATHER_COUNT; i++) {
       feathers.push({
         x: (Math.random() - 0.5) * window.innerWidth,
         y: (Math.random() - 0.5) * window.innerHeight,
-        vy: Math.random() * 1.5 + 0.8,
-        vx: (Math.random() - 0.5) * 1.2,
+        vy: Math.random() * 1.4 + 0.7,
+        vx: (Math.random() - 0.5) * 1.0,
         rot: Math.random() * Math.PI * 2,
-        rotSpeed: (Math.random() - 0.5) * 0.04,
+        rotSpeed: (Math.random() - 0.5) * 0.035,
         size: Math.random() * 5 + 3
       });
     }
@@ -787,20 +762,13 @@
       smoothScroll += (targetScroll - smoothScroll) * 0.08;
       scrollSpeed *= 0.92;
 
-      // Update Center Eye Parallax & Scale
-      eyeGazeX += (mouseX * 30 - eyeGazeX) * 0.06;
-      eyeGazeY += (mouseY * 20 - eyeGazeY) * 0.06;
-
-      const eyeScale = 0.92 + Math.min(0.2, smoothScroll * 0.3);
-      centerEye.style.transform = `translate(calc(-50% + ${eyeGazeX}px), calc(-50% + ${eyeGazeY}px)) scale(${eyeScale})`;
-
       // Canvas Render
       ctx.clearRect(0, 0, width, height);
       const cx = width * 0.5;
       const cy = height * 0.5;
 
-      // Draw Feathers
-      ctx.fillStyle = 'rgba(239, 68, 68, 0.4)';
+      // Draw Feathers / Embers
+      ctx.fillStyle = 'rgba(239, 68, 68, 0.42)';
       for (let f of feathers) {
         f.y += f.vy + scrollSpeed * 0.1;
         f.x += f.vx;
