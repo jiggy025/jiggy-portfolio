@@ -290,6 +290,9 @@
                   <span class="unmute-icon hidden">🔊 Unmute</span>
                   <span class="mute-icon">🔇 Mute</span>
                 </button>
+                <button type="button" class="video-fullscreen-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Fullscreen JRF Video">
+                  <span>⛶ Fullscreen</span>
+                </button>
               </div>
             </div>
           </div>
@@ -393,6 +396,9 @@
                   <span class="unmute-icon hidden">🔊 Unmute</span>
                   <span class="mute-icon">🔇 Mute</span>
                 </button>
+                <button type="button" class="video-fullscreen-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Fullscreen Langga Reel Video">
+                  <span>⛶ Fullscreen</span>
+                </button>
               </div>
             </div>
           </div>
@@ -428,30 +434,34 @@
           <div class="lg:col-span-7">
             <!-- 2x2 Showcase Grid -->
             <div class="grid grid-cols-2 gap-3 sm:gap-4 w-full">
-              <div class="relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/40 transition-colors">
-                <img src="assets/images/rent-a-box/instant-vacancy-check.png" alt="Rent-a-Box Instant Vacancy Check" class="w-full h-full object-cover object-top" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5">
+              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-blue-500/50" data-img="assets/images/rent-a-box/instant-vacancy-check.png" data-caption="Rent-a-Box - Instant Vacancy Check">
+                <img src="assets/images/rent-a-box/instant-vacancy-check.png" alt="Rent-a-Box Instant Vacancy Check" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
                   <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Instant Vacancy Check</div>
+                  <span class="text-[10px] text-blue-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
                 </div>
-              </div>
-              <div class="relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/40 transition-colors">
-                <img src="assets/images/rent-a-box/fast-box-assignment.png" alt="Rent-a-Box Fast Box Assignment" class="w-full h-full object-cover object-top" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5">
+              </button>
+              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-blue-500/50" data-img="assets/images/rent-a-box/fast-box-assignment.png" data-caption="Rent-a-Box - Fast Box Assignment">
+                <img src="assets/images/rent-a-box/fast-box-assignment.png" alt="Rent-a-Box Fast Box Assignment" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
                   <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Fast Box Assignment</div>
+                  <span class="text-[10px] text-blue-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
                 </div>
-              </div>
-              <div class="relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/40 transition-colors">
-                <img src="assets/images/rent-a-box/meticulous-sales-logging.png" alt="Rent-a-Box Meticulous Sales Logging" class="w-full h-full object-cover object-top" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5">
+              </button>
+              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-blue-500/50" data-img="assets/images/rent-a-box/meticulous-sales-logging.png" data-caption="Rent-a-Box - Meticulous Sales Logging">
+                <img src="assets/images/rent-a-box/meticulous-sales-logging.png" alt="Rent-a-Box Meticulous Sales Logging" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
                   <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Meticulous Sales Logging</div>
+                  <span class="text-[10px] text-blue-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
                 </div>
-              </div>
-              <div class="relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/40 transition-colors">
-                <img src="assets/images/rent-a-box/unified-payout-finance-control.png" alt="Rent-a-Box Unified Payout and Finance Control" class="w-full h-full object-cover object-top" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5">
+              </button>
+              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-blue-500/50" data-img="assets/images/rent-a-box/unified-payout-finance-control.png" data-caption="Rent-a-Box - Unified Payout and Finance Control">
+                <img src="assets/images/rent-a-box/unified-payout-finance-control.png" alt="Rent-a-Box Unified Payout and Finance Control" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
                   <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Unified Payout Control</div>
+                  <span class="text-[10px] text-blue-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
                 </div>
-              </div>
+              </button>
             </div>
           </div>
         </div>
@@ -895,6 +905,20 @@
   <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-red-600 text-white font-mono text-xs px-4 py-3 rounded-lg shadow-[0_0_25px_rgba(239,68,68,0.5)] flex items-center gap-2">
     <span>✓</span>
     <span>Copied jigspals025@gmail.com to clipboard!</span>
+  </div>
+
+  <!-- Screenshot Lightbox Modal -->
+  <div id="imageLightbox" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md hidden items-center justify-center p-4 sm:p-8 opacity-0 transition-opacity duration-200" role="dialog" aria-modal="true" aria-label="Image Preview">
+    <div class="relative max-w-4xl w-full max-h-[92vh] flex flex-col items-center">
+      <button id="lightboxClose" type="button" class="absolute -top-10 right-0 sm:-top-11 sm:right-0 z-10 px-3.5 py-1.5 rounded-full bg-black/80 hover:bg-black border border-white/20 text-white font-mono text-xs cursor-pointer flex items-center gap-1.5 transition-colors" aria-label="Close Lightbox">
+        <span>✕</span>
+        <span>Close</span>
+      </button>
+      <div class="rounded-xl overflow-hidden border border-white/20 bg-black shadow-2xl flex items-center justify-center max-h-[82vh]">
+        <img id="lightboxImg" src="" alt="Full Preview" class="max-h-[82vh] w-auto max-w-full object-contain">
+      </div>
+      <div id="lightboxCaption" class="mt-3 text-center text-xs font-mono text-slate-300"></div>
+    </div>
   </div>
 
   <!-- Unified Motion & Interaction Engine -->

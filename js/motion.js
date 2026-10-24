@@ -116,11 +116,12 @@ if ('IntersectionObserver' in window) {
 }
 
 // 5. Video Controls, LED Wall Timer, and Clipboard Handler
-// Video Play/Pause & Mute/Unmute Controls
+// Video Play/Pause, Mute/Unmute & Fullscreen Controls
 document.querySelectorAll('.video-card-wrapper').forEach((wrapper) => {
   const video = wrapper.querySelector('video');
   const playBtn = wrapper.querySelector('.video-play-btn');
   const muteBtn = wrapper.querySelector('.video-mute-btn');
+  const fullscreenBtn = wrapper.querySelector('.video-fullscreen-btn');
 
   if (video) {
     video.addEventListener('play', () => {
@@ -156,6 +157,19 @@ document.querySelectorAll('.video-card-wrapper').forEach((wrapper) => {
       muteBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         video.muted = !video.muted;
+      });
+    }
+
+    if (fullscreenBtn) {
+      fullscreenBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
       });
     }
   }
@@ -199,6 +213,58 @@ if (copyBtn) {
       }, 2500);
     } catch (err) {
       window.location.href = 'mailto:jigspals025@gmail.com';
+    }
+  });
+}
+
+// 6. Screenshot Lightbox Modal Handler
+const lightbox = document.getElementById('imageLightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCaption = document.getElementById('lightboxCaption');
+const lightboxClose = document.getElementById('lightboxClose');
+
+if (lightbox && lightboxImg) {
+  document.querySelectorAll('.screenshot-thumb').forEach((thumb) => {
+    thumb.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const src = thumb.getAttribute('data-img');
+      const caption = thumb.getAttribute('data-caption') || '';
+      lightboxImg.src = src;
+      if (lightboxCaption) lightboxCaption.textContent = caption;
+      lightbox.classList.remove('hidden');
+      setTimeout(() => {
+        lightbox.classList.remove('opacity-0');
+        lightbox.classList.add('flex', 'opacity-100');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('opacity-100');
+    lightbox.classList.add('opacity-0');
+    setTimeout(() => {
+      lightbox.classList.remove('flex');
+      lightbox.classList.add('hidden');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }, 200);
+  };
+
+  lightboxClose?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeLightbox();
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target.id === 'imageLightbox') {
+      closeLightbox();
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+      closeLightbox();
     }
   });
 }
