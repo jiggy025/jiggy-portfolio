@@ -3,10 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jiggy B. Palconit — Software Developer</title>
-  
+  <title>Jiggy B. Palconit - Software Developer</title>
+  <meta name="description" content="Software developer specializing in enterprise Java, cross-platform Flutter, and high-performance database architectures.">
+  <meta name="theme-color" content="#07080b">
+  <link rel="canonical" href="https://jiggy-portfolio.vercel.app">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jiggy-portfolio.vercel.app">
+  <meta property="og:title" content="Jiggy B. Palconit - Software Developer">
+  <meta property="og:description" content="Enterprise Java, cross-platform Flutter, and high-integrity systems engineering.">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://jiggy-portfolio.vercel.app">
+  <meta name="twitter:title" content="Jiggy B. Palconit - Software Developer">
+  <meta name="twitter:description" content="Enterprise Java, cross-platform Flutter, and high-integrity systems engineering.">
+
   <!-- Tailwind CSS via allowlisted CDN -->
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+
+  <!-- Motion & Smooth Scroll CDNs: GSAP & Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   
   <!-- Premium Dark Fonts: Archivo, Space Grotesk, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,12 +35,12 @@
 
   <style>
     :root {
-      --bg-void: #050608;
-      --panel-dark: rgba(11, 13, 18, 0.88);
-      --border-crimson: rgba(220, 38, 38, 0.3);
+      --bg-obsidian: #07080b;
+      --surface-card: rgba(13, 16, 23, 0.78);
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --accent-mangekyo: #dc2626; /* Crimson Red */
-      --accent-flame: #ef4444;
+      --border-crimson: rgba(239, 68, 68, 0.28);
+      --accent-crimson: #ef4444;
+      --accent-crimson-deep: #dc2626;
       --font-display: 'Archivo', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
       --font-body: 'Space Grotesk', sans-serif;
@@ -32,80 +52,33 @@
       padding: 0;
     }
 
+    html.lenis, html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
     html, body {
       max-width: 100%;
       overflow-x: hidden;
     }
 
     body {
-      background-color: var(--bg-void);
+      background-color: var(--bg-obsidian);
       color: #f1f5f9;
       font-family: var(--font-body);
-      selection-background-color: var(--accent-mangekyo);
+      selection-background-color: var(--accent-crimson);
       selection-color: #ffffff;
     }
 
     .font-display { font-family: var(--font-display); }
     .font-mono { font-family: var(--font-mono); }
 
-    /* Lightweight Genjutsu Scanlines */
-    .scanlines {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 40;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.28) 50%), 
-                  linear-gradient(90deg, rgba(220, 38, 38, 0.015), rgba(0, 0, 0, 0.01), rgba(220, 38, 38, 0.015));
-      background-size: 100% 3px, 6px 100%;
-      opacity: 0.65;
-    }
-
-    /* Full-Atmosphere Cinematic Itachi Sharingan Video Layer */
-    .cinematic-bg-container {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-      will-change: transform;
-      background: #050608;
-    }
-
-    .cinematic-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      filter: none;
-    }
-
-    /* Subtle edge fade so headers/footers blend while keeping the video center 100% untouched */
-    .cinematic-vignette {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(5, 6, 8, 0.4) 0%, transparent 15%, transparent 85%, rgba(5, 6, 8, 0.7) 100%);
-      pointer-events: none;
-    }
-
-    /* Zero-Lag Swarming Crows Canvas */
-    #crowsCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 2;
-      will-change: transform;
-    }
-
     /* Dark Tactical Glass Cards */
-    .uchiha-card {
-      background: rgba(11, 13, 19, 0.88);
+    .surface-card, .uchiha-card {
+      background: var(--surface-card);
       border: 1px solid var(--border-subtle);
       border-radius: 6px;
       position: relative;
@@ -113,31 +86,31 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
-    .uchiha-card:hover {
-      border-color: var(--accent-mangekyo);
+    .surface-card:hover, .uchiha-card:hover {
+      border-color: var(--accent-crimson-deep);
       transform: translateY(-2px);
       box-shadow: 0 10px 30px -10px rgba(220, 38, 38, 0.3);
     }
-    .uchiha-card::before {
+    .surface-card::before, .uchiha-card::before {
       content: '■';
       position: absolute;
       top: -6px;
       left: -6px;
-      color: var(--accent-mangekyo);
+      color: var(--accent-crimson-deep);
       font-size: 8px;
     }
-    .uchiha-card::after {
+    .surface-card::after, .uchiha-card::after {
       content: '■';
       position: absolute;
       bottom: -6px;
       right: -6px;
-      color: var(--accent-mangekyo);
+      color: var(--accent-crimson-deep);
       font-size: 8px;
     }
 
     /* Crimson Tactical Buttons */
     .btn-crimson {
-      background: var(--accent-mangekyo);
+      background: var(--accent-crimson-deep);
       color: #ffffff;
       font-family: var(--font-mono);
       font-weight: 700;
@@ -151,12 +124,12 @@
       justify-content: center;
       gap: 8px;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      border: 1px solid var(--accent-mangekyo);
+      border: 1px solid var(--accent-crimson-deep);
       box-shadow: 0 0 18px rgba(220, 38, 38, 0.45);
     }
     .btn-crimson:hover {
       background: #b91c1c;
-      border-color: #ef4444;
+      border-color: var(--accent-crimson);
       box-shadow: 0 0 28px rgba(239, 68, 68, 0.7);
       transform: scale(1.02);
     }
@@ -179,7 +152,7 @@
       backdrop-filter: blur(8px);
     }
     .btn-stealth:hover {
-      border-color: var(--accent-mangekyo);
+      border-color: var(--accent-crimson);
       color: #ffffff;
       background: rgba(220, 38, 38, 0.15);
     }
@@ -194,27 +167,8 @@
 </head>
 <body class="bg-grid relative">
 
-  <!-- Scanlines Overlay -->
-  <div class="scanlines"></div>
-
-  <!-- THE CINEMATIC UNYIELDING ITACHI SHARINGAN BACKGROUND -->
-  <div id="cinematicBg" class="cinematic-bg-container">
-    <video 
-      id="itachiVideo"
-      class="cinematic-video"
-      autoplay 
-      loop 
-      muted 
-      playsinline 
-      preload="auto">
-      <source src="unyielding-itachis-sharingan.1920x1080.mp4" type="video/mp4">
-      Your browser does not support HTML5 video.
-    </video>
-    <div class="cinematic-vignette"></div>
-  </div>
-
-  <!-- Procedural 32-Crow Flapping Canvas Layer -->
-  <canvas id="crowsCanvas"></canvas>
+  <!-- Procedural Canvas Layer (placeholder until Task 7) -->
+  <canvas id="crowsCanvas" style="display:none;"></canvas>
 
   <!-- TOP HUD BAR -->
   <header class="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-[#050608]/90 backdrop-blur-md px-4 sm:px-6 py-3">
