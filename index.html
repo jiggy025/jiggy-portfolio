@@ -8,6 +8,10 @@
   <meta name="theme-color" content="#07080b">
   <link rel="canonical" href="https://jiggy-portfolio.vercel.app">
 
+  <!-- Favicon (JP Monogram) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jiggy-portfolio.vercel.app">
@@ -170,11 +174,20 @@
   <!-- TOP HUD BAR -->
   <header class="fixed top-0 inset-x-0 h-16 bg-[#07080b]/85 backdrop-blur-md border-b border-white/[0.08] z-50">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-full">
-      <!-- Left: Logo / Name link -->
-      <a href="#hero" class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-3 group">
-        <span class="font-mono text-xs font-bold tracking-wider text-white group-hover:text-red-400 transition-colors">JIGGY B. PALCONIT</span>
-        <span class="text-slate-600 font-mono text-xs hidden sm:inline">/</span>
-        <span class="text-[10px] text-red-500 font-mono tracking-widest uppercase">SOFTWARE DEVELOPER</span>
+      <!-- Left: Logo / Name link with JP Monogram -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 rounded-lg overflow-hidden border border-white/15 bg-[#0a0d14] flex items-center justify-center p-1 group-hover:border-red-500/50 transition-colors shadow-sm shrink-0">
+          <svg class="w-full h-full" viewBox="0 0 64 64" fill="none">
+            <path d="M22 17 v23 a 8 8 0 0 1 -16 0 v-4" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M34 47 V 17 h 11 a 7.5 7.5 0 0 1 0 15 H 34" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="22" cy="17" r="2.5" fill="#ef4444" stroke="#ef4444" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2.5">
+          <span class="font-mono text-xs font-bold tracking-wider text-white group-hover:text-red-400 transition-colors">JIGGY B. PALCONIT</span>
+          <span class="text-slate-600 font-mono text-xs hidden sm:inline">/</span>
+          <span class="text-[10px] text-red-500 font-mono tracking-widest uppercase">SOFTWARE DEVELOPER</span>
+        </div>
       </a>
 
       <!-- Center: Nav links -->
