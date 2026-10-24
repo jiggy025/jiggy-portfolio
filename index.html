@@ -198,7 +198,7 @@
   </header>
 
   <!-- MAIN SCROLL CHAPTERS -->
-  <main class="relative z-10 w-full max-w-full overflow-x-hidden">
+  <main class="relative z-10 w-full max-w-full">
 
     <!-- HERO SECTION -->
     <section id="hero" class="min-h-[100dvh] flex flex-col justify-center px-6 sm:px-12 max-w-7xl mx-auto pt-20 pb-12 text-left">
@@ -252,147 +252,294 @@
       </div>
     </section>
 
-    <div id="work"></div>
+    <!-- FEATURED WORK SHOWCASE: LUSION-STYLE STICKY STACK -->
+    <section id="work" class="relative py-12">
+      <!-- Section Header -->
+      <div class="max-w-7xl mx-auto px-6 mb-12 sm:mb-16">
+        <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-2">Featured Systems</div>
+        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl uppercase text-white font-black">
+          ENGINEERED WORK &amp; CASE STUDIES
+        </h2>
+      </div>
 
-    <!-- SECTION 01: PRODUCTION EXPERIENCE -->
-    <section id="production" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-3 border-b border-red-900/40 pb-5">
-        <div>
-          <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-1">// ACTIVE BATTLEGROUND</div>
-          <h2 class="font-display text-2xl sm:text-4xl md:text-5xl uppercase text-white font-black">
-            Production Software Engineering
-          </h2>
-        </div>
-        <div class="text-left md:text-right font-mono text-xs text-slate-400">
-          STATUS: PRODUCTION VERIFIED
+      <!-- Card 1: JRF Pitch Film -->
+      <div class="stack-card sticky top-16 min-h-[calc(100dvh-5rem)] flex items-center justify-center px-4 sm:px-6 py-6 transition-transform will-change-transform z-10">
+        <div class="max-w-6xl w-full bg-[#0d1017]/95 border border-white/10 rounded-2xl p-6 sm:p-10 backdrop-blur-xl shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-3 py-1 bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Motion engineered with Claude &amp; Remotion</span>
+              <h3 class="font-display text-2xl sm:text-4xl text-white uppercase font-black mb-3">JRF Pitch Film &amp; Enterprise Workflow</h3>
+              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-6">
+                Storyboarded, coded, and rendered entirely in code via Remotion. Directs complex enterprise logistics, asset tracking, and repair workflows into a cinematic stakeholder narrative.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
+              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">1080p 60 FPS Timeline</span>
+              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Code-Driven Animation</span>
+              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Enterprise Logistics</span>
+            </div>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="video-card-wrapper relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-black group shadow-2xl">
+              <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata">
+                <source src="assets/videos/jrf-pitch.mp4" type="video/mp4">
+              </video>
+              <div class="absolute bottom-3 right-3 flex items-center gap-2 z-20">
+                <button type="button" class="video-play-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Play or Pause JRF Video">
+                  <span class="play-icon hidden">▶ Play</span>
+                  <span class="pause-icon">❚❚ Pause</span>
+                </button>
+                <button type="button" class="video-mute-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Mute or Unmute JRF Video">
+                  <span class="unmute-icon hidden">🔊 Unmute</span>
+                  <span class="mute-icon">🔇 Mute</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
-        
-        <!-- Primary Work: Viajero Motorcycles Inc. (Span 8) -->
-        <div class="lg:col-span-8 uchiha-card p-5 sm:p-8 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap justify-between items-center gap-2 mb-4 sm:mb-6">
-              <span class="px-2.5 py-1 bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-[10px] sm:text-[11px] font-bold uppercase">
-                Software Developer • Active Duty
-              </span>
-              <span class="font-mono text-[11px] sm:text-xs text-slate-400">Feb 2026 - Present (~1 Year)</span>
+      <!-- Card 2: Race Clock -->
+      <div class="stack-card sticky top-16 min-h-[calc(100dvh-5rem)] flex items-center justify-center px-4 sm:px-6 py-6 transition-transform will-change-transform z-20">
+        <div class="max-w-6xl w-full bg-[#0d1017]/95 border border-white/10 rounded-2xl p-6 sm:p-10 backdrop-blur-xl shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Real-Time PWA &amp; Hardware Display</span>
+              <h3 class="font-display text-2xl sm:text-4xl text-white uppercase font-black mb-3">Race Clock: LED Wall Timer</h3>
+              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-6">
+                Multi-category race clock system engineered for high-visibility LED walls. Built for race operators with synchronized dual-screen control via localStorage, WakeLock API prevention, and 100% offline capability.
+              </p>
             </div>
-
-            <h3 class="font-display text-xl sm:text-3xl text-white uppercase mb-1 sm:mb-2">
-              Viajero Motorcycles Inc.
-            </h3>
-            <div class="font-mono text-xs text-red-400 mb-4 sm:mb-6 uppercase tracking-wider">
-              Core Enterprise Systems • Java / Swing • MySQL • Data Integrity
-            </div>
-
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-              Leading the development, debugging, and continuous modernization of enterprise dealership workflows. Directly responsible for system feature deployment, legacy Java 7/8 code maintenance, desktop UI modules (Java Swing), and resolving high-impact software issues.
-            </p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 my-4 sm:my-6">
-              <div class="p-3 bg-black/50 border border-white/10 rounded">
-                <div class="font-mono text-xs font-bold text-white uppercase">Legacy Overhaul</div>
-                <div class="text-[11px] font-mono text-slate-400 mt-1">Refactoring & maintaining mission-critical Java 7/8 modules.</div>
+            <div>
+              <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">TypeScript</span>
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Vite</span>
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Dual-Screen Sync</span>
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Offline PWA</span>
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Vitest Tested</span>
               </div>
-              <div class="p-3 bg-black/50 border border-white/10 rounded">
-                <div class="font-mono text-xs font-bold text-red-400 uppercase">Database Ops</div>
-                <div class="text-[11px] font-mono text-slate-400 mt-1">Complex SQL handling, schema validation, and reporting runs.</div>
-              </div>
-              <div class="p-3 bg-black/50 border border-white/10 rounded">
-                <div class="font-mono text-xs font-bold text-white uppercase">Zero Regressions</div>
-                <div class="text-[11px] font-mono text-slate-400 mt-1">Systematic verification, defensive coding, and root-cause fixes.</div>
+              <div class="mt-6">
+                <a href="https://race-clock-ten.vercel.app/" target="_blank" rel="noopener" class="btn-crimson">
+                  <span>Launch Live App</span>
+                  <span>↗</span>
+                </a>
               </div>
             </div>
           </div>
+          <div class="lg:col-span-7">
+            <!-- Simulated LED Wall Display -->
+            <div class="relative aspect-video rounded-xl overflow-hidden border border-amber-500/30 bg-[#070604] p-5 sm:p-8 flex flex-col justify-between shadow-[0_0_40px_rgba(245,158,11,0.18)]">
+              <!-- Top Category Indicators -->
+              <div class="flex items-center justify-between gap-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-amber-500/15 border border-amber-500/40 text-amber-400 font-mono text-[11px] sm:text-xs font-bold uppercase">
+                  <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                  CATEGORY 01: ACTIVE
+                </span>
+                <span class="px-3 py-1 rounded bg-white/5 border border-white/10 text-slate-400 font-mono text-[11px] sm:text-xs uppercase">
+                  CATEGORY 02: STANDBY
+                </span>
+              </div>
 
-          <div class="pt-4 border-t border-white/10 flex flex-wrap gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] font-mono text-slate-400">
-            <span class="px-2 py-0.5 bg-white/5 border border-white/10">Java Swing</span>
-            <span class="px-2 py-0.5 bg-white/5 border border-white/10">MySQL</span>
-            <span class="px-2 py-0.5 bg-white/5 border border-white/10">Flutter/Dart</span>
-            <span class="px-2 py-0.5 bg-white/5 border border-white/10">Enterprise Workflows</span>
-            <span class="px-2 py-0.5 bg-white/5 border border-white/10">Git</span>
+              <!-- Main LED Timer Numbers -->
+              <div class="my-auto py-3 text-center">
+                <div id="ledWallTimer" class="font-mono text-3xl sm:text-6xl md:text-7xl font-black text-amber-400 tracking-tight drop-shadow-[0_0_28px_rgba(245,158,11,0.85)] select-none">
+                  00:42:18.45
+                </div>
+                <div class="text-[10px] sm:text-xs font-mono text-amber-500/80 mt-2 uppercase tracking-widest">
+                  LAP 04 / SPLIT -00:01.12
+                </div>
+              </div>
+
+              <!-- Status Strip -->
+              <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-amber-500/20 font-mono text-[10px] sm:text-xs text-amber-400/90">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span>LED PROCESSOR SYNC: NOMINAL</span>
+                </div>
+                <div class="text-slate-400 text-[10px] sm:text-[11px]">
+                  WAKELOCK ENGAGED • 60 FPS
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Cross-Platform Flutter Stack (Span 4) -->
-        <div class="lg:col-span-4 uchiha-card p-5 sm:p-8 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-center mb-4 sm:mb-6">
-              <span class="font-mono text-xs text-red-400 uppercase tracking-wider">Mobile & Multi-OS</span>
-              <span class="text-slate-500 font-mono text-xs">[SYS_02]</span>
+      <!-- Card 3: Langga Loan Tracker -->
+      <div class="stack-card sticky top-16 min-h-[calc(100dvh-5rem)] flex items-center justify-center px-4 sm:px-6 py-6 transition-transform will-change-transform z-30">
+        <div class="max-w-6xl w-full bg-[#0d1017]/95 border border-white/10 rounded-2xl p-6 sm:p-10 backdrop-blur-xl shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-3 py-1 bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Motion engineered with Claude &amp; Remotion</span>
+              <h3 class="font-display text-2xl sm:text-4xl text-white uppercase font-black mb-3">Langga Loan Tracker</h3>
+              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-6">
+                Mobile debt payoff application built with React Native and Expo. Powered by 60 FPS Reanimated spring physics, an interactive 3D animated companion mascot, and a private PIN-protected boyfriend vault.
+              </p>
             </div>
-
-            <h3 class="font-display text-xl sm:text-2xl text-white uppercase mb-2">
-              Flutter & Dart Mobile
-            </h3>
-            <div class="font-mono text-xs text-slate-400 mb-4">Cross-Platform Architecture</div>
-
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-              Building modular, offline-first client applications powered by reactive state management, asynchronous background synchronization, and SQLite caching.
-            </p>
-
-            <div class="p-3 sm:p-4 bg-black/60 border border-white/10 font-mono text-xs text-slate-400 space-y-1 mb-6 rounded">
-              <div class="text-red-400">&gt; state_mgmt: Provider / BLoC</div>
-              <div>&gt; local_storage: SQLite / Hive</div>
-              <div>&gt; target: Android / Desktop</div>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
+              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">React Native &amp; Expo</span>
+              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Reanimated Physics</span>
+              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Local Sandboxed Storage</span>
             </div>
           </div>
-
-          <div class="text-[11px] font-mono text-slate-500">
-            Native performance • Clean UI architectures
+          <div class="lg:col-span-7">
+            <div class="video-card-wrapper relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-black group shadow-2xl">
+              <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata">
+                <source src="assets/videos/langga-reel.mp4" type="video/mp4">
+              </video>
+              <div class="absolute bottom-3 right-3 flex items-center gap-2 z-20">
+                <button type="button" class="video-play-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Play or Pause Langga Reel Video">
+                  <span class="play-icon hidden">▶ Play</span>
+                  <span class="pause-icon">❚❚ Pause</span>
+                </button>
+                <button type="button" class="video-mute-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Mute or Unmute Langga Reel Video">
+                  <span class="unmute-icon hidden">🔊 Unmute</span>
+                  <span class="mute-icon">🔇 Mute</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Technical VA Experience (Span 5) -->
-        <div class="lg:col-span-5 uchiha-card p-5 sm:p-8 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-center mb-4">
-              <span class="font-mono text-xs text-red-400 uppercase tracking-wider">Infrastructure & Ops</span>
-              <span class="font-mono text-xs text-slate-500">2024 - 2025</span>
+      <!-- Card 4: Rent-a-Box System -->
+      <div class="stack-card sticky top-16 min-h-[calc(100dvh-5rem)] flex items-center justify-center px-4 sm:px-6 py-6 transition-transform will-change-transform z-40">
+        <div class="max-w-6xl w-full bg-[#0d1017]/95 border border-white/10 rounded-2xl p-6 sm:p-10 backdrop-blur-xl shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Flutter &amp; SQLite Local-First</span>
+              <h3 class="font-display text-2xl sm:text-4xl text-white uppercase font-black mb-3">Rent-a-Box System (APK)</h3>
+              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-6">
+                Production-ready mobile ledger app for micro-retail spaces and box rental hubs. Features instant unit vacancy checks, tenant onboarding, meticulous sales logging, and per-unit profitability analytics.
+              </p>
             </div>
-
-            <h3 class="font-display text-lg sm:text-xl text-white uppercase mb-1">
-              Technical Support VA
-            </h3>
-            <div class="font-mono text-xs text-slate-400 mb-3">Prime Developments (Quezon City)</div>
-
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              Live technical support, ticket escalation, in-game server maintenance, and operational problem solving. Cultivated relentless diagnostic rigor under pressure.
-            </p>
+            <div>
+              <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Flutter Mobile</span>
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Dart</span>
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">SQLite Caching</span>
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Offline-First Ledger</span>
+              </div>
+              <div class="mt-6">
+                <a href="https://github.com/jiggy025/rent-a-box-sys" target="_blank" rel="noopener" class="btn-stealth">
+                  <span>View GitHub Repository</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
           </div>
-
-          <div class="font-mono text-[10px] sm:text-[11px] text-slate-500 pt-3 border-t border-white/10">
-            LGU Gensan-ICTD Alumni (Network Routing & Hardware Diagnostics)
+          <div class="lg:col-span-7">
+            <!-- 2x2 Showcase Grid -->
+            <div class="grid grid-cols-2 gap-3 sm:gap-4 w-full">
+              <div class="relative aspect-[3/4] rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/40 transition-colors">
+                <img src="assets/images/rent-a-box/instant-vacancy-check.png" alt="Rent-a-Box Instant Vacancy Check" class="w-full h-full object-cover object-top" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5">
+                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Instant Vacancy Check</div>
+                </div>
+              </div>
+              <div class="relative aspect-[3/4] rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/40 transition-colors">
+                <img src="assets/images/rent-a-box/fast-box-assignment.png" alt="Rent-a-Box Fast Box Assignment" class="w-full h-full object-cover object-top" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5">
+                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Fast Box Assignment</div>
+                </div>
+              </div>
+              <div class="relative aspect-[3/4] rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/40 transition-colors">
+                <img src="assets/images/rent-a-box/meticulous-sales-logging.png" alt="Rent-a-Box Meticulous Sales Logging" class="w-full h-full object-cover object-top" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5">
+                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Meticulous Sales Logging</div>
+                </div>
+              </div>
+              <div class="relative aspect-[3/4] rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/40 transition-colors">
+                <img src="assets/images/rent-a-box/unified-payout-finance-control.png" alt="Rent-a-Box Unified Payout and Finance Control" class="w-full h-full object-cover object-top" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5">
+                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Unified Payout Control</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Full Stack & Web (Span 7) -->
-        <div class="lg:col-span-7 uchiha-card p-5 sm:p-8 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-center mb-4">
-              <span class="font-mono text-xs text-red-400 uppercase tracking-wider">Full-Stack Web</span>
-              <span class="font-mono text-xs text-slate-500">[SYS_03]</span>
+      <!-- Card 5: MIS Calendar & Viber Dispatch System -->
+      <div class="stack-card sticky top-16 min-h-[calc(100dvh-5rem)] flex items-center justify-center px-4 sm:px-6 py-6 transition-transform will-change-transform z-50">
+        <div class="max-w-6xl w-full bg-[#0d1017]/95 border border-white/10 rounded-2xl p-6 sm:p-10 backdrop-blur-xl shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Enterprise Automation &amp; Backend</span>
+              <h3 class="font-display text-2xl sm:text-4xl text-white uppercase font-black mb-3">MIS Calendar &amp; Alerts Pipeline</h3>
+              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-6">
+                Enterprise departmental coordination calendar and dispatch automation. Connects Supabase PostgreSQL with Edge Functions to automate real-time Viber alerts for mission-critical deadlines and IT operations.
+              </p>
             </div>
-
-            <h3 class="font-display text-lg sm:text-2xl text-white uppercase mb-1">
-              MERN Stack & Web Systems
-            </h3>
-            <div class="font-mono text-xs text-slate-400 mb-3">React • Node.js • Express • MongoDB / MySQL</div>
-
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              Designing full-stack applications with clean RESTful endpoints, responsive frontend components, and bulletproof database connectivity. Rooted in real web production since early graphic/web work at DPI Print Solutions.
-            </p>
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
+              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Supabase PostgreSQL</span>
+              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Edge Functions</span>
+              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Viber Webhooks</span>
+              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Service Worker PWA</span>
+            </div>
           </div>
+          <div class="lg:col-span-7">
+            <!-- Tactical Terminal Display -->
+            <div class="relative w-full rounded-xl overflow-hidden border border-emerald-500/30 bg-[#06100c]/95 p-5 sm:p-7 shadow-[0_0_35px_rgba(16,185,129,0.12)] font-mono text-xs flex flex-col justify-between">
+              <!-- Top bar -->
+              <div class="flex items-center justify-between pb-4 border-b border-emerald-500/20 mb-5">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span class="text-white font-bold text-xs uppercase tracking-wider">MIS_DISPATCH_PIPELINE.sh</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px]">
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-semibold">[STATUS: ACTIVE]</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hidden sm:inline font-semibold">[DISPATCH: 100% SUCCESS]</span>
+                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-400 font-semibold">[CACHE: STABLE]</span>
+                </div>
+              </div>
 
-          <div class="flex gap-1.5 sm:gap-2 flex-wrap pt-3 border-t border-white/10 font-mono text-[11px] sm:text-xs">
-            <span class="px-2 py-0.5 bg-white/5 border border-white/10 text-white">Full-Stack REST APIs</span>
-            <span class="px-2 py-0.5 bg-white/5 border border-white/10 text-white">Responsive CSS</span>
-            <span class="px-2 py-0.5 bg-white/5 border border-white/10 text-white">Git Versioning</span>
+              <!-- Flow Visualizer -->
+              <div class="mb-5">
+                <div class="text-[10px] uppercase tracking-widest text-slate-400 mb-2.5">Event Execution Flow</div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[10px]">
+                  <div class="p-2.5 rounded bg-black/60 border border-emerald-500/20">
+                    <div class="text-emerald-400 font-bold mb-0.5">Real-time DB</div>
+                    <div class="text-[9px] text-slate-400">Postgres Trigger</div>
+                  </div>
+                  <div class="p-2.5 rounded bg-black/60 border border-emerald-500/20">
+                    <div class="text-emerald-400 font-bold mb-0.5">Supabase Edge</div>
+                    <div class="text-[9px] text-slate-400">Edge Function</div>
+                  </div>
+                  <div class="p-2.5 rounded bg-black/60 border border-emerald-500/20">
+                    <div class="text-emerald-400 font-bold mb-0.5">Viber Dispatch</div>
+                    <div class="text-[9px] text-slate-400">API Webhook</div>
+                  </div>
+                  <div class="p-2.5 rounded bg-black/60 border border-emerald-500/20">
+                    <div class="text-emerald-400 font-bold mb-0.5">Client PWA</div>
+                    <div class="text-[9px] text-slate-400">Service Worker</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Telemetry Log Terminal -->
+              <div class="bg-black/70 rounded-lg p-3 sm:p-4 border border-white/10 font-mono text-[11px] leading-relaxed space-y-1.5 text-slate-300">
+                <div class="text-slate-500 text-[10px] uppercase tracking-wider mb-1">// LIVE TELEMETRY LOGS</div>
+                <div class="flex items-start gap-2">
+                  <span class="text-emerald-400 shrink-0">&gt;</span>
+                  <span><span class="text-slate-400">[EVENT]</span> postgres: calendar_event_created <span class="text-emerald-400">#EVT-8821</span></span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-emerald-400 shrink-0">&gt;</span>
+                  <span><span class="text-slate-400">[EDGE]</span> supabase function triggered <span class="text-slate-500">(18ms latency)</span></span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-emerald-400 shrink-0">&gt;</span>
+                  <span><span class="text-slate-400">[DISPATCH]</span> viber webhook broadcast sent to operations channel</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-emerald-400 shrink-0">&gt;</span>
+                  <span><span class="text-slate-400">[SYNC]</span> service worker synchronized calendar store <span class="text-emerald-400 font-bold">[NOMINAL]</span></span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -747,6 +894,60 @@
     }
 
     render();
+  </script>
+
+  <!-- VIDEO CONTROLS & LED WALL TIMER SCRIPT -->
+  <script>
+    // Video Play/Pause & Mute/Unmute Controls
+    document.querySelectorAll('.video-card-wrapper').forEach(wrapper => {
+      const video = wrapper.querySelector('video');
+      const playBtn = wrapper.querySelector('.video-play-btn');
+      const muteBtn = wrapper.querySelector('.video-mute-btn');
+
+      if (playBtn && video) {
+        playBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (video.paused) {
+            video.play();
+            playBtn.querySelector('.play-icon')?.classList.add('hidden');
+            playBtn.querySelector('.pause-icon')?.classList.remove('hidden');
+          } else {
+            video.pause();
+            playBtn.querySelector('.play-icon')?.classList.remove('hidden');
+            playBtn.querySelector('.pause-icon')?.classList.add('hidden');
+          }
+        });
+      }
+
+      if (muteBtn && video) {
+        muteBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          video.muted = !video.muted;
+          if (video.muted) {
+            muteBtn.querySelector('.mute-icon')?.classList.remove('hidden');
+            muteBtn.querySelector('.unmute-icon')?.classList.add('hidden');
+          } else {
+            muteBtn.querySelector('.mute-icon')?.classList.add('hidden');
+            muteBtn.querySelector('.unmute-icon')?.classList.remove('hidden');
+          }
+        });
+      }
+    });
+
+    // Simulated Race Clock LED Wall Counter
+    const ledWallTimer = document.getElementById('ledWallTimer');
+    if (ledWallTimer) {
+      const startTime = Date.now();
+      const baseMs = (42 * 60 + 18) * 1000 + 450;
+      setInterval(() => {
+        const elapsed = (Date.now() - startTime) % (3600 * 1000);
+        const total = baseMs + elapsed;
+        const m = Math.floor((total / (1000 * 60)) % 60).toString().padStart(2, '0');
+        const s = Math.floor((total / 1000) % 60).toString().padStart(2, '0');
+        const ms = Math.floor((total % 1000) / 10).toString().padStart(2, '0');
+        ledWallTimer.textContent = `00:${m}:${s}.${ms}`;
+      }, 45);
+    }
   </script>
 </body>
 </html>
