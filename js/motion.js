@@ -98,22 +98,53 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
   }
 }
 
-// 4. Intelligent Video Autoplay / Pause with IntersectionObserver
-const videos = document.querySelectorAll('video');
-if ('IntersectionObserver' in window) {
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const vid = entry.target;
-      if (entry.isIntersecting) {
-        vid.play().catch(() => {});
-      } else {
-        vid.pause();
-      }
-    });
-  }, { threshold: 0.25 });
+// 4. Intelligent Video Autoplay / Pause Manager
+// Ensures video plays ONLY when its card is the active visible card, and immediately pauses
+// when the user scrolls down past it, when another card covers it, or when leaving the work section.
+function updateCardVideoPlayback() {
+  const cards = gsap.utils.toArray('.stack-card');
+  const vh = window.innerHeight;
 
-  videos.forEach((vid) => videoObserver.observe(vid));
+  cards.forEach((card, i) => {
+    const video = card.querySelector('video');
+    if (!video) return;
+
+    const rect = card.getBoundingClientRect();
+    const nextCard = cards[i + 1];
+    let isCovered = false;
+
+    if (nextCard) {
+      const nextRect = nextCard.getBoundingClientRect();
+      // If the next card has scrolled up to the sticky position (top <= 96px), it covers this card!
+      if (nextRect.top <= 96) {
+        isCovered = true;
+      }
+    }
+
+    // Card is active if its top is near the viewport header area and not covered,
+    // and hasn't been scrolled past completely.
+    const isInView = rect.top < vh - 100 && rect.bottom > 80;
+
+    if (isInView && !isCovered) {
+      if (video.paused && !video.dataset.userPaused) {
+        video.play().catch(() => {});
+      }
+    } else {
+      // Scrolled past or covered: PAUSE IMMEDIATELY
+      if (!video.paused) {
+        video.pause();
+      }
+    }
+  });
 }
+
+// Hook into Lenis scroll, native window scroll, and resize
+if (lenis) {
+  lenis.on('scroll', updateCardVideoPlayback);
+}
+window.addEventListener('scroll', updateCardVideoPlayback, { passive: true });
+window.addEventListener('resize', updateCardVideoPlayback, { passive: true });
+window.addEventListener('load', updateCardVideoPlayback);
 
 // 5. Video Controls, LED Wall Timer, and Clipboard Handler
 // Video Play/Pause, Mute/Unmute & Fullscreen Controls
@@ -146,8 +177,10 @@ document.querySelectorAll('.video-card-wrapper').forEach((wrapper) => {
       playBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         if (video.paused) {
+          delete video.dataset.userPaused;
           video.play().catch(() => {});
         } else {
+          video.dataset.userPaused = 'true';
           video.pause();
         }
       });
