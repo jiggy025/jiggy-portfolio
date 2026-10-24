@@ -171,27 +171,27 @@
   <canvas id="crowsCanvas" style="display:none;"></canvas>
 
   <!-- TOP HUD BAR -->
-  <header class="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-[#050608]/90 backdrop-blur-md px-4 sm:px-6 py-3">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="#hero" class="flex items-center gap-2 sm:gap-3">
-        <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-red-600 rounded-full shadow-[0_0_8px_#dc2626]"></div>
-        <span class="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white">JIGGY B. PALCONIT</span>
-        <span class="text-[11px] font-mono text-slate-500 hidden md:inline-block">/ / UCHIHA PROTOCOL</span>
+  <header class="fixed top-0 inset-x-0 h-16 bg-[#07080b]/85 backdrop-blur-md border-b border-white/[0.08] z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-full">
+      <!-- Left: Logo / Name link -->
+      <a href="#hero" class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-3 group">
+        <span class="font-mono text-xs font-bold tracking-wider text-white group-hover:text-red-400 transition-colors">JIGGY B. PALCONIT</span>
+        <span class="text-slate-600 font-mono text-xs hidden sm:inline">/</span>
+        <span class="text-[10px] text-red-500 font-mono tracking-widest uppercase">SOFTWARE DEVELOPER</span>
       </a>
 
-      <div class="hidden lg:flex items-center gap-8 text-xs font-mono tracking-wider uppercase text-slate-400">
-        <a href="#production" class="hover:text-red-400 transition-colors">01. Production</a>
-        <a href="#systems" class="hover:text-red-400 transition-colors">02. Arsenal</a>
-        <a href="#credentials" class="hover:text-red-400 transition-colors">03. Credentials</a>
-      </div>
+      <!-- Center: Nav links -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#work" class="text-xs font-mono tracking-wider uppercase text-slate-400 hover:text-white transition-colors">Work</a>
+        <a href="#arsenal" class="text-xs font-mono tracking-wider uppercase text-slate-400 hover:text-white transition-colors">Arsenal</a>
+        <a href="#experience" class="text-xs font-mono tracking-wider uppercase text-slate-400 hover:text-white transition-colors">Experience</a>
+        <a href="#contact" class="text-xs font-mono tracking-wider uppercase text-slate-400 hover:text-white transition-colors">Contact</a>
+      </nav>
 
-      <div class="flex items-center gap-2 sm:gap-3">
-        <div class="hidden sm:flex items-center gap-1.5 font-mono text-[10px] text-red-400 px-2 py-1 bg-red-500/10 border border-red-500/20 rounded">
-          <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
-          VIAJERO DEV • 1 YR EXP
-        </div>
-        <a href="#contact" class="btn-crimson !py-1 !px-2.5 sm:!py-1.5 sm:!px-3 !text-[10px]">
-          Transmit
+      <!-- Right: Primary CTA -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="btn-crimson text-xs">
+          Get in touch
         </a>
       </div>
     </div>
@@ -201,62 +201,58 @@
   <main class="relative z-10 w-full max-w-full overflow-x-hidden">
 
     <!-- HERO SECTION -->
-    <section id="hero" class="min-h-[100dvh] flex flex-col justify-center items-center px-4 sm:px-6 pt-24 pb-16 text-center max-w-5xl mx-auto">
-      
-      <!-- Responsive Eyebrow Badge -->
-      <div class="inline-flex flex-wrap justify-center items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 bg-black/60 border border-red-500/40 rounded text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-red-400 mb-6 backdrop-blur-md max-w-[95vw] shadow-[0_0_15px_rgba(220,38,38,0.25)]">
-        <span>Software Developer</span>
-        <span class="text-red-600 hidden xs:inline">■</span>
-        <span class="text-slate-200">Viajero Motorcycles Inc.</span>
-        <span class="text-red-600 hidden xs:inline">■</span>
-        <span class="text-red-400 font-bold">1 Yr Experience</span>
+    <section id="hero" class="min-h-[100dvh] flex flex-col justify-center px-6 sm:px-12 max-w-7xl mx-auto pt-20 pb-12 text-left">
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/40 border border-red-500/30 text-red-400 font-mono text-[11px] tracking-wider uppercase mb-6 w-fit">
+        <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+        Software Developer - Viajero Motorcycles Inc. (9 Months)
       </div>
 
-      <!-- HERO HEADLINE (FLUID & MOBILE-CALIBRATED) -->
-      <h1 class="font-display text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase font-black text-white leading-[1.04] mb-6 max-w-full break-words drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
-        MASTERING LOGIC. <br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-rose-500 to-white">COMMANDING CODE.</span>
+      <!-- Headline -->
+      <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase font-black text-white leading-[1.04] mb-6">
+        BUILDING HIGH-INTEGRITY SYSTEMS.<br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-white">COMMANDING LOGIC & MOTION.</span>
       </h1>
 
-      <!-- Frosted Tactical Glass Bio Card -->
-      <div class="max-w-2xl mx-auto p-4 sm:p-5 rounded-lg backdrop-blur-md bg-black/50 border border-white/10 mb-8 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
-        <p class="text-slate-200 sm:text-slate-300 text-xs sm:text-base md:text-lg font-mono leading-relaxed">
-          Enterprise Java engineer, cross-platform Flutter architect, and MySQL database specialist. Developing high-integrity business applications with surgical precision.
-        </p>
-      </div>
+      <!-- Subtext -->
+      <p class="text-slate-300 text-sm sm:text-base md:text-lg font-mono leading-relaxed max-w-2xl mb-8">
+        Software engineer specializing in enterprise Java, cross-platform Flutter, and high-performance database architectures.
+      </p>
 
-      <!-- Action Buttons -->
-      <div class="flex flex-col xs:flex-row justify-center items-stretch xs:items-center gap-3 w-full max-w-xs xs:max-w-none">
-        <a href="#production" class="btn-crimson">
-          <span>View Production Code</span>
-          <span>&gt;&gt;</span>
+      <!-- Action CTAs -->
+      <div class="flex flex-wrap items-center gap-4 mb-14">
+        <a href="#work" class="btn-crimson">
+          <span>View Selected Work</span>
+          <span>↓</span>
         </a>
-        <a href="https://github.com/jiggy025" target="_blank" rel="noopener" class="btn-stealth">
-          <span>GitHub // jiggy025</span>
-          <span>↗</span>
+        <a href="#contact" class="btn-stealth">
+          <span>Direct Contact</span>
+          <span>→</span>
         </a>
       </div>
 
       <!-- Telemetry Strip -->
-      <div class="mt-14 sm:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-4xl border-t border-red-900/40 pt-5 sm:pt-6 text-left font-mono backdrop-blur-sm bg-black/30 p-3 sm:p-4 rounded-b">
+      <div class="border-t border-white/10 pt-6 grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs w-full max-w-5xl">
         <div>
-          <div class="text-[9px] sm:text-[10px] text-slate-400 uppercase">Specialization</div>
-          <div class="text-[11px] sm:text-xs font-bold text-white mt-0.5">Enterprise Java & DB</div>
+          <div class="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Specialty</div>
+          <div class="text-white font-medium">Enterprise Java &amp; SQL</div>
         </div>
         <div>
-          <div class="text-[9px] sm:text-[10px] text-slate-400 uppercase">Core Stack</div>
-          <div class="text-[11px] sm:text-xs font-bold text-red-400 mt-0.5">Java • Flutter • MySQL</div>
+          <div class="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Mobile &amp; Client</div>
+          <div class="text-red-400 font-medium">Cross-Platform Flutter</div>
         </div>
         <div>
-          <div class="text-[9px] sm:text-[10px] text-slate-400 uppercase">Cinematic Focus</div>
-          <div class="text-[11px] sm:text-xs font-bold text-red-500 mt-0.5">Unyielding Sharingan</div>
+          <div class="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Systems</div>
+          <div class="text-white font-medium">Real-Time PWA &amp; Sync</div>
         </div>
         <div>
-          <div class="text-[9px] sm:text-[10px] text-slate-400 uppercase">Location</div>
-          <div class="text-[11px] sm:text-xs font-bold text-white mt-0.5">General Santos, PH</div>
+          <div class="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Location</div>
+          <div class="text-slate-300 font-medium">General Santos, PH</div>
         </div>
       </div>
     </section>
+
+    <div id="work"></div>
 
     <!-- SECTION 01: PRODUCTION EXPERIENCE -->
     <section id="production" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
@@ -281,7 +277,7 @@
               <span class="px-2.5 py-1 bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-[10px] sm:text-[11px] font-bold uppercase">
                 Software Developer • Active Duty
               </span>
-              <span class="font-mono text-[11px] sm:text-xs text-slate-400">Feb 2026 — Present (~1 Year)</span>
+              <span class="font-mono text-[11px] sm:text-xs text-slate-400">Feb 2026 - Present (~1 Year)</span>
             </div>
 
             <h3 class="font-display text-xl sm:text-3xl text-white uppercase mb-1 sm:mb-2">
@@ -354,7 +350,7 @@
           <div>
             <div class="flex justify-between items-center mb-4">
               <span class="font-mono text-xs text-red-400 uppercase tracking-wider">Infrastructure & Ops</span>
-              <span class="font-mono text-xs text-slate-500">2024 — 2025</span>
+              <span class="font-mono text-xs text-slate-500">2024 - 2025</span>
             </div>
 
             <h3 class="font-display text-lg sm:text-xl text-white uppercase mb-1">
@@ -503,7 +499,7 @@
             <div class="font-mono text-[11px] sm:text-xs text-red-400 uppercase mb-1">Degree Conferred</div>
             <div class="font-display text-base sm:text-lg text-white uppercase">BS in Information Technology</div>
             <div class="text-xs text-slate-300 mt-1">STI College General Santos City</div>
-            <div class="text-[10px] sm:text-[11px] font-mono text-slate-500 mt-2">Class of 2019 — 2024 • TESDA Scholar (DICT)</div>
+            <div class="text-[10px] sm:text-[11px] font-mono text-slate-500 mt-2">Class of 2019 - 2024 • TESDA Scholar (DICT)</div>
           </div>
 
           <div class="uchiha-card p-5 sm:p-6">
@@ -542,7 +538,7 @@
         </h2>
 
         <p class="text-slate-300 font-mono text-xs sm:text-sm max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-          Whether you need an enterprise Java engineer, Flutter developer, or full-stack software problem solver—reach out directly.
+          Whether you need an enterprise Java engineer, Flutter developer, or full-stack software problem solver - reach out directly.
         </p>
 
         <div class="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-3 sm:gap-4">
