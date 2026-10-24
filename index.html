@@ -485,78 +485,76 @@
         <div class="stack-card-inner max-w-6xl w-full bg-[#0a0d14] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative transition-transform">
           <div class="lg:col-span-5 flex flex-col justify-between">
             <div>
-              <span class="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Enterprise Automation &amp; Backend</span>
+              <span class="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Enterprise Automation &amp; PWA</span>
               <h3 class="font-display text-2xl sm:text-4xl text-white uppercase font-black mb-3">MIS Calendar &amp; Alerts Pipeline</h3>
-              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-6">
-                Enterprise departmental coordination calendar and dispatch automation. Connects Supabase PostgreSQL with Edge Functions to automate real-time Viber alerts for mission-critical deadlines and IT operations.
+              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-4">
+                Enterprise multi-branch coordination PWA deployed for IT and operations field teams. Connects Supabase PostgreSQL triggers with Netlify serverless functions to automate daily morning dispatches, technician assignments, and checklist statuses directly to company Viber channels.
               </p>
+              
+              <!-- Enterprise Confidentiality Note -->
+              <div class="mb-5 p-3 rounded-lg bg-emerald-950/20 border border-emerald-500/20 font-mono text-[11px] leading-relaxed text-slate-300">
+                <div class="flex items-center gap-1.5 text-emerald-400 font-bold mb-1">
+                  <span>🔒 Enterprise Access Note</span>
+                </div>
+                <p class="text-slate-400 text-[10.5px]">
+                  Live system credentials and branch endpoints are private to the company. Showcase views have been sanitized to protect internal visitation procedures and employee privacy.
+                </p>
+              </div>
             </div>
-            <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Supabase PostgreSQL</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Edge Functions</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Viber Webhooks</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Service Worker PWA</span>
+            <div>
+              <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Supabase PostgreSQL</span>
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Edge Webhooks</span>
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Rakuten Viber Bot</span>
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Service Worker PWA</span>
+                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Netlify</span>
+              </div>
+              <div class="mt-5 flex items-center gap-3">
+                <a href="https://codexus-calendar.netlify.app" target="_blank" rel="noopener" class="btn-stealth text-xs">
+                  <span>Restricted Company Portal</span>
+                  <span>🔒↗</span>
+                </a>
+              </div>
             </div>
           </div>
           <div class="lg:col-span-7">
-            <!-- Tactical Terminal Display -->
-            <div class="relative w-full rounded-xl overflow-hidden border border-emerald-500/30 bg-[#06100c]/95 p-5 sm:p-7 shadow-[0_0_35px_rgba(16,185,129,0.12)] font-mono text-xs flex flex-col justify-between">
-              <!-- Top bar -->
-              <div class="flex items-center justify-between pb-4 border-b border-emerald-500/20 mb-5">
-                <div class="flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span class="text-white font-bold text-xs uppercase tracking-wider">MIS_DISPATCH_PIPELINE.sh</span>
+            <!-- 2x2 Sanitized Showcase Grid with Click-to-Expand Lightbox -->
+            <div class="grid grid-cols-2 gap-3 sm:gap-4 w-full">
+              <!-- Tile 1: Monthly Schedule Grid -->
+              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-emerald-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-emerald-500/50" data-img="assets/images/mis-calendar/calendar-overview.png" data-caption="MIS Calendar - Sanitized Monthly Schedule Overview (Real-Time Sync)">
+                <img src="assets/images/mis-calendar/calendar-overview.png" alt="MIS Calendar Sanitized Monthly Schedule" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
+                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Monthly Schedule Grid</div>
+                  <span class="text-[10px] text-emerald-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
                 </div>
-                <div class="flex items-center gap-2 text-[10px]">
-                  <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-semibold">[STATUS: ACTIVE]</span>
-                  <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hidden sm:inline font-semibold">[DISPATCH: 100% SUCCESS]</span>
-                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-400 font-semibold">[CACHE: STABLE]</span>
-                </div>
-              </div>
+              </button>
 
-              <!-- Flow Visualizer -->
-              <div class="mb-5">
-                <div class="text-[10px] uppercase tracking-widest text-slate-400 mb-2.5">Event Execution Flow</div>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[10px]">
-                  <div class="p-2.5 rounded bg-black/60 border border-emerald-500/20">
-                    <div class="text-emerald-400 font-bold mb-0.5">Real-time DB</div>
-                    <div class="text-[9px] text-slate-400">Postgres Trigger</div>
-                  </div>
-                  <div class="p-2.5 rounded bg-black/60 border border-emerald-500/20">
-                    <div class="text-emerald-400 font-bold mb-0.5">Supabase Edge</div>
-                    <div class="text-[9px] text-slate-400">Edge Function</div>
-                  </div>
-                  <div class="p-2.5 rounded bg-black/60 border border-emerald-500/20">
-                    <div class="text-emerald-400 font-bold mb-0.5">Viber Dispatch</div>
-                    <div class="text-[9px] text-slate-400">API Webhook</div>
-                  </div>
-                  <div class="p-2.5 rounded bg-black/60 border border-emerald-500/20">
-                    <div class="text-emerald-400 font-bold mb-0.5">Client PWA</div>
-                    <div class="text-[9px] text-slate-400">Service Worker</div>
-                  </div>
+              <!-- Tile 2: Field Visit & Checklist Drawer -->
+              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-emerald-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-emerald-500/50" data-img="assets/images/mis-calendar/calendar-details.png" data-caption="MIS Calendar - Field Visitation Drawer with Dynamic Checklists and Technician Rosters">
+                <img src="assets/images/mis-calendar/calendar-details.png" alt="MIS Calendar Field Visitation Drawer" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
+                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Visit Checklist Drawer</div>
+                  <span class="text-[10px] text-emerald-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
                 </div>
-              </div>
+              </button>
 
-              <!-- Telemetry Log Terminal -->
-              <div class="bg-black/70 rounded-lg p-3 sm:p-4 border border-white/10 font-mono text-[11px] leading-relaxed space-y-1.5 text-slate-300">
-                <div class="text-slate-500 text-[10px] uppercase tracking-wider mb-1">// LIVE TELEMETRY LOGS</div>
-                <div class="flex items-start gap-2">
-                  <span class="text-emerald-400 shrink-0">&gt;</span>
-                  <span><span class="text-slate-400">[EVENT]</span> postgres: calendar_event_created <span class="text-emerald-400">#EVT-8821</span></span>
+              <!-- Tile 3: Automated Viber Dispatch Bot -->
+              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-emerald-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-emerald-500/50" data-img="assets/images/mis-calendar/viber-dispatch.png" data-caption="MIS Calendar - Automated Viber Operations Bot Morning Dispatch Alert">
+                <img src="assets/images/mis-calendar/viber-dispatch.png" alt="MIS Calendar Viber Operations Bot Dispatch" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
+                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Viber Bot Dispatch</div>
+                  <span class="text-[10px] text-emerald-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
                 </div>
-                <div class="flex items-start gap-2">
-                  <span class="text-emerald-400 shrink-0">&gt;</span>
-                  <span><span class="text-slate-400">[EDGE]</span> supabase function triggered <span class="text-slate-500">(18ms latency)</span></span>
+              </button>
+
+              <!-- Tile 4: Restricted Authentication Portal -->
+              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-emerald-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-emerald-500/50" data-img="assets/images/mis-calendar/login-screen.png" data-caption="MIS Calendar - Restricted Company Login Portal (Netlify &amp; Supabase Auth)">
+                <img src="assets/images/mis-calendar/login-screen.png" alt="MIS Calendar Restricted Company Sign-in" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
+                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Restricted Sign-in</div>
+                  <span class="text-[10px] text-emerald-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
                 </div>
-                <div class="flex items-start gap-2">
-                  <span class="text-emerald-400 shrink-0">&gt;</span>
-                  <span><span class="text-slate-400">[DISPATCH]</span> viber webhook broadcast sent to operations channel</span>
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="text-emerald-400 shrink-0">&gt;</span>
-                  <span><span class="text-slate-400">[SYNC]</span> service worker synchronized calendar store <span class="text-emerald-400 font-bold">[NOMINAL]</span></span>
-                </div>
-              </div>
+              </button>
             </div>
           </div>
         </div>
