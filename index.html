@@ -852,35 +852,41 @@
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="py-20 sm:py-28 px-4 sm:px-6 max-w-4xl mx-auto text-center border-t border-red-900/40">
-      <div class="uchiha-card p-6 sm:p-12 md:p-16">
-        <div class="inline-block px-3 py-1 bg-red-950/50 border border-red-500/40 text-red-400 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest mb-5">
+    <section id="contact" class="py-20 sm:py-28 px-6 max-w-5xl mx-auto text-center border-t border-white/10">
+      <div class="bg-[#0d1017]/95 border border-red-500/30 rounded-2xl p-8 sm:p-14 backdrop-blur-xl shadow-2xl relative">
+        <div class="inline-block px-3 py-1 bg-red-950/50 border border-red-500/40 text-red-400 font-mono text-xs uppercase tracking-widest rounded mb-5">
           Direct Transmission Line
         </div>
 
-        <h2 class="font-display text-2xl sm:text-4xl md:text-5xl uppercase text-white font-black mb-4 sm:mb-6">
-          Ready to Deploy Software Power?
+        <h2 class="font-display text-3xl sm:text-5xl uppercase text-white font-black mb-4">
+          READY TO DEPLOY HIGH-INTEGRITY CODE?
         </h2>
 
-        <p class="text-slate-300 font-mono text-xs sm:text-sm max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed">
+        <p class="text-slate-300 font-mono text-xs sm:text-sm max-w-xl mx-auto mb-10 leading-relaxed">
           Whether you need an enterprise Java engineer, Flutter developer, or full-stack software problem solver - reach out directly.
         </p>
 
-        <div class="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-3 sm:gap-4">
-          <a href="mailto:jigspals025@gmail.com" class="btn-crimson">
-            <span>jigspals025@gmail.com</span>
-            <span>&gt;&gt;</span>
-          </a>
+        <div class="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4">
+          <button id="copyEmailBtn" type="button" class="btn-crimson cursor-pointer" title="Click to copy email">
+            <span id="copyEmailText">jigspals025@gmail.com</span>
+            <span id="copyEmailIcon">📋</span>
+          </button>
           <a href="tel:09929131887" class="btn-stealth">
             <span>+63 099 2913 1887</span>
+            <span>📞</span>
+          </a>
+          <a href="https://github.com/jiggy025" target="_blank" rel="noopener" class="btn-stealth">
+            <span>GitHub: jiggy025</span>
+            <span>↗</span>
           </a>
         </div>
       </div>
 
-      <footer class="mt-12 sm:mt-16 pt-5 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-[10px] sm:text-xs font-mono text-slate-500 gap-3">
+      <!-- Clean Single-Line Footer -->
+      <footer class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs font-mono text-slate-500 gap-4">
         <div>© 2026 JIGGY B. PALCONIT. ALL RIGHTS RESERVED.</div>
-        <div class="flex gap-4 sm:gap-6">
-          <a href="https://github.com/jiggy025" target="_blank" rel="noopener" class="hover:text-red-400 transition-colors">GITHUB: JIGGY025</a>
+        <div class="flex items-center gap-4 sm:gap-6">
+          <a href="https://github.com/jiggy025" target="_blank" rel="noopener" class="hover:text-red-400 transition-colors">GITHUB // JIGGY025</a>
           <a href="#hero" class="hover:text-red-400 transition-colors">TOP [▲]</a>
         </div>
       </footer>
@@ -1125,6 +1131,37 @@
         const ms = Math.floor((total % 1000) / 10).toString().padStart(2, '0');
         ledWallTimer.textContent = `00:${m}:${s}.${ms}`;
       }, 45);
+    }
+  </script>
+
+  <!-- Toast Notification Container -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-red-600 text-white font-mono text-xs px-4 py-3 rounded-lg shadow-[0_0_25px_rgba(239,68,68,0.5)] flex items-center gap-2">
+    <span>✓</span>
+    <span>Copied jigspals025@gmail.com to clipboard!</span>
+  </div>
+
+  <!-- Interactive Clipboard JavaScript -->
+  <script>
+    const copyBtn = document.getElementById('copyEmailBtn');
+    const copyText = document.getElementById('copyEmailText');
+    const toast = document.getElementById('toastNotification');
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('jigspals025@gmail.com');
+          copyText.textContent = 'Copied to Clipboard!';
+          toast.classList.remove('translate-y-20', 'opacity-0');
+          toast.classList.add('translate-y-0', 'opacity-100');
+          setTimeout(() => {
+            copyText.textContent = 'jigspals025@gmail.com';
+            toast.classList.add('translate-y-20', 'opacity-0');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+          }, 2500);
+        } catch (err) {
+          window.location.href = 'mailto:jigspals025@gmail.com';
+        }
+      });
     }
   </script>
 </body>
