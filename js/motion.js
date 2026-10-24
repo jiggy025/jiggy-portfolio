@@ -67,28 +67,33 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     });
 
     // Sticky Stack ScrollTrigger for Featured Work Cards
+    // CSS handles the native sticky pinning (top-20) seamlessly at 120 FPS.
+    // GSAP ScrollTrigger purely drives the cinematic depth: scaling and dimming the previous card as the next arrives.
     const cards = gsap.utils.toArray('.stack-card');
     cards.forEach((card, i) => {
       if (i === cards.length - 1) return;
-      ScrollTrigger.create({
-        trigger: card,
-        start: 'top top+=64',
-        endTrigger: cards[cards.length - 1],
-        end: 'top top+=64',
-        pin: true,
-        pinSpacing: false,
-      });
-      gsap.to(card, {
-        scale: 0.93,
-        opacity: 0.45,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: cards[i + 1],
-          start: 'top bottom',
-          end: 'top top+=64',
-          scrub: true,
-        },
-      });
+      const inner = card.querySelector('.stack-card-inner') || card;
+      const nextCard = cards[i + 1];
+
+      if (inner && nextCard) {
+        gsap.to(inner, {
+          scale: 0.93,
+          opacity: 0.4,
+          y: -24,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: nextCard,
+            start: 'top bottom',
+            end: 'top top+=80',
+            scrub: true,
+          },
+        });
+      }
+    });
+
+    // Refresh ScrollTrigger after assets finish loading
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
     });
   }
 }
