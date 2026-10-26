@@ -1,940 +1,1073 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jiggy B. Palconit - Software Developer</title>
-  <meta name="description" content="Software developer specializing in enterprise Java, cross-platform Flutter, and high-performance database architectures.">
-  <meta name="theme-color" content="#07080b">
+  <title>Jiggy B. Palconit, Software Developer in General Santos City</title>
+  <meta name="description" content="Software developer specializing in enterprise Java, Spring Boot, cross-platform Flutter, and high-performance database architectures.">
+  <meta name="theme-color" content="#0d1016">
   <link rel="canonical" href="https://jiggy-portfolio.vercel.app">
-
-  <!-- Favicon (JP Monogram) -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="favicon.svg">
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jiggy-portfolio.vercel.app">
-  <meta property="og:title" content="Jiggy B. Palconit - Software Developer">
-  <meta property="og:description" content="Enterprise Java, cross-platform Flutter, and high-integrity systems engineering.">
-
-  <!-- Twitter -->
+  <meta property="og:title" content="Jiggy B. Palconit, Software Developer in General Santos City">
+  <meta property="og:description" content="Enterprise Java, Spring Boot, cross-platform Flutter, and high-integrity systems engineering.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://jiggy-portfolio.vercel.app">
-  <meta name="twitter:title" content="Jiggy B. Palconit - Software Developer">
-  <meta name="twitter:description" content="Enterprise Java, cross-platform Flutter, and high-integrity systems engineering.">
+  <meta name="twitter:title" content="Jiggy B. Palconit, Software Developer in General Santos City">
+  <meta name="twitter:description" content="Enterprise Java, Spring Boot, cross-platform Flutter, and high-integrity systems engineering.">
 
-  <!-- Tailwind CSS via allowlisted CDN -->
-  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
-
-  <!-- Motion & Smooth Scroll CDNs: GSAP & Lenis -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-  
-  <!-- Premium Dark Fonts: Archivo, Space Grotesk, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg-obsidian: #07080b;
-      --surface-card: rgba(13, 16, 23, 0.78);
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-crimson: rgba(239, 68, 68, 0.28);
-      --accent-crimson: #ef4444;
-      --accent-crimson-deep: #dc2626;
-      --font-display: 'Archivo', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --font-body: 'Space Grotesk', sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html.lenis, html.lenis body {
-      height: auto;
-    }
-
-    .lenis.lenis-smooth {
-      scroll-behavior: auto !important;
-    }
-
-    html, body {
-      max-width: 100%;
-      overflow-x: clip;
-    }
-
-    body {
-      background-color: var(--bg-obsidian);
-      color: #f1f5f9;
-      font-family: var(--font-body);
-      selection-background-color: var(--accent-crimson);
-      selection-color: #ffffff;
-    }
-
-    .font-display { font-family: var(--font-display); }
-    .font-mono { font-family: var(--font-mono); }
-
-    /* Dark Tactical Glass Cards */
-    .surface-card, .uchiha-card {
-      background: var(--surface-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 6px;
-      position: relative;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .surface-card:hover, .uchiha-card:hover {
-      border-color: var(--accent-crimson-deep);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px -10px rgba(220, 38, 38, 0.3);
-    }
-    .surface-card::before, .uchiha-card::before {
-      content: '■';
-      position: absolute;
-      top: -6px;
-      left: -6px;
-      color: var(--accent-crimson-deep);
-      font-size: 8px;
-    }
-    .surface-card::after, .uchiha-card::after {
-      content: '■';
-      position: absolute;
-      bottom: -6px;
-      right: -6px;
-      color: var(--accent-crimson-deep);
-      font-size: 8px;
-    }
-
-    /* Crimson Tactical Buttons */
-    .btn-crimson {
-      background: var(--accent-crimson-deep);
-      color: #ffffff;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      font-size: 11px;
-      padding: 10px 20px;
-      border-radius: 4px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      border: 1px solid var(--accent-crimson-deep);
-      box-shadow: 0 0 18px rgba(220, 38, 38, 0.45);
-    }
-    .btn-crimson:hover {
-      background: #b91c1c;
-      border-color: var(--accent-crimson);
-      box-shadow: 0 0 28px rgba(239, 68, 68, 0.7);
-      transform: scale(1.02);
-    }
-
-    .btn-stealth {
-      background: rgba(15, 17, 24, 0.7);
-      color: #cbd5e1;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      padding: 10px 20px;
-      border-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      backdrop-filter: blur(8px);
-    }
-    .btn-stealth:hover {
-      border-color: var(--accent-crimson);
-      color: #ffffff;
-      background: rgba(220, 38, 38, 0.15);
-    }
-
-    .bg-grid {
-      background-size: 44px 44px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hallmark.css">
 </head>
-<body class="bg-grid relative">
+<body>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- TOP HUD BAR -->
-  <header class="fixed top-0 inset-x-0 h-16 bg-[#07080b]/85 backdrop-blur-md border-b border-white/[0.08] z-50">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-full">
-      <!-- Left: Logo / Name link with JP Monogram -->
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-8 h-8 rounded-lg overflow-hidden border border-white/15 bg-[#0a0d14] flex items-center justify-center p-1 group-hover:border-red-500/50 transition-colors shadow-sm shrink-0">
-          <svg class="w-full h-full" viewBox="0 0 64 64" fill="none">
-            <path d="M22 17 v23 a 8 8 0 0 1 -16 0 v-4" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M34 47 V 17 h 11 a 7.5 7.5 0 0 1 0 15 H 34" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="22" cy="17" r="2.5" fill="#ef4444" stroke="#ef4444" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2.5">
-          <span class="font-mono text-xs font-bold tracking-wider text-white group-hover:text-red-400 transition-colors">JIGGY B. PALCONIT</span>
-          <span class="text-slate-600 font-mono text-xs hidden sm:inline">/</span>
-          <span class="text-[10px] text-red-500 font-mono tracking-widest uppercase">SOFTWARE DEVELOPER</span>
-        </div>
+  <!-- Search-led Bar Navigation (nav: search-led bar) -->
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="#hero" class="brand-mark" aria-label="Jiggy B. Palconit home">
+        <span class="brand-mark__name">Jiggy B. Palconit</span>
+        <span class="brand-mark__meta">General Santos, PH</span>
       </a>
 
-      <!-- Center: Nav links -->
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="#work" class="text-xs font-mono tracking-wider uppercase text-slate-400 hover:text-white transition-colors">Work</a>
-        <a href="#arsenal" class="text-xs font-mono tracking-wider uppercase text-slate-400 hover:text-white transition-colors">Arsenal</a>
-        <a href="#experience" class="text-xs font-mono tracking-wider uppercase text-slate-400 hover:text-white transition-colors">Experience</a>
-        <a href="#contact" class="text-xs font-mono tracking-wider uppercase text-slate-400 hover:text-white transition-colors">Contact</a>
-      </nav>
-
-      <!-- Right: Primary CTA -->
-      <div class="flex items-center gap-3">
-        <a href="#contact" class="btn-crimson text-xs">
-          Get in touch
-        </a>
+      <div class="nav-search" role="search">
+        <label for="cmdSearch" class="visually-hidden">Filter systems or stack</label>
+        <input id="cmdSearch" name="q" type="search" class="nav-search__input" placeholder="Filter systems (Spring Boot, Java, Flutter)…" autocomplete="off">
+        <span class="nav-search__key" aria-hidden="true">/</span>
       </div>
+
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#experience" class="nav-link">Viajero ERP</a></li>
+          <li><a href="#work" class="nav-link">Systems</a></li>
+          <li><a href="#arsenal" class="nav-link">Stack</a></li>
+          <li><a href="#contact" class="btn btn--quiet btn--nav">Write to Jiggy</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- MAIN SCROLL CHAPTERS -->
-  <main class="relative z-10 w-full max-w-full">
+  <main id="main">
+    <!-- Section 1: Split Hero (Headline & Telemetry Left + Real Project Preview Window Right) -->
+    <section id="hero" class="hero-ledge">
+      <div class="container hero-ledge__inner">
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="min-h-[100dvh] flex flex-col justify-center px-6 sm:px-12 max-w-7xl mx-auto pt-20 pb-12 text-left">
-      <!-- Status Badge -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/40 border border-red-500/30 text-red-400 font-mono text-[11px] tracking-wider uppercase mb-6 w-fit">
-        <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-        Software Developer - Viajero Motorcycles Inc. (9 Months)
-      </div>
-
-      <!-- Headline -->
-      <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase font-black text-white leading-[1.04] mb-6">
-        BUILDING HIGH-INTEGRITY SYSTEMS.<br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-400 to-white">COMMANDING LOGIC & MOTION.</span>
-      </h1>
-
-      <!-- Subtext -->
-      <p class="text-slate-300 text-sm sm:text-base md:text-lg font-mono leading-relaxed max-w-2xl mb-8">
-        Software engineer specializing in enterprise Java, Spring Boot, cross-platform Flutter, and high-performance database architectures.
-      </p>
-
-      <!-- Action CTAs -->
-      <div class="flex flex-wrap items-center gap-4 mb-14">
-        <a href="#work" class="btn-crimson">
-          <span>View Selected Work</span>
-          <span>↓</span>
-        </a>
-        <a href="#contact" class="btn-stealth">
-          <span>Direct Contact</span>
-          <span>→</span>
-        </a>
-      </div>
-
-      <!-- Telemetry Strip -->
-      <div class="border-t border-white/10 pt-6 grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs w-full max-w-5xl">
-        <div>
-          <div class="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Specialty</div>
-          <div class="text-white font-medium">Java, Spring Boot &amp; SQL</div>
-        </div>
-        <div>
-          <div class="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Mobile &amp; Client</div>
-          <div class="text-red-400 font-medium">Cross-Platform Flutter</div>
-        </div>
-        <div>
-          <div class="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Systems</div>
-          <div class="text-white font-medium">Real-Time PWA &amp; Sync</div>
-        </div>
-        <div>
-          <div class="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Location</div>
-          <div class="text-slate-300 font-medium">General Santos, PH</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURED WORK SHOWCASE: LUSION-STYLE STICKY STACK -->
-    <section id="work" class="relative py-12">
-      <!-- Section Header -->
-      <div class="max-w-7xl mx-auto px-6 mb-12 sm:mb-16">
-        <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-2">Featured Systems</div>
-        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl uppercase text-white font-black">
-          ENGINEERED WORK &amp; CASE STUDIES
-        </h2>
-      </div>
-
-      <!-- Card 1: JRF Pitch Film -->
-      <div class="stack-card sticky top-20 min-h-[100dvh] flex items-center justify-center px-4 sm:px-6 py-8 z-10">
-        <div class="stack-card-inner max-w-6xl w-full bg-[#0a0d14] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative transition-transform">
-          <div class="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              <span class="inline-block px-3 py-1 bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Motion engineered with Claude &amp; Remotion</span>
-              <h3 class="font-display text-2xl sm:text-4xl text-white uppercase font-black mb-3">JRF Pitch Film &amp; Enterprise Workflow</h3>
-              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-6">
-                Storyboarded, coded, and rendered entirely in code via Remotion. Directs complex enterprise logistics, asset tracking, and repair workflows backed by Spring Boot and Java into a cinematic stakeholder narrative.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
-              <span class="px-2.5 py-1 bg-red-500/10 border border-red-500/30 rounded text-red-400 font-bold">Spring Boot Backend</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">1080p 60 FPS Timeline</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Enterprise Logistics</span>
-            </div>
-          </div>
-          <div class="lg:col-span-7">
-            <div class="video-card-wrapper relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-black group shadow-2xl">
-              <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata">
-                <source src="assets/videos/jrf-pitch.mp4" type="video/mp4">
-              </video>
-              <div class="absolute bottom-3 right-3 flex items-center gap-2 z-20">
-                <button type="button" class="video-play-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Play or Pause JRF Video">
-                  <span class="play-icon hidden">▶ Play</span>
-                  <span class="pause-icon">❚❚ Pause</span>
-                </button>
-                <button type="button" class="video-mute-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Mute or Unmute JRF Video">
-                  <span class="unmute-icon hidden">🔊 Unmute</span>
-                  <span class="mute-icon">🔇 Mute</span>
-                </button>
-                <button type="button" class="video-fullscreen-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Fullscreen JRF Video">
-                  <span>⛶ Fullscreen</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2: Race Clock -->
-      <div class="stack-card sticky top-20 min-h-[100dvh] flex items-center justify-center px-4 sm:px-6 py-8 z-20">
-        <div class="stack-card-inner max-w-6xl w-full bg-[#0a0d14] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative transition-transform">
-          <div class="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              <span class="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Real-Time PWA &amp; Hardware Display</span>
-              <h3 class="font-display text-2xl sm:text-4xl text-white uppercase font-black mb-3">Race Clock: LED Wall Timer</h3>
-              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-6">
-                Multi-category race clock system engineered for high-visibility LED walls. Built for race operators with synchronized dual-screen control via localStorage, WakeLock API prevention, and 100% offline capability.
-              </p>
-            </div>
-            <div>
-              <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">TypeScript</span>
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Vite</span>
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Dual-Screen Sync</span>
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Offline PWA</span>
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Vitest Tested</span>
-              </div>
-              <div class="mt-6">
-                <a href="https://race-clock-ten.vercel.app/" target="_blank" rel="noopener" class="btn-crimson">
-                  <span>Launch Live App</span>
-                  <span>↗</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="lg:col-span-7">
-            <!-- Simulated LED Wall Display -->
-            <div class="relative aspect-video rounded-xl overflow-hidden border border-amber-500/30 bg-[#070604] p-5 sm:p-8 flex flex-col justify-between shadow-[0_0_40px_rgba(245,158,11,0.18)]">
-              <!-- Top Category Indicators -->
-              <div class="flex items-center justify-between gap-3">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-amber-500/15 border border-amber-500/40 text-amber-400 font-mono text-[11px] sm:text-xs font-bold uppercase">
-                  <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                  CATEGORY 01: ACTIVE
-                </span>
-                <span class="px-3 py-1 rounded bg-white/5 border border-white/10 text-slate-400 font-mono text-[11px] sm:text-xs uppercase">
-                  CATEGORY 02: STANDBY
-                </span>
-              </div>
-
-              <!-- Main LED Timer Numbers -->
-              <div class="my-auto py-3 text-center">
-                <div id="ledWallTimer" class="font-mono text-3xl sm:text-6xl md:text-7xl font-black text-amber-400 tracking-tight drop-shadow-[0_0_28px_rgba(245,158,11,0.85)] select-none">
-                  00:42:18.45
-                </div>
-                <div class="text-[10px] sm:text-xs font-mono text-amber-500/80 mt-2 uppercase tracking-widest">
-                  LAP 04 / SPLIT -00:01.12
-                </div>
-              </div>
-
-              <!-- Status Strip -->
-              <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-amber-500/20 font-mono text-[10px] sm:text-xs text-amber-400/90">
-                <div class="flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                  <span>LED PROCESSOR SYNC: NOMINAL</span>
-                </div>
-                <div class="text-slate-400 text-[10px] sm:text-[11px]">
-                  WAKELOCK ENGAGED • 60 FPS
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3: Langga Loan Tracker -->
-      <div class="stack-card sticky top-20 min-h-[100dvh] flex items-center justify-center px-4 sm:px-6 py-8 z-30">
-        <div class="stack-card-inner max-w-6xl w-full bg-[#0a0d14] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative transition-transform">
-          <div class="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              <span class="inline-block px-3 py-1 bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Motion engineered with Claude &amp; Remotion</span>
-              <h3 class="font-display text-2xl sm:text-4xl text-white uppercase font-black mb-3">Langga Loan Tracker</h3>
-              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-6">
-                Mobile debt payoff application built with React Native and Expo. Powered by 60 FPS Reanimated spring physics, an interactive 3D animated companion mascot, and a private PIN-protected boyfriend vault.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">React Native &amp; Expo</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Reanimated Physics</span>
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Local Sandboxed Storage</span>
-            </div>
-          </div>
-          <div class="lg:col-span-7">
-            <div class="video-card-wrapper relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-black group shadow-2xl">
-              <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata">
-                <source src="assets/videos/langga-reel.mp4" type="video/mp4">
-              </video>
-              <div class="absolute bottom-3 right-3 flex items-center gap-2 z-20">
-                <button type="button" class="video-play-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Play or Pause Langga Reel Video">
-                  <span class="play-icon hidden">▶ Play</span>
-                  <span class="pause-icon">❚❚ Pause</span>
-                </button>
-                <button type="button" class="video-mute-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Mute or Unmute Langga Reel Video">
-                  <span class="unmute-icon hidden">🔊 Unmute</span>
-                  <span class="mute-icon">🔇 Mute</span>
-                </button>
-                <button type="button" class="video-fullscreen-btn px-2.5 py-1.5 bg-black/80 hover:bg-black border border-white/20 rounded text-white text-[11px] font-mono flex items-center gap-1.5 backdrop-blur-md transition-colors" aria-label="Fullscreen Langga Reel Video">
-                  <span>⛶ Fullscreen</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4: Rent-a-Box System -->
-      <div class="stack-card sticky top-20 min-h-[100dvh] flex items-center justify-center px-4 sm:px-6 py-8 z-40">
-        <div class="stack-card-inner max-w-6xl w-full bg-[#0a0d14] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative transition-transform">
-          <div class="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              <span class="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Flutter &amp; SQLite Local-First</span>
-              <h3 class="font-display text-2xl sm:text-4xl text-white uppercase font-black mb-3">Rent-a-Box System (APK)</h3>
-              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-6">
-                Production-ready mobile ledger app for micro-retail spaces and box rental hubs. Features instant unit vacancy checks, tenant onboarding, meticulous sales logging, and per-unit profitability analytics.
-              </p>
-            </div>
-            <div>
-              <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Flutter Mobile</span>
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Dart</span>
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">SQLite Caching</span>
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Offline-First Ledger</span>
-              </div>
-              <div class="mt-6">
-                <a href="https://github.com/jiggy025/rent-a-box-sys" target="_blank" rel="noopener" class="btn-stealth">
-                  <span>View GitHub Repository</span>
-                  <span>↗</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="lg:col-span-7">
-            <!-- 2x2 Showcase Grid -->
-            <div class="grid grid-cols-2 gap-3 sm:gap-4 w-full">
-              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-blue-500/50" data-img="assets/images/rent-a-box/instant-vacancy-check.png" data-caption="Rent-a-Box - Instant Vacancy Check">
-                <img src="assets/images/rent-a-box/instant-vacancy-check.png" alt="Rent-a-Box Instant Vacancy Check" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
-                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Instant Vacancy Check</div>
-                  <span class="text-[10px] text-blue-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
-                </div>
-              </button>
-              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-blue-500/50" data-img="assets/images/rent-a-box/fast-box-assignment.png" data-caption="Rent-a-Box - Fast Box Assignment">
-                <img src="assets/images/rent-a-box/fast-box-assignment.png" alt="Rent-a-Box Fast Box Assignment" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
-                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Fast Box Assignment</div>
-                  <span class="text-[10px] text-blue-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
-                </div>
-              </button>
-              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-blue-500/50" data-img="assets/images/rent-a-box/meticulous-sales-logging.png" data-caption="Rent-a-Box - Meticulous Sales Logging">
-                <img src="assets/images/rent-a-box/meticulous-sales-logging.png" alt="Rent-a-Box Meticulous Sales Logging" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
-                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Meticulous Sales Logging</div>
-                  <span class="text-[10px] text-blue-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
-                </div>
-              </button>
-              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-blue-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-blue-500/50" data-img="assets/images/rent-a-box/unified-payout-finance-control.png" data-caption="Rent-a-Box - Unified Payout and Finance Control">
-                <img src="assets/images/rent-a-box/unified-payout-finance-control.png" alt="Rent-a-Box Unified Payout and Finance Control" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
-                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Unified Payout Control</div>
-                  <span class="text-[10px] text-blue-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5: MIS Calendar & Viber Dispatch System -->
-      <div class="stack-card sticky top-20 min-h-[100dvh] flex items-center justify-center px-4 sm:px-6 py-8 z-50">
-        <div class="stack-card-inner max-w-6xl w-full bg-[#0a0d14] border border-white/10 rounded-2xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative transition-transform">
-          <div class="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              <span class="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[11px] font-bold uppercase rounded mb-4">Enterprise Automation &amp; PWA</span>
-              <h3 class="font-display text-2xl sm:text-4xl text-white uppercase font-black mb-3">MIS Calendar &amp; Alerts Pipeline</h3>
-              <p class="text-slate-300 text-xs sm:text-sm font-mono leading-relaxed mb-4">
-                Enterprise multi-branch coordination PWA deployed for IT and operations field teams. Connects Supabase PostgreSQL triggers with Netlify serverless functions to automate daily morning dispatches, technician assignments, and checklist statuses directly to company Viber channels.
-              </p>
-              
-              <!-- Enterprise Confidentiality Note -->
-              <div class="mb-5 p-3 rounded-lg bg-emerald-950/20 border border-emerald-500/20 font-mono text-[11px] leading-relaxed text-slate-300">
-                <div class="flex items-center gap-1.5 text-emerald-400 font-bold mb-1">
-                  <span>🔒 Enterprise Access Note</span>
-                </div>
-                <p class="text-slate-400 text-[10.5px]">
-                  Live system credentials and branch endpoints are private to the company. Showcase views have been sanitized to protect internal visitation procedures and employee privacy.
-                </p>
-              </div>
-            </div>
-            <div>
-              <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 font-mono text-[11px]">
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Supabase PostgreSQL</span>
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Edge Webhooks</span>
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Rakuten Viber Bot</span>
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Service Worker PWA</span>
-                <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Netlify</span>
-              </div>
-              <div class="mt-5 flex items-center gap-3">
-                <a href="https://codexus-calendar.netlify.app" target="_blank" rel="noopener" class="btn-stealth text-xs">
-                  <span>Restricted Company Portal</span>
-                  <span>🔒↗</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="lg:col-span-7">
-            <!-- 2x2 Sanitized Showcase Grid with Click-to-Expand Lightbox -->
-            <div class="grid grid-cols-2 gap-3 sm:gap-4 w-full">
-              <!-- Tile 1: Monthly Schedule Grid -->
-              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-emerald-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-emerald-500/50" data-img="assets/images/mis-calendar/calendar-overview.png" data-caption="MIS Calendar - Sanitized Monthly Schedule Overview (Real-Time Sync)">
-                <img src="assets/images/mis-calendar/calendar-overview.png" alt="MIS Calendar Sanitized Monthly Schedule" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
-                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Monthly Schedule Grid</div>
-                  <span class="text-[10px] text-emerald-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
-                </div>
-              </button>
-
-              <!-- Tile 2: Field Visit & Checklist Drawer -->
-              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-emerald-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-emerald-500/50" data-img="assets/images/mis-calendar/calendar-details.png" data-caption="MIS Calendar - Field Visitation Drawer with Dynamic Checklists and Technician Rosters">
-                <img src="assets/images/mis-calendar/calendar-details.png" alt="MIS Calendar Field Visitation Drawer" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
-                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Visit Checklist Drawer</div>
-                  <span class="text-[10px] text-emerald-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
-                </div>
-              </button>
-
-              <!-- Tile 3: Automated Viber Dispatch Bot -->
-              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-emerald-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-emerald-500/50" data-img="assets/images/mis-calendar/viber-dispatch.png" data-caption="MIS Calendar - Automated Viber Operations Bot Morning Dispatch Alert">
-                <img src="assets/images/mis-calendar/viber-dispatch.png" alt="MIS Calendar Viber Operations Bot Dispatch" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
-                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Viber Bot Dispatch</div>
-                  <span class="text-[10px] text-emerald-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
-                </div>
-              </button>
-
-              <!-- Tile 4: Restricted Authentication Portal -->
-              <button type="button" class="screenshot-thumb relative h-28 sm:h-36 md:h-40 rounded-lg overflow-hidden border border-white/10 bg-black/60 shadow-lg group hover:border-emerald-500/60 transition-all cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-emerald-500/50" data-img="assets/images/mis-calendar/login-screen.png" data-caption="MIS Calendar - Restricted Company Login Portal (Netlify &amp; Supabase Auth)">
-                <img src="assets/images/mis-calendar/login-screen.png" alt="MIS Calendar Restricted Company Sign-in" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-4 pb-2 px-2.5 flex items-center justify-between">
-                  <div class="text-[10px] sm:text-[11px] font-mono font-medium text-slate-200">Restricted Sign-in</div>
-                  <span class="text-[10px] text-emerald-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity">🔍 View</span>
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TECHNICAL ARSENAL & SYSTEMS ARCHITECTURE -->
-    <section id="arsenal" class="py-20 sm:py-28 px-6 max-w-7xl mx-auto border-t border-white/10">
-      <!-- Section Header -->
-      <div class="mb-12 sm:mb-16">
-        <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-2">Technical Capabilities</div>
-        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl uppercase text-white font-black">
-          ENGINEERING ARSENAL &amp; SYSTEMS ARCHITECTURE
-        </h2>
-      </div>
-
-      <!-- Asymmetric 2-Column Split -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        <!-- Column 1: Enterprise Core & Backend Systems -->
-        <div class="bg-[#0d1017]/90 border border-white/10 rounded-xl p-8 backdrop-blur-xl flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-2">Backend Architecture</div>
-            <h3 class="font-display text-2xl sm:text-3xl text-white uppercase font-black mb-2">
-              Enterprise Core &amp; Backend Systems
-            </h3>
-            <p class="text-xs sm:text-sm font-mono text-slate-400 mb-6">
-              Mission-Critical Concurrency &amp; Enterprise Logic
-            </p>
-
-            <div class="space-y-4">
-              <!-- Item 1 -->
-              <div class="p-4 rounded-lg bg-black/40 border border-white/[0.06] hover:border-red-500/30 transition-colors">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
-                  <div class="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wide">
-                    Java 7, 8, 17, 21 &amp; Spring Boot Engineering
-                  </div>
-                </div>
-                <p class="text-xs font-mono text-slate-300 pl-3.5 leading-relaxed">
-                  RESTful services, Spring Boot microservices, multithreaded desktop concurrency, JVM memory management
-                </p>
-              </div>
-
-              <!-- Item 2 -->
-              <div class="p-4 rounded-lg bg-black/40 border border-white/[0.06] hover:border-red-500/30 transition-colors">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
-                  <div class="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wide">
-                    Java Swing Desktop GUI Architecture
-                  </div>
-                </div>
-                <p class="text-xs font-mono text-slate-300 pl-3.5 leading-relaxed">
-                  Custom event dispatching, components, reporting views
-                </p>
-              </div>
-
-              <!-- Item 3 -->
-              <div class="p-4 rounded-lg bg-black/40 border border-white/[0.06] hover:border-red-500/30 transition-colors">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
-                  <div class="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wide">
-                    Enterprise Dealership &amp; ERP Workflow Logic
-                  </div>
-                </div>
-                <p class="text-xs font-mono text-slate-300 pl-3.5 leading-relaxed">
-                  Demand forecasting, automated batch calculations
-                </p>
-              </div>
-
-              <!-- Item 4 -->
-              <div class="p-4 rounded-lg bg-black/40 border border-white/[0.06] hover:border-red-500/30 transition-colors">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
-                  <div class="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wide">
-                    Defensive Programming Discipline
-                  </div>
-                </div>
-                <p class="text-xs font-mono text-slate-300 pl-3.5 leading-relaxed">
-                  Comprehensive root-cause analysis, zero-regression deployments
-                </p>
-              </div>
-            </div>
+        <div class="hero-copy">
+          <h1>Production ERPs, offline Flutter, live race clocks.</h1>
+          <p class="lead">Software Developer at <span class="signoff-person">Viajero Motorcycles Inc.</span> shipping Java, Spring Boot, and SQL.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn--primary">Write to Jiggy</a>
+            <a href="#work" class="btn btn--quiet">Inspect 5 systems</a>
           </div>
 
-          <div class="flex flex-wrap gap-2 pt-6 mt-6 border-t border-white/10 font-mono text-xs">
-            <span class="px-2.5 py-1 bg-red-500/10 border border-red-500/30 rounded text-red-400 font-bold">Spring Boot</span>
-            <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">JVM Profiling</span>
-            <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Swing EventQueue</span>
-            <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Defensive Coding</span>
-            <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Thread Safety</span>
-          </div>
+          <dl class="hero-telemetry">
+            <div class="hero-telemetry__cell" data-xray-preset="spring">
+              <dt>Backend</dt>
+              <dd>Java, Spring Boot &amp; SQL</dd>
+            </div>
+            <div class="hero-telemetry__cell" data-xray-preset="flutter">
+              <dt>Mobile</dt>
+              <dd>Cross-Platform Flutter</dd>
+            </div>
+            <div class="hero-telemetry__cell" data-xray-preset="pwa">
+              <dt>Realtime</dt>
+              <dd>Race PWA &amp; Remotion</dd>
+            </div>
+            <div class="hero-telemetry__cell" data-xray-preset="spring">
+              <dt>Base</dt>
+              <dd>General Santos, PH</dd>
+            </div>
+          </dl>
         </div>
 
-        <!-- Column 2: Data Persistence & Client Platforms -->
-        <div class="bg-[#0d1017]/90 border border-white/10 rounded-xl p-8 backdrop-blur-xl flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-2">Storage &amp; Interface</div>
-            <h3 class="font-display text-2xl sm:text-3xl text-white uppercase font-black mb-2">
-              Data Persistence &amp; Client Platforms
-            </h3>
-            <p class="text-xs sm:text-sm font-mono text-slate-400 mb-6">
-              High-Integrity Storage &amp; Cross-Platform UI
-            </p>
-
-            <div class="space-y-4">
-              <!-- Item 1 -->
-              <div class="p-4 rounded-lg bg-black/40 border border-white/[0.06] hover:border-red-500/30 transition-colors">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
-                  <div class="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wide">
-                    MySQL Relational Persistence
-                  </div>
-                </div>
-                <p class="text-xs font-mono text-slate-300 pl-3.5 leading-relaxed">
-                  Schema modeling, index tuning, reporting pipelines
-                </p>
-              </div>
-
-              <!-- Item 2 -->
-              <div class="p-4 rounded-lg bg-black/40 border border-white/[0.06] hover:border-red-500/30 transition-colors">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
-                  <div class="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wide">
-                    SQLite Local-First Embedded Caching
-                  </div>
-                </div>
-                <p class="text-xs font-mono text-slate-300 pl-3.5 leading-relaxed">
-                  Offline data sync for mobile clients
-                </p>
-              </div>
-
-              <!-- Item 3 -->
-              <div class="p-4 rounded-lg bg-black/40 border border-white/[0.06] hover:border-red-500/30 transition-colors">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
-                  <div class="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wide">
-                    Cross-Platform Flutter &amp; Dart
-                  </div>
-                </div>
-                <p class="text-xs font-mono text-slate-300 pl-3.5 leading-relaxed">
-                  Reactive state management, BLoC / Provider architecture
-                </p>
-              </div>
-
-              <!-- Item 4 -->
-              <div class="p-4 rounded-lg bg-black/40 border border-white/[0.06] hover:border-red-500/30 transition-colors">
-                <div class="flex items-center gap-2 mb-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
-                  <div class="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wide">
-                    React Native &amp; Modern Web
-                  </div>
-                </div>
-                <p class="text-xs font-mono text-slate-300 pl-3.5 leading-relaxed">
-                  Expo, Reanimated 60 FPS spring physics, RESTful API endpoints
-                </p>
-              </div>
+        <figure class="hero-stage-card" data-slot="hero" data-kind="product" data-alt="Interactive X-Ray code-to-UI inspector peeling back product interfaces to reveal Spring Boot and Flutter source code">
+          <div class="hero-stage__head" data-keep>
+            <span class="bench-title">X-Ray inspector</span>
+            <div class="channel-strip" role="tablist" aria-label="X-Ray stack layer">
+              <button type="button" class="chip-tab" role="tab" aria-selected="true" data-xray-tab="spring">Spring Boot</button>
+              <button type="button" class="chip-tab" role="tab" aria-selected="false" data-xray-tab="flutter" tabindex="-1">Flutter APK</button>
+              <button type="button" class="chip-tab" role="tab" aria-selected="false" data-xray-tab="pwa" tabindex="-1">Race PWA</button>
+              <button type="button" class="chip-tab" id="xrayModeBtn" aria-pressed="false">Loupe</button>
             </div>
           </div>
 
-          <div class="flex flex-wrap gap-2 pt-6 mt-6 border-t border-white/10 font-mono text-xs">
-            <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Schema Tuning</span>
-            <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">SQLite Offline</span>
-            <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Flutter BLoC</span>
-            <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Reanimated 60 FPS</span>
+          <div class="hero-stage__viewport" id="xrayViewport" data-keep>
+            <!-- Layer 1: Shipped UI Surface -->
+            <div class="xray-layer xray-layer--ui" aria-hidden="true">
+              <div class="xray-ui-head">
+                <span class="xray-ui-title" id="xrayUiTitle">JRF Tracking · VG-000014</span>
+                <span class="xray-ui-status" id="xrayUiStatus">Confirmed Fixed</span>
+              </div>
+
+              <div class="xray-ui-rows">
+                <div class="xray-ui-row">
+                  <span class="xray-ui-key" id="xrayKey1">Asset &amp; Dossier</span>
+                  <span class="xray-ui-value" id="xrayVal1">C2025A000325 · 5+ repairs</span>
+                </div>
+                <div class="xray-ui-row">
+                  <span class="xray-ui-key" id="xrayKey2">Workflow Rail</span>
+                  <span class="xray-ui-value" id="xrayVal2">Validated -&gt; In Service</span>
+                </div>
+                <div class="xray-ui-row">
+                  <span class="xray-ui-key" id="xrayKey3">Branch &amp; Tech</span>
+                  <span class="xray-ui-value" id="xrayVal3">VMI Central · Tech Boboi</span>
+                </div>
+              </div>
+
+              <div class="xray-ui-foot">
+                <span class="xray-ui-total" id="xrayUiTotal">Ref: VG-000014</span>
+                <button type="button" class="chip-tab" id="xrayActionBtn">Mark work done</button>
+              </div>
+            </div>
+
+            <!-- Layer 2: Clipped Source Code Underneath -->
+            <div class="xray-layer xray-layer--code" aria-hidden="true">
+              <div class="xray-code-grid">
+                <pre class="xray-code-sheet xray-code-sheet--plan" id="xrayPlanSheet">
+<span class="xray-code-line"><span class="xray-code-kw">POST</span> <span class="xray-code-str">"/api/requests/VG/VG-000014"</span></span>
+<span class="xray-code-line"><span class="xray-code-cmt">// JRF guarded state machine</span></span>
+<span class="xray-code-line"><span class="xray-code-fn">asset</span>: <span class="xray-code-str">"C2025A000325 (5+ repairs)"</span></span>
+<span class="xray-code-line"><span class="xray-code-fn">rail</span>: <span class="xray-code-str">"Submitted -&gt; Validated"</span></span>
+<span class="xray-code-line"><span class="xray-code-fn">tech</span>: <span class="xray-code-str">"Boboi (In Service)"</span></span>
+<span class="xray-code-line"><span class="xray-code-fn">trip</span>: <span class="xray-code-str">"Delivered -&gt; At Branch"</span></span>
+<span class="xray-code-line"><span class="xray-code-fn">lock</span>: <span class="xray-code-str">"@Version optimistic lock"</span></span>
+<span class="xray-code-line"><span class="xray-code-fn">audit</span>: <span class="xray-code-str">"job_request_event"</span></span>
+<span class="xray-code-line"><span class="xray-code-kw">200 OK</span> <span class="xray-code-str">CONFIRMED_FIXED</span></span></pre>
+                <pre class="xray-code-sheet" id="xrayCodeSheet">
+<span class="xray-code-line"><span class="xray-code-num">01</span><span><span class="xray-code-kw">@PostMapping</span>(<span class="xray-code-str">"/api/requests/{id}"</span>)</span></span>
+<span class="xray-code-line"><span class="xray-code-num">02</span><span><span class="xray-code-kw">@Transactional</span></span></span>
+<span class="xray-code-line"><span class="xray-code-num">03</span><span>JobView <span class="xray-code-fn">transition</span>(String id, ActCmd c) {</span></span>
+<span class="xray-code-line"><span class="xray-code-num">04</span><span>  <span class="xray-code-cmt">// Guarded by JobRules.can() + @Version</span></span></span>
+<span class="xray-code-line"><span class="xray-code-num">05</span><span>  req = repo.<span class="xray-code-fn">findLocked</span>(<span class="xray-code-str">"VG-000014"</span>);</span></span>
+<span class="xray-code-line"><span class="xray-code-num">06</span><span>  next = JobRules.<span class="xray-code-fn">act</span>(req.toState(), c);</span></span>
+<span class="xray-code-line"><span class="xray-code-num">07</span><span>  req.<span class="xray-code-fn">apply</span>(next);</span></span>
+<span class="xray-code-line"><span class="xray-code-num">08</span><span>  events.<span class="xray-code-fn">save</span>(<span class="xray-code-kw">new</span> JobRequestEvent(req));</span></span>
+<span class="xray-code-line"><span class="xray-code-num">09</span><span>}</span></span></pre>
+              </div>
+            </div>
+
+            <!-- X-Ray Curtain Laser & Handle -->
+            <div class="xray-divider" aria-hidden="true"></div>
+            <span class="xray-handle-code" aria-hidden="true">X-Ray</span>
+
+            <!-- X-Ray Circular Loupe Ring -->
+            <div class="xray-loupe-ring" aria-hidden="true"></div>
           </div>
-        </div>
+
+          <div class="hero-stage__foot" data-keep>
+            <span class="bench-title" id="heroStageTitle">Sweep cursor across to X-Ray the source code</span>
+            <span class="bench-tag" id="heroStageTag">50% X-Ray / Spring Boot</span>
+          </div>
+        </figure>
 
       </div>
     </section>
 
-    <!-- PROFESSIONAL EXPERIENCE & CREDENTIALS -->
-    <section id="experience" class="py-20 sm:py-28 px-6 max-w-7xl mx-auto border-t border-white/10">
-      <!-- Section Header -->
-      <div class="mb-12 sm:mb-16">
-        <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-2">Production Track Record</div>
-        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl uppercase text-white font-black">
-          PROFESSIONAL EXPERIENCE &amp; CREDENTIALS
-        </h2>
-      </div>
+    <!-- Section 2: Production Case & Location (Split Studio Lead Diptych) -->
+    <section id="experience" class="section-case">
+      <div class="container split-row split-row--lead">
+        <div class="split-text">
+          <h2>Viajero Motorcycles ERP.</h2>
+          <p class="lead">Java, Spring Boot, Swing, and MySQL dealership operations.</p>
 
-      <!-- Primary Card: Viajero Motorcycles Inc. (Active Duty) -->
-      <div class="bg-[#0d1017]/90 border border-red-500/30 rounded-2xl p-8 sm:p-12 mb-8 backdrop-blur-xl shadow-2xl">
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-          <span class="px-3 py-1 bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-xs font-bold uppercase rounded inline-flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-            Active Production Duty
-          </span>
-          <span class="font-mono text-xs text-slate-400">Feb 2026 - Present (9 Months)</span>
-        </div>
-
-        <h3 class="font-display text-2xl sm:text-4xl uppercase text-white font-black mb-2">
-          Software Developer • Viajero Motorcycles Inc.
-        </h3>
-        <div class="text-xs sm:text-sm font-mono text-red-400 mb-6">
-          Core Enterprise Dealership Systems (Java / Spring Boot / Swing • MySQL • Legacy Overhaul)
-        </div>
-
-        <p class="text-slate-300 text-sm sm:text-base font-mono leading-relaxed max-w-4xl mb-8">
-          Directly responsible for maintaining, modernizing, and scaling enterprise dealership desktop applications and modern backend services. Solves complex production bottlenecks across legacy Java 7/8 codebases and modern Spring Boot patterns, optimizes high-throughput MySQL inventory/sales pipelines, and ensures rock-solid operational stability.
-        </p>
-
-        <!-- Highlight Telemetry Blocks -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div class="p-4 rounded-xl bg-black/50 border border-white/10">
-            <div class="text-xs font-mono text-red-400 uppercase tracking-wider mb-1 font-bold">Legacy Modernization</div>
-            <p class="text-xs font-mono text-slate-300 leading-relaxed">
-              Systematic refactoring of mission-critical Java 7/8 modules into stable patterns.
-            </p>
-          </div>
-          <div class="p-4 rounded-xl bg-black/50 border border-white/10">
-            <div class="text-xs font-mono text-red-400 uppercase tracking-wider mb-1 font-bold">Database Integrity</div>
-            <p class="text-xs font-mono text-slate-300 leading-relaxed">
-              Complex SQL query optimization, transactional schemas, and automated reporting runs.
-            </p>
-          </div>
-          <div class="p-4 rounded-xl bg-black/50 border border-white/10">
-            <div class="text-xs font-mono text-red-400 uppercase tracking-wider mb-1 font-bold">Zero Regressions</div>
-            <p class="text-xs font-mono text-slate-300 leading-relaxed">
-              Production-verified root-cause debugging, defensive coding, and verifiable reliability.
-            </p>
-          </div>
-        </div>
-
-        <!-- Tech Tags -->
-        <div class="flex flex-wrap gap-2 pt-6 border-t border-white/10 font-mono text-xs">
-          <span class="px-2.5 py-1 bg-red-500/10 border border-red-500/30 rounded text-red-400 font-bold">Spring Boot</span>
-          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Java Swing</span>
-          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Java 8/17</span>
-          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">MySQL</span>
-          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Flutter</span>
-          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">Git</span>
-          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-slate-300">ERP Workflows</span>
-        </div>
-      </div>
-
-      <!-- Secondary 2-Column Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        <!-- Card 1: Infrastructure & Technical Support VA -->
-        <div class="bg-[#0d1017]/90 border border-white/10 rounded-2xl p-8 backdrop-blur-xl flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-2">Technical Support &amp; Operations</div>
-            <h3 class="font-display text-2xl text-white uppercase font-black mb-2">
-              Infrastructure &amp; Technical Support VA
-            </h3>
-            <div class="font-mono text-xs text-red-400 mb-4">
-              Prime Developments • 2024 - 2025
+          <dl class="meta-dl">
+            <div class="meta-dl__row">
+              <dt>Active duty</dt>
+              <dd>Feb 2026 to present (9 mos)</dd>
             </div>
-            <p class="text-slate-300 font-mono text-xs sm:text-sm leading-relaxed mb-6">
-              Live technical support, ticket escalation, game server maintenance, and operational problem solving under pressure.
-            </p>
-          </div>
+            <div class="meta-dl__row">
+              <dt>Backend</dt>
+              <dd>Java 7/8/17/21, Spring Boot, Swing, MySQL</dd>
+            </div>
+            <div class="meta-dl__row">
+              <dt>Prior</dt>
+              <dd>Prime Developments VA, LGU Gensan-ICTD</dd>
+            </div>
+            <div class="meta-dl__row">
+              <dt>Credentials</dt>
+              <dd>BSIT STI GenSan, CSS NC II, SAP B1</dd>
+            </div>
+          </dl>
 
-          <!-- Alumnus Foundation -->
-          <div class="p-4 rounded-xl bg-black/40 border border-white/10 font-mono text-xs">
-            <div class="text-[10px] uppercase tracking-wider text-slate-400 mb-1">Alumnus &amp; Apprenticeship</div>
-            <div class="text-white font-bold mb-1">LGU Gensan-ICTD</div>
-            <div class="text-slate-300 text-xs leading-relaxed">
-              Network routing, hardware diagnostics, and enterprise IT infrastructure support.
+          <a href="#work" class="btn btn--quiet">Shipped systems</a>
+        </div>
+
+        <figure class="proof-panel" data-slot="case-viajero" data-kind="product" data-alt="Viajero Motorcycles ERP audit trail and MySQL execution diff">
+          <div class="proof-panel__head" data-keep>
+            <span class="bench-title">Viajero Motorcycles · ERP</span>
+            <div class="channel-strip" role="tablist" aria-label="Viajero ERP view">
+              <button type="button" class="chip-tab" role="tab" aria-selected="true" data-case-tab="trail">Audit trail</button>
+              <button type="button" class="chip-tab" role="tab" aria-selected="false" data-case-tab="diff" tabindex="-1">Schema diff</button>
             </div>
           </div>
-        </div>
 
-        <!-- Card 2: Education & Industry Accreditations -->
-        <div class="bg-[#0d1017]/90 border border-white/10 rounded-2xl p-8 backdrop-blur-xl flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-mono text-red-500 uppercase tracking-widest mb-2">Accreditations &amp; Degrees</div>
-            <h3 class="font-display text-2xl text-white uppercase font-black mb-6">
-              Education &amp; Industry Accreditations
-            </h3>
+          <div class="proof-panel__body" id="casePanelTrail" data-keep>
+            <ol class="audit-trail">
+              <li class="audit-trail__item">
+                <span class="audit-trail__ver">2026-09</span>
+                <span class="audit-trail__who">J. Palconit</span>
+                <span class="audit-trail__why">Spring Boot services &amp; ERP deploys.</span>
+              </li>
+              <li class="audit-trail__item">
+                <span class="audit-trail__ver">2026-06</span>
+                <span class="audit-trail__who">J. Palconit</span>
+                <span class="audit-trail__why">Moved Java 7/8 Swing off EventQueue.</span>
+              </li>
+              <li class="audit-trail__item">
+                <span class="audit-trail__ver">2026-04</span>
+                <span class="audit-trail__who">J. Palconit</span>
+                <span class="audit-trail__why">Tuned MySQL inventory queries.</span>
+              </li>
+              <li class="audit-trail__item">
+                <span class="audit-trail__ver">2026-02</span>
+                <span class="audit-trail__who">J. Palconit</span>
+                <span class="audit-trail__why">Started Java &amp; Spring Boot ERP duty.</span>
+              </li>
+            </ol>
+          </div>
 
-            <div class="space-y-4">
-              <!-- Degree -->
-              <div class="p-4 rounded-xl bg-black/40 border border-white/10">
-                <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
-                  <span class="text-xs sm:text-sm font-bold text-white font-mono uppercase">BS in Information Technology</span>
-                  <span class="text-[11px] font-mono text-slate-400">Class of 2019 - 2024</span>
-                </div>
-                <div class="text-xs font-mono text-red-400">
-                  STI College General Santos City • TESDA DICT Scholar
-                </div>
+          <div class="proof-panel__body" id="casePanelDiff" hidden data-keep>
+            <div class="diff-rows">
+              <div class="diff-row diff-row--minus">
+                <span class="diff-sign--minus">-</span>
+                <span>Statement.executeQuery(sql) on EDT</span>
+                <span class="diff-val">Blocked</span>
               </div>
-
-              <!-- Certification -->
-              <div class="p-4 rounded-xl bg-black/40 border border-white/10">
-                <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
-                  <span class="text-xs sm:text-sm font-bold text-white font-mono uppercase">Computer System Servicing NC II</span>
-                  <span class="text-[11px] font-mono text-slate-400">TESDA Certified</span>
-                </div>
-                <div class="text-xs font-mono text-slate-300">
-                  TESDA Certified Practitioner • Technical Hardware &amp; Networking
-                </div>
+              <div class="diff-row diff-row--plus">
+                <span class="diff-sign--plus">+</span>
+                <span>PreparedStatement index (branch_id)</span>
+                <span class="diff-val">18 ms</span>
               </div>
-
-              <!-- Enterprise Training -->
-              <div class="p-4 rounded-xl bg-black/40 border border-white/10">
-                <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
-                  <span class="text-xs sm:text-sm font-bold text-white font-mono uppercase">SAP Business One</span>
-                  <span class="text-[11px] font-mono text-slate-400">Enterprise Systems</span>
-                </div>
-                <div class="text-xs font-mono text-slate-300">
-                  Logistics &amp; Financials Foundation
-                </div>
+              <div class="diff-row diff-row--plus">
+                <span class="diff-sign--plus">+</span>
+                <span>Spring Boot API + SwingWorker sync</span>
+                <span class="diff-val">60 fps</span>
               </div>
             </div>
           </div>
 
-          <div class="pt-6 mt-6 border-t border-white/10 font-mono text-xs text-slate-400">
-            Location Base: General Santos City, Philippines • Available for On-site &amp; Remote
+          <div class="proof-panel__foot" data-keep>
+            <span class="signoff-label">General Santos City, PH</span>
+            <span class="signoff-instrument">Spring Boot + Swing + MySQL</span>
           </div>
-        </div>
-
+        </figure>
       </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-20 sm:py-28 px-6 max-w-5xl mx-auto text-center border-t border-white/10">
-      <div class="bg-[#0d1017]/95 border border-red-500/30 rounded-2xl p-8 sm:p-14 backdrop-blur-xl shadow-2xl relative">
-        <div class="inline-block px-3 py-1 bg-red-950/50 border border-red-500/40 text-red-400 font-mono text-xs uppercase tracking-widest rounded mb-5">
-          Direct Transmission Line
+    <!-- Section 3: Selected Systems (Split Studio Diptychs) -->
+    <section id="work" class="section-work">
+      <div class="container">
+        <div class="section-header">
+          <h2>Spring Boot workflows, LED race clocks, Flutter APKs.</h2>
+          <p class="lead">Live interfaces, reels, repositories.</p>
         </div>
 
-        <h2 class="font-display text-3xl sm:text-5xl uppercase text-white font-black mb-4">
-          READY TO DEPLOY HIGH-INTEGRITY CODE?
-        </h2>
+        <div class="work-stack" id="workStack">
 
-        <p class="text-slate-300 font-mono text-xs sm:text-sm max-w-xl mx-auto mb-10 leading-relaxed">
-          Whether you need an enterprise Java engineer, Flutter developer, or full-stack software problem solver - reach out directly.
-        </p>
+          <!-- 01: JRF Pitch Film -->
+          <article class="split-row work-item" data-keywords="jrf pitch film spring boot java remotion react claude motion video logistics">
+            <div class="split-text">
+              <h3>JRF Pitch Film</h3>
+              <p>Remotion film for enterprise logistics and repair workflows backed by Spring Boot and Java.</p>
+              <button type="button" class="btn btn--quiet js-reel-restart" data-target="videoJrf">Replay</button>
+            </div>
 
-        <div class="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4">
-          <button id="copyEmailBtn" type="button" class="btn-crimson cursor-pointer" title="Click to copy email">
-            <span id="copyEmailText">jigspals025@gmail.com</span>
-            <span id="copyEmailIcon">📋</span>
-          </button>
-          <a href="tel:09929131887" class="btn-stealth">
-            <span>+63 099 2913 1887</span>
-            <span>📞</span>
-          </a>
-          <a href="https://github.com/jiggy025" target="_blank" rel="noopener" class="btn-stealth">
-            <span>GitHub: jiggy025</span>
-            <span>↗</span>
-          </a>
+            <figure class="proof-panel video-card-wrapper" data-slot="work-jrf" data-kind="product" data-alt="JRF Pitch Film Remotion video player">
+              <div class="proof-panel__head" data-keep>
+                <span class="bench-title">JRF Pitch Film</span>
+                <span class="bench-tag">Spring Boot + Remotion</span>
+              </div>
+              <div class="video-stage" data-keep>
+                <video id="videoJrf" muted loop playsinline preload="metadata" poster="assets/images/jrf-poster.png">
+                  <source src="assets/videos/jrf-pitch.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="scrubber-bar" data-keep>
+                <button type="button" class="chip-tab video-play-btn" aria-label="Play or pause JRF film">
+                  <span class="play-icon">Play</span>
+                  <span class="pause-icon" hidden>Pause</span>
+                </button>
+                <div class="scrubber-track" role="progressbar" aria-label="JRF film progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                  <div class="scrubber-fill"></div>
+                </div>
+                <span class="timecode js-timecode">00:00.00</span>
+                <button type="button" class="chip-tab video-mute-btn" aria-label="Mute or unmute JRF film">
+                  <span class="mute-icon">Unmute</span>
+                  <span class="unmute-icon" hidden>Mute</span>
+                </button>
+                <button type="button" class="chip-tab video-fullscreen-btn" aria-label="Fullscreen JRF film">Fullscreen</button>
+              </div>
+            </figure>
+          </article>
+
+          <!-- 02: Race Clock PWA -->
+          <article class="split-row work-item" data-keywords="race clock led wall pwa typescript vite wakelock offline">
+            <div class="split-text">
+              <h3>Race Clock LED Wall PWA</h3>
+              <p>Multi-category race timer syncing operator controls and stage LED walls.</p>
+              <a href="https://race-clock-ten.vercel.app/" target="_blank" rel="noopener" class="btn btn--quiet">Live PWA</a>
+            </div>
+
+            <figure class="proof-panel" data-slot="work-raceclock" data-kind="product" data-alt="Interactive dual-screen Race Clock synchronizer">
+              <div class="proof-panel__head" data-keep>
+                <span class="bench-title">Storage event bus</span>
+                <button type="button" class="chip-tab" id="triggerLapBtn">Record split</button>
+              </div>
+              <div class="sync-sim" data-keep>
+                <div class="sync-screen">
+                  <span class="signoff-label">Operator</span>
+                  <div class="sync-screen__clock" id="simClockA">00:42:18.45</div>
+                  <div class="sync-lap-log" id="simLogA">
+                    <span>Lap 01 / 00:14:02.11</span>
+                    <span>Lap 02 / 00:28:19.84</span>
+                  </div>
+                </div>
+                <div class="sync-screen">
+                  <span class="signoff-label">Stage LED</span>
+                  <div class="sync-screen__clock" id="ledWallTimer">00:42:18.45</div>
+                  <div class="sync-lap-log" id="simLogB">
+                    <span>4.2 ms localStorage</span>
+                    <span id="simLastSplit">Awaiting split…</span>
+                  </div>
+                </div>
+              </div>
+            </figure>
+          </article>
+
+          <!-- 03: Langga Loan Tracker -->
+          <article class="split-row work-item" data-keywords="langga loan tracker react native expo reanimated mobile motion">
+            <div class="split-text">
+              <h3>Langga Loan Tracker</h3>
+              <p>Mobile loan ledger with 60 fps Reanimated physics and Remotion reel.</p>
+              <button type="button" class="btn btn--quiet js-reel-restart" data-target="videoLangga">Replay</button>
+            </div>
+
+            <figure class="proof-panel video-card-wrapper" data-slot="work-langga" data-kind="product" data-alt="Langga Loan Tracker Remotion video player">
+              <div class="proof-panel__head" data-keep>
+                <span class="bench-title">Langga Loan Tracker</span>
+                <span class="bench-tag">React Native + Expo</span>
+              </div>
+              <div class="video-stage" data-keep>
+                <video id="videoLangga" muted loop playsinline preload="metadata" poster="assets/images/langga-poster.png">
+                  <source src="assets/videos/langga-reel.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="scrubber-bar" data-keep>
+                <button type="button" class="chip-tab video-play-btn" aria-label="Play or pause Langga film">
+                  <span class="play-icon">Play</span>
+                  <span class="pause-icon" hidden>Pause</span>
+                </button>
+                <div class="scrubber-track" role="progressbar" aria-label="Langga film progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                  <div class="scrubber-fill"></div>
+                </div>
+                <span class="timecode js-timecode">00:00.00</span>
+                <button type="button" class="chip-tab video-mute-btn" aria-label="Mute or unmute Langga film">
+                  <span class="mute-icon">Unmute</span>
+                  <span class="unmute-icon" hidden>Mute</span>
+                </button>
+                <button type="button" class="chip-tab video-fullscreen-btn" aria-label="Fullscreen Langga film">Fullscreen</button>
+              </div>
+            </figure>
+          </article>
+
+          <!-- 04: Rent-a-Box System -->
+          <article class="split-row work-item" data-keywords="rent-a-box flutter dart sqlite local-first mobile apk ledger">
+            <div class="split-text">
+              <h3>Rent-a-Box SQLite Ledger</h3>
+              <p>Offline Flutter APK for vacancy checks, box assignment, and payouts.</p>
+              <a href="https://github.com/jiggy025/rent-a-box-sys" target="_blank" rel="noopener" class="btn btn--quiet">Repository</a>
+            </div>
+
+            <figure class="proof-panel" data-slot="work-rentabox" data-kind="product" data-alt="Four Flutter mobile screens from Rent-a-Box SQLite app">
+              <div class="proof-panel__head" data-keep>
+                <span class="bench-title">Flutter APK</span>
+                <span class="bench-tag">SQLite 3</span>
+              </div>
+              <div class="shot-grid--portrait" data-keep>
+                <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/instant-vacancy-check.png" data-caption="Rent-a-Box: Instant Box Vacancy Check">
+                  <img src="assets/images/rent-a-box/instant-vacancy-check.png" width="1024" height="1536" alt="Rent-a-Box Instant Vacancy Check screen" loading="lazy">
+                </button>
+                <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/fast-box-assignment.png" data-caption="Rent-a-Box: Fast Box Assignment">
+                  <img src="assets/images/rent-a-box/fast-box-assignment.png" width="1024" height="1536" alt="Rent-a-Box Fast Box Assignment screen" loading="lazy">
+                </button>
+                <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/meticulous-sales-logging.png" data-caption="Rent-a-Box: Meticulous Sales Logging">
+                  <img src="assets/images/rent-a-box/meticulous-sales-logging.png" width="1024" height="1536" alt="Rent-a-Box Sales Logging screen" loading="lazy">
+                </button>
+                <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/unified-payout-finance-control.png" data-caption="Rent-a-Box: Unified Payout &amp; Finance Control">
+                  <img src="assets/images/rent-a-box/unified-payout-finance-control.png" width="1024" height="1536" alt="Rent-a-Box Payout and Finance screen" loading="lazy">
+                </button>
+              </div>
+            </figure>
+          </article>
+
+          <!-- 05: MIS Calendar & Viber Alerts -->
+          <article class="split-row work-item" data-keywords="mis calendar viber alerts supabase postgresql edge functions webhooks">
+            <div class="split-text">
+              <h3>MIS Calendar &amp; Viber Alerts</h3>
+              <p>Supabase PostgreSQL scheduler dispatching automated Viber bot alerts.</p>
+              <a href="https://codexus-calendar.netlify.app" target="_blank" rel="noopener" class="btn btn--quiet">Live calendar</a>
+            </div>
+
+            <figure class="proof-panel" data-slot="work-mis" data-kind="product" data-alt="MIS Calendar and Viber webhook dispatch screenshots">
+              <div class="proof-panel__head" data-keep>
+                <span class="bench-title">MIS Calendar</span>
+                <span class="bench-tag">PostgreSQL</span>
+              </div>
+              <div class="shot-grid--landscape" data-keep>
+                <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/calendar-overview.png" data-caption="MIS Calendar: Monthly Operations Overview">
+                  <img src="assets/images/mis-calendar/calendar-overview.png" width="1920" height="1080" alt="MIS Calendar monthly schedule overview" loading="lazy">
+                </button>
+                <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/calendar-details.png" data-caption="MIS Calendar: Field Visitation Drawer">
+                  <img src="assets/images/mis-calendar/calendar-details.png" width="1920" height="1080" alt="MIS Calendar field visitation drawer" loading="lazy">
+                </button>
+                <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/viber-dispatch.png" data-caption="MIS Calendar: Automated Viber Bot Dispatch">
+                  <img src="assets/images/mis-calendar/viber-dispatch.png" width="1087" height="812" alt="MIS Calendar Viber bot notification dispatch" loading="lazy">
+                </button>
+                <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/login-screen.png" data-caption="MIS Calendar: Role-Guarded Portal Sign-in">
+                  <img src="assets/images/mis-calendar/login-screen.png" width="764" height="485" alt="MIS Calendar company sign-in portal" loading="lazy">
+                </button>
+              </div>
+            </figure>
+          </article>
+
         </div>
       </div>
-
-      <!-- Clean Single-Line Footer -->
-      <footer class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs font-mono text-slate-500 gap-4">
-        <div>© 2026 JIGGY B. PALCONIT. ALL RIGHTS RESERVED.</div>
-        <div class="flex items-center gap-4 sm:gap-6">
-          <a href="https://github.com/jiggy025" target="_blank" rel="noopener" class="hover:text-red-400 transition-colors">GITHUB // JIGGY025</a>
-          <a href="#hero" class="hover:text-red-400 transition-colors">TOP [▲]</a>
-        </div>
-      </footer>
     </section>
 
+    <!-- Section 4: Specification Table (Composition: Table, replacing Grid) -->
+    <section id="arsenal" class="section-spec">
+      <div class="container">
+        <div class="section-header">
+          <h2>Java 7 to 21, Spring Boot, Flutter, MySQL, Remotion.</h2>
+        </div>
+
+        <div class="spec-table-wrap">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th scope="col">Layer</th>
+                <th scope="col">Stack</th>
+                <th scope="col">System</th>
+                <th scope="col">Reading</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Enterprise Core</td>
+                <td>Java 7/8/17/21, Spring Boot, Swing</td>
+                <td>Viajero ERP, JRF</td>
+                <td class="measured-col">18 ms</td>
+              </tr>
+              <tr>
+                <td>Storage &amp; Mobile</td>
+                <td>MySQL, SQLite 3, Flutter (BLoC), Dart</td>
+                <td>Rent-a-Box, Viajero</td>
+                <td class="measured-col">Offline</td>
+              </tr>
+              <tr>
+                <td>Realtime &amp; Motion</td>
+                <td>TypeScript, Supabase, Expo, Remotion</td>
+                <td>Race Clock, MIS, Langga</td>
+                <td class="measured-col">60 fps</td>
+              </tr>
+              <tr>
+                <td>Credentials</td>
+                <td>BSIT STI GenSan, CSS NC II, SAP B1</td>
+                <td>Prime Dev, LGU GenSan</td>
+                <td class="measured-col">Verified</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Direct Contact (Split Studio Close) -->
+    <section id="contact" class="section-contact">
+      <div class="container split-row split-row--equal">
+        <div class="split-text">
+          <h2>Talk to Jiggy.</h2>
+          <p class="lead">Open to engineering roles in General Santos and remote.</p>
+          <div class="hero-actions">
+            <button type="button" id="copyEmailBtn" class="btn btn--primary">
+              <svg id="copyEmailIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="copyEmailText">Copy jigspals025@gmail.com</span>
+            </button>
+            <a href="tel:09929131887" class="btn btn--quiet">Call 0992 913 1887</a>
+          </div>
+        </div>
+
+        <dl class="meta-dl">
+          <div class="meta-dl__row">
+            <dt>Location</dt>
+            <dd>General Santos, PH (UTC+8)</dd>
+          </div>
+          <div class="meta-dl__row">
+            <dt>Email</dt>
+            <dd>jigspals025@gmail.com</dd>
+          </div>
+          <div class="meta-dl__row">
+            <dt>Phone</dt>
+            <dd><a href="tel:09929131887">0992 913 1887</a></dd>
+          </div>
+          <div class="meta-dl__row">
+            <dt>GitHub</dt>
+            <dd><a href="https://github.com/jiggy025" target="_blank" rel="noopener">github.com/jiggy025</a></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
   </main>
 
-  <!-- Toast Notification Container -->
-  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-red-600 text-white font-mono text-xs px-4 py-3 rounded-lg shadow-[0_0_25px_rgba(239,68,68,0.5)] flex items-center gap-2">
-    <span>✓</span>
-    <span>Copied jigspals025@gmail.com to clipboard!</span>
-  </div>
+  <!-- Letter Close Footer (footer: letter close) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="letter-close">
+        <div>
+          <p class="letter-signoff">Signed in General Santos City by Jiggy B. Palconit.</p>
+          <p class="letter-date">2026-10-26 · Console</p>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#hero" class="nav-link">Top</a></li>
+          <li><a href="https://github.com/jiggy025" target="_blank" rel="noopener" class="nav-link">GitHub</a></li>
+          <li><a href="https://race-clock-ten.vercel.app/" target="_blank" rel="noopener" class="nav-link">Race Clock</a></li>
+          <li><a href="https://codexus-calendar.netlify.app" target="_blank" rel="noopener" class="nav-link">MIS Calendar</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-colophon">
+        <span>Jiggy B. Palconit · Software Developer</span>
+        <span>General Santos City, Philippines</span>
+      </div>
+    </div>
+  </footer>
 
   <!-- Screenshot Lightbox Modal -->
-  <div id="imageLightbox" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md hidden items-center justify-center p-4 sm:p-8 opacity-0 transition-opacity duration-200" role="dialog" aria-modal="true" aria-label="Image Preview">
-    <div class="relative max-w-4xl w-full max-h-[92vh] flex flex-col items-center">
-      <button id="lightboxClose" type="button" class="absolute -top-10 right-0 sm:-top-11 sm:right-0 z-10 px-3.5 py-1.5 rounded-full bg-black/80 hover:bg-black border border-white/20 text-white font-mono text-xs cursor-pointer flex items-center gap-1.5 transition-colors" aria-label="Close Lightbox">
-        <span>✕</span>
-        <span>Close</span>
-      </button>
-      <div class="rounded-xl overflow-hidden border border-white/20 bg-black shadow-2xl flex items-center justify-center max-h-[82vh]">
-        <img id="lightboxImg" src="" alt="Full Preview" class="max-h-[82vh] w-auto max-w-full object-contain">
-      </div>
-      <div id="lightboxCaption" class="mt-3 text-center text-xs font-mono text-slate-300"></div>
-    </div>
+  <div id="imageLightbox" class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Screenshot preview" hidden>
+    <button type="button" id="lightboxClose" class="btn btn--quiet btn--nav">Close preview (Esc)</button>
+    <figure class="lightbox-frame">
+      <img id="lightboxImg" src="assets/images/rent-a-box/instant-vacancy-check.png" width="1024" height="1536" alt="System screenshot preview">
+      <figcaption id="lightboxCaption" class="lightbox-caption"></figcaption>
+    </figure>
   </div>
 
-  <!-- Unified Motion & Interaction Engine -->
-  <script src="js/motion.js"></script>
+  <!-- Preserved Toast Hook -->
+  <div id="toastNotification" class="toast-hook" role="status" aria-live="polite" hidden></div>
+
+  <!-- Hallmark Slot Script -->
+  <script>window.hallmarkSlots = (m) => { for (const [k, v] of Object.entries(m)) { const s = document.querySelector(`[data-slot="${k}"]`); if (!s) continue; const im = new Image(); im.src = typeof v === 'string' ? v : v.src; im.alt = (typeof v === 'object' && v.alt) || s.dataset.alt || ''; s.querySelectorAll(':scope > img').forEach((o) => o.remove()); s.prepend(im); } };
+  document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });</script>
+
+  <!-- Console Instrument & Motion Controller -->
+  <script>
+    (() => {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // 1. Hero Interactive X-Ray Code-to-UI Curtain & Loupe
+      const heroSection = document.getElementById('hero');
+      const xrayViewport = document.getElementById('xrayViewport');
+      const xrayModeBtn = document.getElementById('xrayModeBtn');
+      const xrayActionBtn = document.getElementById('xrayActionBtn');
+      const xrayTabs = document.querySelectorAll('[data-xray-tab]');
+      const xrayPresetCells = document.querySelectorAll('[data-xray-preset]');
+      const elHeroTitle = document.getElementById('heroStageTitle');
+      const elHeroTag = document.getElementById('heroStageTag');
+
+      if (xrayViewport) {
+        const elUiTitle = document.getElementById('xrayUiTitle');
+        const elUiStatus = document.getElementById('xrayUiStatus');
+        const elKey1 = document.getElementById('xrayKey1');
+        const elVal1 = document.getElementById('xrayVal1');
+        const elKey2 = document.getElementById('xrayKey2');
+        const elVal2 = document.getElementById('xrayVal2');
+        const elKey3 = document.getElementById('xrayKey3');
+        const elVal3 = document.getElementById('xrayVal3');
+        const elUiTotal = document.getElementById('xrayUiTotal');
+        const elPlanSheet = document.getElementById('xrayPlanSheet');
+        const elCodeSheet = document.getElementById('xrayCodeSheet');
+
+        let txCounter = 14;
+        let currentPreset = 'spring';
+        let loupeMode = false;
+        let targetX = 44;
+        let targetY = 50;
+        let curX = 44;
+        let curY = 50;
+
+        const buildPreset = (key, idNum) => {
+          const padRef = String(idNum).padStart(6, '0');
+          const PRESETS = {
+            spring: {
+              tag: 'Spring Boot',
+              foot: 'JRF System: Spring Boot 4, JobRules state machine & MySQL',
+              uiTitle: `JRF Tracking · VG-${padRef}`,
+              uiStatus: 'Confirmed Fixed',
+              k1: 'Asset & Dossier', v1: 'C2025A000325 · 5+ repairs',
+              k2: 'Workflow Rail', v2: 'Validated -> In Service',
+              k3: 'Branch & Tech', v3: 'VMI Central · Tech Boboi',
+              total: `Ref: VG-${padRef}`,
+              btn: 'Mark work done',
+              plan: [
+                `<span class="xray-code-kw">POST</span> <span class="xray-code-str">"/api/requests/VG/VG-${padRef}"</span>`,
+                `<span class="xray-code-cmt">// JRF guarded state machine</span>`,
+                `<span class="xray-code-fn">asset</span>: <span class="xray-code-str">"C2025A000325 (5+ repairs)"</span>`,
+                `<span class="xray-code-fn">rail</span>: <span class="xray-code-str">"Submitted -&gt; Validated"</span>`,
+                `<span class="xray-code-fn">tech</span>: <span class="xray-code-str">"Boboi (In Service)"</span>`,
+                `<span class="xray-code-fn">trip</span>: <span class="xray-code-str">"Delivered -&gt; At Branch"</span>`,
+                `<span class="xray-code-fn">lock</span>: <span class="xray-code-str">"@Version optimistic lock"</span>`,
+                `<span class="xray-code-fn">audit</span>: <span class="xray-code-str">"job_request_event"</span>`,
+                `<span class="xray-code-kw">200 OK</span> <span class="xray-code-str">CONFIRMED_FIXED</span>`
+              ],
+              code: [
+                ['01', `<span class="xray-code-kw">@PostMapping</span>(<span class="xray-code-str">"/api/requests/{id}"</span>)`],
+                ['02', `<span class="xray-code-kw">@Transactional</span>`],
+                ['03', `JobView <span class="xray-code-fn">transition</span>(String id, ActCmd c) {`],
+                ['04', `  <span class="xray-code-cmt">// Guarded by JobRules.can() + @Version</span>`],
+                ['05', `  req = repo.<span class="xray-code-fn">findLocked</span>(<span class="xray-code-str">"VG-${padRef}"</span>);`],
+                ['06', `  next = JobRules.<span class="xray-code-fn">act</span>(req.toState(), c);`],
+                ['07', `  req.<span class="xray-code-fn">apply</span>(next);`],
+                ['08', `  events.<span class="xray-code-fn">save</span>(<span class="xray-code-kw">new</span> JobRequestEvent(req));`],
+                ['09', `}`]
+              ]
+            },
+            flutter: {
+              tag: 'Flutter + SQLite',
+              foot: 'Rent-a-Box APK: Offline-first Flutter BLoC & SQLite 3 WAL',
+              uiTitle: 'Rent-a-Box Payout',
+              uiStatus: 'Saved Offline',
+              k1: 'Box & Tenant', v1: `Box #B-14 / #RNB-${idNum}`,
+              k2: 'Storage Engine', v2: 'Local SQLite 3 WAL',
+              k3: 'Network State', v3: 'Zero hops (0 dropped)',
+              total: 'PHP 18,400.00',
+              btn: 'Commit SQLite row',
+              plan: [
+                `<span class="xray-code-kw">SQLITE</span> <span class="xray-code-str">"rent_a_box.db"</span>`,
+                `<span class="xray-code-cmt">// Local WAL journal</span>`,
+                `<span class="xray-code-fn">mode</span>: <span class="xray-code-str">"PRAGMA wal"</span>`,
+                `<span class="xray-code-fn">box_id</span>: <span class="xray-code-str">"B-14"</span>`,
+                `<span class="xray-code-fn">receipt</span>: <span class="xray-code-str">"RNB-${idNum}"</span>`,
+                `<span class="xray-code-fn">network</span>: <span class="xray-code-str">"OFFLINE_SAFE"</span>`,
+                `<span class="xray-code-fn">amount</span>: <span class="xray-code-num">18400.00</span>`,
+                `<span class="xray-code-fn">fsync</span>: <span class="xray-code-str">1.4 ms</span>`,
+                `<span class="xray-code-kw">ACID OK</span> <span class="xray-code-str">WAL_LOCKED</span>`
+              ],
+              code: [
+                ['01', `<span class="xray-code-kw">Future</span>&lt;Receipt&gt; <span class="xray-code-fn">commitBox</span>(int id) {`],
+                ['02', `  <span class="xray-code-cmt">// Offline SQLite 3 transaction</span>`],
+                ['03', `  <span class="xray-code-kw">return</span> db.<span class="xray-code-fn">transaction</span>((tx) <span class="xray-code-kw">async</span> {`],
+                ['04', `    <span class="xray-code-kw">await</span> tx.<span class="xray-code-fn">insert</span>(<span class="xray-code-str">'ledger'</span>, {`],
+                ['05', `      <span class="xray-code-str">'ref'</span>: <span class="xray-code-str">'RNB-${idNum}'</span>,`],
+                ['06', `      <span class="xray-code-str">'amt'</span>: <span class="xray-code-num">18400</span>`],
+                ['07', `    });`],
+                ['08', `    <span class="xray-code-kw">return</span> Receipt.<span class="xray-code-fn">ok</span>(<span class="xray-code-str">'RNB-${idNum}'</span>);`],
+                ['09', `  });`]
+              ]
+            },
+            pwa: {
+              tag: 'Race PWA',
+              foot: 'Race Clock LED Wall: WakeLock API + cross-window storage bus',
+              uiTitle: 'Race Clock Broadcast',
+              uiStatus: 'WakeLock Active',
+              k1: 'Heat & Split', v1: `21K Elite / #SPL-${idNum}`,
+              k2: 'Stage Sync', v2: 'Cross-window storage bus',
+              k3: 'Frame Latency', v3: '4.2 ms LED wall lock',
+              total: '00:42:18.45',
+              btn: 'Broadcast split',
+              plan: [
+                `<span class="xray-code-kw">EVENT</span> <span class="xray-code-str">"RACE_CLOCK_BUS"</span>`,
+                `<span class="xray-code-cmt">// Stage LED IPC payload</span>`,
+                `<span class="xray-code-fn">lock</span>: <span class="xray-code-str">"screen:active"</span>`,
+                `<span class="xray-code-fn">heat</span>: <span class="xray-code-str">"21K_ELITE"</span>`,
+                `<span class="xray-code-fn">split</span>: <span class="xray-code-str">"SPL-${idNum}"</span>`,
+                `<span class="xray-code-fn">clock</span>: <span class="xray-code-str">"00:42:18.45"</span>`,
+                `<span class="xray-code-fn">drift</span>: <span class="xray-code-num">0.00</span> ms`,
+                `<span class="xray-code-fn">bus</span>: <span class="xray-code-str">4.2 ms</span>`,
+                `<span class="xray-code-kw">SYNCED</span> <span class="xray-code-str">STAGE_LED</span>`
+              ],
+              code: [
+                ['01', `<span class="xray-code-kw">async function</span> <span class="xray-code-fn">emitSplit</span>(heat) {`],
+                ['02', `  <span class="xray-code-cmt">// Lock stage LED projector</span>`],
+                ['03', `  <span class="xray-code-kw">await</span> wakeLock.<span class="xray-code-fn">request</span>(<span class="xray-code-str">'screen'</span>);`],
+                ['04', `  <span class="xray-code-kw">const</span> msg = { id: <span class="xray-code-str">'SPL-${idNum}'</span> };`],
+                ['05', `  storage.<span class="xray-code-fn">set</span>(<span class="xray-code-str">'BUS'</span>, JSON.<span class="xray-code-fn">stringify</span>(msg));`],
+                ['06', `  window.<span class="xray-code-fn">dispatchEvent</span>(`],
+                ['07', `    <span class="xray-code-kw">new</span> StorageEvent(<span class="xray-code-str">'storage'</span>)`],
+                ['08', `  );`],
+                ['09', `}`]
+              ]
+            }
+          };
+          return PRESETS[key] || PRESETS.spring;
+        };
+
+        const renderPreset = (key) => {
+          currentPreset = key;
+          const p = buildPreset(key, txCounter);
+          if (elUiTitle) elUiTitle.textContent = p.uiTitle;
+          if (elUiStatus) elUiStatus.textContent = p.uiStatus;
+          if (elKey1) elKey1.textContent = p.k1;
+          if (elVal1) elVal1.textContent = p.v1;
+          if (elKey2) elKey2.textContent = p.k2;
+          if (elVal2) elVal2.textContent = p.v2;
+          if (elKey3) elKey3.textContent = p.k3;
+          if (elVal3) elVal3.textContent = p.v3;
+          if (elUiTotal) elUiTotal.textContent = p.total;
+          if (xrayActionBtn) xrayActionBtn.textContent = p.btn;
+          if (elHeroTitle) elHeroTitle.textContent = p.foot;
+          if (elPlanSheet) {
+            elPlanSheet.innerHTML = p.plan
+              .map((line) => `<span class="xray-code-line">${line}</span>`)
+              .join('\n');
+          }
+          if (elCodeSheet) {
+            elCodeSheet.innerHTML = p.code
+              .map(([num, line]) => `<span class="xray-code-line"><span class="xray-code-num">${num}</span><span>${line}</span></span>`)
+              .join('\n');
+          }
+          xrayTabs.forEach((btn) => {
+            const on = btn.getAttribute('data-xray-tab') === key;
+            btn.setAttribute('aria-selected', String(on));
+            btn.tabIndex = on ? 0 : -1;
+          });
+        };
+
+        xrayTabs.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const key = btn.getAttribute('data-xray-tab');
+            if (key) renderPreset(key);
+          });
+        });
+
+        xrayPresetCells.forEach((cell) => {
+          const key = cell.getAttribute('data-xray-preset');
+          cell.addEventListener('pointerenter', () => {
+            if (key) renderPreset(key);
+          });
+          cell.addEventListener('click', () => {
+            if (key) renderPreset(key);
+          });
+        });
+
+        if (xrayModeBtn) {
+          xrayModeBtn.addEventListener('click', () => {
+            loupeMode = !loupeMode;
+            xrayModeBtn.setAttribute('aria-pressed', String(loupeMode));
+            xrayModeBtn.textContent = loupeMode ? 'Curtain' : 'Loupe';
+            xrayViewport.classList.toggle('is-loupe', loupeMode);
+          });
+        }
+
+        if (xrayActionBtn) {
+          xrayActionBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            txCounter += 1;
+            renderPreset(currentPreset);
+            // Sweep the X-Ray curtain briefly to show the newly committed ID in the code!
+            targetX = targetX > 50 ? 24 : 76;
+          });
+        }
+
+        const updateTargetFromPointer = (e) => {
+          const r = xrayViewport.getBoundingClientRect();
+          if (!r.width || !r.height) return;
+          const rawX = ((e.clientX - r.left) / r.width) * 100;
+          const rawY = ((e.clientY - r.top) / r.height) * 100;
+          const snappedX = rawX <= 2.5 ? 0 : rawX >= 97.5 ? 100 : rawX;
+          const snappedY = rawY <= 2.5 ? 0 : rawY >= 97.5 ? 100 : rawY;
+          targetX = Math.max(0, Math.min(100, snappedX));
+          targetY = Math.max(0, Math.min(100, snappedY));
+        };
+
+        xrayViewport.addEventListener('pointerdown', (e) => {
+          if (e.target && e.target.closest('button')) return;
+          xrayViewport.setPointerCapture(e.pointerId);
+          updateTargetFromPointer(e);
+        });
+        xrayViewport.addEventListener('pointermove', updateTargetFromPointer);
+        if (heroSection) {
+          heroSection.addEventListener('pointermove', (e) => {
+            const r = xrayViewport.getBoundingClientRect();
+            if (e.clientX >= r.left - 32 && e.clientX <= r.right + 32) {
+              updateTargetFromPointer(e);
+            }
+          });
+        }
+
+        const stepXray = () => {
+          curX += (targetX - curX) * 0.22;
+          curY += (targetY - curY) * 0.22;
+          xrayViewport.style.setProperty('--xray-split', `${curX.toFixed(2)}%`);
+          xrayViewport.style.setProperty('--xray-x', `${curX.toFixed(2)}%`);
+          xrayViewport.style.setProperty('--xray-y', `${curY.toFixed(2)}%`);
+
+          if (elHeroTag) {
+            const p = buildPreset(currentPreset, txCounter);
+            const codePct = Math.round(100 - curX);
+            elHeroTag.textContent = loupeMode
+              ? `Loupe / ${p.tag}`
+              : `${codePct}% Code / ${p.tag}`;
+          }
+
+          if (!reducedMotion) {
+            requestAnimationFrame(stepXray);
+          }
+        };
+
+        stepXray();
+      }
+
+      // 2. Viajero Case Study Tabs (Audit trail vs Schema diff)
+      const caseTabs = document.querySelectorAll('[data-case-tab]');
+      const panelTrail = document.getElementById('casePanelTrail');
+      const panelDiff = document.getElementById('casePanelDiff');
+      caseTabs.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const mode = btn.getAttribute('data-case-tab');
+          caseTabs.forEach((b) => {
+            const on = b === btn;
+            b.setAttribute('aria-selected', String(on));
+            b.tabIndex = on ? 0 : -1;
+          });
+          if (panelTrail && panelDiff) {
+            panelTrail.hidden = mode !== 'trail';
+            panelDiff.hidden = mode !== 'diff';
+          }
+        });
+      });
+
+      // 3. Synchronized Clocks (Hero LED Wall + Race Clock Simulator)
+      const ledWallTimer = document.getElementById('ledWallTimer');
+      const simClockA = document.getElementById('simClockA');
+      const simClockB = document.getElementById('simClockB');
+      const triggerLapBtn = document.getElementById('triggerLapBtn');
+      const simLogA = document.getElementById('simLogA');
+      const simLastSplit = document.getElementById('simLastSplit');
+      let lapCount = 2;
+
+      const formatClock = (msTotal) => {
+        const m = Math.floor((msTotal / 60000) % 60).toString().padStart(2, '0');
+        const s = Math.floor((msTotal / 1000) % 60).toString().padStart(2, '0');
+        const cs = Math.floor((msTotal % 1000) / 10).toString().padStart(2, '0');
+        return `00:${m}:${s}.${cs}`;
+      };
+
+      const startEpoch = Date.now();
+      const baseOffset = (42 * 60 + 18) * 1000 + 450;
+
+      if (!reducedMotion) {
+        setInterval(() => {
+          const nowStr = formatClock(baseOffset + ((Date.now() - startEpoch) % 3600000));
+          if (ledWallTimer) ledWallTimer.textContent = nowStr;
+          if (simClockA) simClockA.textContent = nowStr;
+          if (simClockB) simClockB.textContent = nowStr;
+        }, 60);
+      }
+
+      if (triggerLapBtn) {
+        triggerLapBtn.addEventListener('click', () => {
+          lapCount += 1;
+          const stamp = simClockA ? simClockA.textContent : '00:42:19.10';
+          if (simLogA) {
+            const span = document.createElement('span');
+            span.textContent = `Lap ${String(lapCount).padStart(2, '0')} / ${stamp}`;
+            simLogA.prepend(span);
+            while (simLogA.children.length > 3) simLogA.lastElementChild.remove();
+          }
+          if (simLastSplit) {
+            simLastSplit.textContent = `Synced Lap ${String(lapCount).padStart(2, '0')} (${stamp}) in 3.8 ms`;
+          }
+        });
+      }
+
+      // 4. Video Scrubber, Timecode & Viewport Playback
+      const fmtVideoTime = (sec) => {
+        if (!isFinite(sec) || sec < 0) return '00:00.00';
+        const m = Math.floor(sec / 60).toString().padStart(2, '0');
+        const s = Math.floor(sec % 60).toString().padStart(2, '0');
+        const cs = Math.floor((sec % 1) * 100).toString().padStart(2, '0');
+        return `${m}:${s}.${cs}`;
+      };
+
+      document.querySelectorAll('.video-card-wrapper').forEach((wrap) => {
+        const video = wrap.querySelector('video');
+        const stage = wrap.querySelector('.video-stage');
+        const playBtn = wrap.querySelector('.video-play-btn');
+        const muteBtn = wrap.querySelector('.video-mute-btn');
+        const fsBtn = wrap.querySelector('.video-fullscreen-btn');
+        const fill = wrap.querySelector('.scrubber-fill');
+        const track = wrap.querySelector('.scrubber-track');
+        const code = wrap.querySelector('.js-timecode');
+        if (!video) return;
+
+        const toggleFullscreen = () => {
+          if (document.fullscreenElement === video || document.webkitFullscreenElement === video) {
+            if (document.exitFullscreen) {
+              document.exitFullscreen().catch(() => {});
+            } else if (document.webkitExitFullscreen) {
+              document.webkitExitFullscreen();
+            }
+          } else if (video.requestFullscreen) {
+            video.requestFullscreen().catch(() => {});
+          } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+          } else if (video.webkitEnterFullscreen) {
+            video.webkitEnterFullscreen();
+          }
+        };
+
+        const syncPlayIcons = () => {
+          const playIcon = playBtn?.querySelector('.play-icon');
+          const pauseIcon = playBtn?.querySelector('.pause-icon');
+          if (playIcon && pauseIcon) {
+            playIcon.hidden = !video.paused;
+            pauseIcon.hidden = video.paused;
+          }
+        };
+
+        const syncMuteIcons = () => {
+          const muteIcon = muteBtn?.querySelector('.mute-icon');
+          const unmuteIcon = muteBtn?.querySelector('.unmute-icon');
+          if (muteIcon && unmuteIcon) {
+            muteIcon.hidden = !video.muted;
+            unmuteIcon.hidden = video.muted;
+          }
+        };
+
+        video.addEventListener('play', syncPlayIcons);
+        video.addEventListener('pause', syncPlayIcons);
+        video.addEventListener('volumechange', syncMuteIcons);
+        video.addEventListener('timeupdate', () => {
+          const ratio = video.duration ? video.currentTime / video.duration : 0;
+          if (fill) fill.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
+          if (track) track.setAttribute('aria-valuenow', String(Math.round(ratio * 100)));
+          if (code) code.textContent = fmtVideoTime(video.currentTime);
+        });
+
+        playBtn?.addEventListener('click', () => {
+          if (video.paused) {
+            delete video.dataset.userPaused;
+            video.play().catch(() => {});
+          } else {
+            video.dataset.userPaused = 'true';
+            video.pause();
+          }
+        });
+
+        muteBtn?.addEventListener('click', () => {
+          video.muted = !video.muted;
+        });
+
+        fsBtn?.addEventListener('click', toggleFullscreen);
+        stage?.addEventListener('dblclick', toggleFullscreen);
+
+        track?.addEventListener('click', (e) => {
+          if (!video.duration) return;
+          const r = track.getBoundingClientRect();
+          const pct = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+          video.currentTime = pct * video.duration;
+        });
+
+        if (!reducedMotion && 'IntersectionObserver' in window) {
+          new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting && !video.dataset.userPaused) {
+              video.play().catch(() => {});
+            } else if (!entry.isIntersecting && !video.paused) {
+              video.pause();
+            }
+          }, { threshold: 0.35 }).observe(wrap);
+        }
+      });
+
+      document.querySelectorAll('.js-reel-restart').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const v = document.getElementById(btn.getAttribute('data-target'));
+          if (v) {
+            v.currentTime = 0;
+            delete v.dataset.userPaused;
+            v.play().catch(() => {});
+          }
+        });
+      });
+
+      // 5. Search-led Nav Filter
+      const cmdSearch = document.getElementById('cmdSearch');
+      const workItems = document.querySelectorAll('.work-item');
+      if (cmdSearch) {
+        window.addEventListener('keydown', (e) => {
+          if (e.key === '/' && document.activeElement !== cmdSearch) {
+            e.preventDefault();
+            cmdSearch.focus();
+          }
+        });
+        cmdSearch.addEventListener('input', () => {
+          const q = cmdSearch.value.trim().toLowerCase();
+          workItems.forEach((item) => {
+            const hay = (item.getAttribute('data-keywords') || '') + ' ' + item.innerText.toLowerCase();
+            item.classList.toggle('is-filtered-out', Boolean(q && !hay.includes(q)));
+          });
+        });
+      }
+
+      // 6. Clipboard Copy Handler (Silent inline state per Gate 16)
+      const copyBtn = document.getElementById('copyEmailBtn');
+      const copyText = document.getElementById('copyEmailText');
+      if (copyBtn && copyText) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText('jigspals025@gmail.com');
+            copyText.textContent = 'Copied jigspals025@gmail.com';
+            setTimeout(() => {
+              copyText.textContent = 'Copy jigspals025@gmail.com';
+            }, 2200);
+          } catch {
+            window.location.href = 'mailto:jigspals025@gmail.com';
+          }
+        });
+      }
+
+      // 7. Accessible Lightbox Modal
+      const lightbox = document.getElementById('imageLightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      const lightboxClose = document.getElementById('lightboxClose');
+      let lastTrigger = null;
+
+      if (lightbox && lightboxImg) {
+        document.querySelectorAll('.screenshot-thumb').forEach((thumb) => {
+          thumb.addEventListener('click', () => {
+            lastTrigger = thumb;
+            const src = thumb.getAttribute('data-img');
+            const cap = thumb.getAttribute('data-caption') || '';
+            if (src) lightboxImg.src = src;
+            if (lightboxCaption) lightboxCaption.textContent = cap;
+            lightbox.hidden = false;
+            lightboxClose?.focus();
+          });
+        });
+
+        const closeLightbox = () => {
+          lightbox.hidden = true;
+          lastTrigger?.focus();
+        };
+
+        lightboxClose?.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+        window.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -2,3 +2,5 @@
 Thumbs.db
 .vercel
 node_modules
+.hallmark/
+index.hallmark.html
