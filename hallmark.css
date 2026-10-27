@@ -199,9 +199,13 @@
 .work-item--film .work-item__text { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) auto; align-items: end; gap: var(--space-md) var(--gap-columns); }
 .work-item--film .media { grid-column: 1 / -1; }
 /* Race Clock: the real operator screen as a band, the live sync demo under it */
-.work-item--clock .media { grid-column: 1 / -1; }
-.work-item--clock .work-item__text { grid-column: 1 / span 5; }
-.work-item--clock .sync-sim { grid-column: 7 / -1; }
+/* Race Clock: the photo of it on a real LED wall leads, the words and the live sync demo beside it, the operator screen under both */
+.work-item--clock { align-items: start; }
+.work-item--clock .media--photo { grid-column: 1 / span 8; grid-row: 1 / span 2; display: grid; gap: var(--space-sm); }
+.work-item--clock .media--photo figcaption { font: 500 var(--text-sm)/1.4 var(--font-display); color: var(--color-muted); }
+.work-item--clock .work-item__text { grid-column: 9 / -1; grid-row: 1; align-self: end; }
+.work-item--clock .sync-sim { grid-column: 9 / -1; grid-row: 2; grid-template-columns: minmax(0, 1fr); }
+.work-item--clock .media--band { grid-column: 1 / -1; grid-row: 3; }
 /* Langga: reel left, words right */
 .work-item--reel .media { grid-column: 1 / span 7; }
 .work-item--reel .work-item__text { grid-column: 9 / -1; }
@@ -289,7 +293,7 @@
   .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-xl); }
   .timeline::before, .timeline::after, .timeline__item::before { display: none; }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .work-item > * { grid-column: 1 / -1 !important; }
+  .work-item > * { grid-column: 1 / -1 !important; grid-row: auto !important; }
   .work-item--film .work-item__text { grid-template-columns: minmax(0, 1fr); }
   .work-item--reel .work-item__text, .work-item--clock .work-item__text { order: -1; }
   .stack-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); }
