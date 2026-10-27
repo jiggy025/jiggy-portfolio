@@ -1,6 +1,6 @@
 # Jiggy B. Palconit - Software Developer Portfolio
 
-A high-performance, motion-driven portfolio inspired by modern creative studio aesthetics (Lusion), featuring momentum inertia scrolling, a GSAP ScrollTrigger sticky-stack showcase, and Remotion-engineered films.
+A portfolio that shows each system as it really runs: real screenshots and films, an X-ray that sweeps from a shipped screen to its source as you scroll, and Remotion-engineered films.
 
 ## Featured Systems & Projects
 
@@ -27,7 +27,7 @@ A high-performance, motion-driven portfolio inspired by modern creative studio a
 
 ## Architecture & Motion Engineering
 
-- **Motion Engine:** [Lenis](https://github.com/darkroomengineering/lenis) for 60-120 FPS momentum inertia scrolling + [GSAP ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) for the pinned scroll scenes in `js/motion.js` (X-ray curtain sweep, Viajero log, sideways systems rail).
-- **Styling:** Hand-written CSS on Hallmark's Midnight tokens (`tokens.css`, `base.css`, `hallmark.css`), set in Mona Sans.
+- **Motion Engine:** [GSAP ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) for three scroll-linked moments in `js/motion.js` (X-ray curtain sweep, Viajero timeline draw, one media reveal). Native scrolling, nothing pinned.
+- **Styling:** Hand-written CSS on custom tokens (`tokens.css`, `base.css`, `hallmark.css`): cool paper, the Race Clock's amber, set in Rethink Sans and JetBrains Mono. Light and dark follow the system setting.
 - **Accessibility:** Automatic degradation under `prefers-reduced-motion: reduce`.
 - **Hosting:** Optimized for [Vercel](https://vercel.com) with immutable asset caching.
