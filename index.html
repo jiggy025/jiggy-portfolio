@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jiggy B. Palconit, Software Developer in General Santos City</title>
   <meta name="description" content="Software developer specializing in enterprise Java, Spring Boot, cross-platform Flutter, and high-performance database architectures.">
-  <meta name="theme-color" content="#0d1016">
+  <meta name="theme-color" content="#060b1f">
   <link rel="canonical" href="https://jiggy-portfolio.vercel.app">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="favicon.svg">
@@ -21,13 +21,20 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100,400;100,500;125,300&family=Atkinson+Hyperlegible+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="hallmark.css">
+
+  <!-- Motion engine: GSAP ScrollTrigger for the scroll scenes, Lenis for inertia scroll. Deferred, so they run after the page and its inline script. -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="js/motion.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="spine" aria-hidden="true"></div>
 
-  <!-- Search-led Bar Navigation (nav: search-led bar) -->
+  <!-- nav: search-led bar -->
   <header class="site-header">
     <div class="container nav-bar">
       <a href="#hero" class="brand-mark" aria-label="Jiggy B. Palconit home">
@@ -53,19 +60,25 @@
   </header>
 
   <main id="main">
-    <!-- Section 1: Split Hero (Headline & Telemetry Left + Real Project Preview Window Right) -->
-    <section id="hero" class="hero-ledge">
-      <div class="container hero-ledge__inner">
+    <!-- 1 · Poster hero: the headline is the canvas -->
+    <section id="hero" class="hero-poster">
+      <div class="container hero-poster__inner">
+        <h1 class="hero-poster__head" data-hero-head>
+          <span class="line"><span class="line__in">Production ERPs, </span></span>
+          <span class="line"><span class="line__in">offline Flutter, </span></span>
+          <span class="line"><span class="line__in">live race clocks.</span></span>
+        </h1>
 
-        <div class="hero-copy">
-          <h1>Production ERPs, offline Flutter, live race clocks.</h1>
-          <p class="lead">Software Developer at <span class="signoff-person">Viajero Motorcycles Inc.</span> shipping Java, Spring Boot, and SQL.</p>
-          <div class="hero-actions">
-            <a href="#contact" class="btn btn--primary">Contact me</a>
-            <a href="#work" class="btn btn--quiet">Inspect 5 systems</a>
+        <div class="hero-poster__foot">
+          <div class="hero-poster__copy" data-hero-copy>
+            <p class="lead">Software Developer at <span class="signoff-person">Viajero Motorcycles Inc.</span> shipping Java, Spring Boot, and SQL.</p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn--primary">Contact me</a>
+              <a href="#work" class="btn btn--quiet">Inspect 5 systems</a>
+            </div>
           </div>
 
-          <dl class="hero-telemetry">
+          <dl class="hero-telemetry" data-hero-copy>
             <div class="hero-telemetry__cell" data-xray-preset="spring">
               <dt>Backend</dt>
               <dd>Java, Spring Boot &amp; SQL</dd>
@@ -84,10 +97,20 @@
             </div>
           </dl>
         </div>
+      </div>
+    </section>
+
+    <!-- 2 · Pinned split: scrolling sweeps the X-ray curtain -->
+    <section id="inspect" class="section-xray">
+      <div class="container xray-pin" data-xray-pin>
+        <div class="xray-copy">
+          <h2>One request, screen and source.</h2>
+          <p class="lead">Scroll, or sweep the cursor, to peel the shipped UI back to its code.</p>
+        </div>
 
         <figure class="hero-stage-card" data-slot="hero" data-kind="product" data-alt="Interactive X-Ray code-to-UI inspector peeling back product interfaces to reveal Spring Boot and Flutter source code">
           <div class="hero-stage__head" data-keep>
-            <span class="bench-title">X-Ray inspector</span>
+            <span class="bench-title">X-ray inspector</span>
             <div class="channel-strip" role="tablist" aria-label="X-Ray stack layer">
               <button type="button" class="chip-tab" role="tab" aria-selected="true" data-xray-tab="spring">Spring Boot</button>
               <button type="button" class="chip-tab" role="tab" aria-selected="false" data-xray-tab="flutter" tabindex="-1">Flutter APK</button>
@@ -159,19 +182,18 @@
             <div class="xray-loupe-ring" aria-hidden="true"></div>
           </div>
 
-          <div class="hero-stage__foot" data-keep>
+          <figcaption class="hero-stage__foot" data-keep>
             <span class="bench-title" id="heroStageTitle">Sweep cursor across to X-Ray the source code</span>
             <span class="bench-tag" id="heroStageTag">50% X-Ray / Spring Boot</span>
-          </div>
+          </figcaption>
         </figure>
-
       </div>
     </section>
 
-    <!-- Section 2: Production Case & Location (Split Studio Lead Diptych) -->
+    <!-- 3 · Pinned night log: the Viajero audit trail lights row by row -->
     <section id="experience" class="section-case">
-      <div class="container split-row split-row--lead">
-        <div class="split-text">
+      <div class="container case-pin" data-case-pin>
+        <div class="case-head">
           <h2>Viajero Motorcycles ERP.</h2>
           <p class="lead">Java, Spring Boot, Swing, and MySQL dealership operations.</p>
 
@@ -197,7 +219,7 @@
           <a href="#work" class="btn btn--quiet">Shipped systems</a>
         </div>
 
-        <figure class="proof-panel" data-slot="case-viajero" data-kind="product" data-alt="Viajero Motorcycles ERP audit trail and MySQL execution diff">
+        <figure class="proof-panel case-log" data-slot="case-viajero" data-kind="product" data-alt="Viajero Motorcycles ERP audit trail and MySQL execution diff">
           <div class="proof-panel__head" data-keep>
             <span class="bench-title">Viajero Motorcycles · ERP</span>
             <div class="channel-strip" role="tablist" aria-label="Viajero ERP view">
@@ -207,7 +229,7 @@
           </div>
 
           <div class="proof-panel__body" id="casePanelTrail" data-keep>
-            <ol class="audit-trail">
+            <ol class="audit-trail" data-audit>
               <li class="audit-trail__item">
                 <span class="audit-trail__ver">2026-09</span>
                 <span class="audit-trail__who">J. Palconit</span>
@@ -251,203 +273,214 @@
             </div>
           </div>
 
-          <div class="proof-panel__foot" data-keep>
+          <figcaption class="proof-panel__foot" data-keep>
             <span class="signoff-label">General Santos City, PH</span>
             <span class="signoff-instrument">Spring Boot + Swing + MySQL</span>
-          </div>
+          </figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- Section 3: Selected Systems (Split Studio Diptychs) -->
+    <!-- 4 · Pinned rail: five systems travel sideways as you scroll down -->
     <section id="work" class="section-work">
-      <div class="container">
-        <div class="section-header">
-          <h2>Spring Boot workflows, LED race clocks, Flutter APKs.</h2>
-          <p class="lead">Live interfaces, reels, repositories.</p>
+      <div class="container work-head">
+        <h2>Spring Boot workflows, LED race clocks, Flutter APKs.</h2>
+        <p class="lead">Live interfaces, reels, repositories.</p>
+      </div>
+
+      <div class="work-pin" data-work-pin>
+        <div class="work-viewport">
+          <div class="work-stack" id="workStack" data-work-track>
+
+            <!-- 01: JRF Pitch Film -->
+            <article class="work-item" data-keywords="jrf pitch film spring boot java remotion react claude motion video logistics">
+              <div class="work-item__text">
+                <h3>JRF Pitch Film</h3>
+                <p>Remotion film for enterprise logistics and repair workflows backed by Spring Boot and Java.</p>
+                <button type="button" class="btn btn--quiet js-reel-restart" data-target="videoJrf">Replay</button>
+              </div>
+
+              <figure class="proof-panel video-card-wrapper" data-slot="work-jrf" data-kind="product" data-alt="JRF Pitch Film Remotion video player">
+                <div class="proof-panel__head" data-keep>
+                  <span class="bench-title">JRF Pitch Film</span>
+                  <span class="bench-tag">Spring Boot + Remotion</span>
+                </div>
+                <div class="video-stage" data-keep>
+                  <video id="videoJrf" muted loop playsinline preload="metadata" poster="assets/images/jrf-poster.png">
+                    <source src="assets/videos/jrf-pitch.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="scrubber-bar" data-keep>
+                  <button type="button" class="chip-tab video-play-btn" aria-label="Play or pause JRF film">
+                    <span class="play-icon">Play</span>
+                    <span class="pause-icon" hidden>Pause</span>
+                  </button>
+                  <div class="scrubber-track" role="progressbar" aria-label="JRF film progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div class="scrubber-fill"></div>
+                  </div>
+                  <span class="timecode js-timecode">00:00.00</span>
+                  <button type="button" class="chip-tab video-mute-btn" aria-label="Mute or unmute JRF film">
+                    <span class="mute-icon">Unmute</span>
+                    <span class="unmute-icon" hidden>Mute</span>
+                  </button>
+                  <button type="button" class="chip-tab video-fullscreen-btn" aria-label="Fullscreen JRF film">Fullscreen</button>
+                </div>
+              </figure>
+            </article>
+
+            <!-- 02: Race Clock PWA -->
+            <article class="work-item" data-keywords="race clock led wall pwa typescript vite wakelock offline">
+              <div class="work-item__text">
+                <h3>Race Clock LED Wall PWA</h3>
+                <p>Multi-category race timer syncing operator controls and stage LED walls.</p>
+                <a href="https://race-clock-ten.vercel.app/" target="_blank" rel="noopener" class="btn btn--quiet">Live PWA</a>
+              </div>
+
+              <figure class="proof-panel" data-slot="work-raceclock" data-kind="product" data-alt="Interactive dual-screen Race Clock synchronizer">
+                <div class="proof-panel__head" data-keep>
+                  <span class="bench-title">Storage event bus</span>
+                  <button type="button" class="chip-tab" id="triggerLapBtn">Record split</button>
+                </div>
+                <div class="sync-sim" data-keep>
+                  <div class="sync-screen">
+                    <span class="signoff-label">Operator</span>
+                    <div class="sync-screen__clock" id="simClockA">00:42:18.45</div>
+                    <div class="sync-lap-log" id="simLogA">
+                      <span>Lap 01 / 00:14:02.11</span>
+                      <span>Lap 02 / 00:28:19.84</span>
+                    </div>
+                  </div>
+                  <div class="sync-screen">
+                    <span class="signoff-label">Stage LED</span>
+                    <div class="sync-screen__clock" id="ledWallTimer">00:42:18.45</div>
+                    <div class="sync-lap-log" id="simLogB">
+                      <span>4.2 ms localStorage</span>
+                      <span id="simLastSplit">Awaiting split…</span>
+                    </div>
+                  </div>
+                </div>
+              </figure>
+            </article>
+
+            <!-- 03: Langga Loan Tracker -->
+            <article class="work-item" data-keywords="langga loan tracker react native expo reanimated mobile motion">
+              <div class="work-item__text">
+                <h3>Langga Loan Tracker</h3>
+                <p>Mobile loan ledger with 60 fps Reanimated physics and Remotion reel.</p>
+                <button type="button" class="btn btn--quiet js-reel-restart" data-target="videoLangga">Replay</button>
+              </div>
+
+              <figure class="proof-panel video-card-wrapper" data-slot="work-langga" data-kind="product" data-alt="Langga Loan Tracker Remotion video player">
+                <div class="proof-panel__head" data-keep>
+                  <span class="bench-title">Langga Loan Tracker</span>
+                  <span class="bench-tag">React Native + Expo</span>
+                </div>
+                <div class="video-stage" data-keep>
+                  <video id="videoLangga" muted loop playsinline preload="metadata" poster="assets/images/langga-poster.png">
+                    <source src="assets/videos/langga-reel.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="scrubber-bar" data-keep>
+                  <button type="button" class="chip-tab video-play-btn" aria-label="Play or pause Langga film">
+                    <span class="play-icon">Play</span>
+                    <span class="pause-icon" hidden>Pause</span>
+                  </button>
+                  <div class="scrubber-track" role="progressbar" aria-label="Langga film progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div class="scrubber-fill"></div>
+                  </div>
+                  <span class="timecode js-timecode">00:00.00</span>
+                  <button type="button" class="chip-tab video-mute-btn" aria-label="Mute or unmute Langga film">
+                    <span class="mute-icon">Unmute</span>
+                    <span class="unmute-icon" hidden>Mute</span>
+                  </button>
+                  <button type="button" class="chip-tab video-fullscreen-btn" aria-label="Fullscreen Langga film">Fullscreen</button>
+                </div>
+              </figure>
+            </article>
+
+            <!-- 04: Rent-a-Box System -->
+            <article class="work-item" data-keywords="rent-a-box flutter dart sqlite local-first mobile apk ledger">
+              <div class="work-item__text">
+                <h3>Rent-a-Box SQLite Ledger</h3>
+                <p>Offline Flutter APK for vacancy checks, box assignment, and payouts.</p>
+                <a href="https://github.com/jiggy025/rent-a-box-sys" target="_blank" rel="noopener" class="btn btn--quiet">Repository</a>
+              </div>
+
+              <figure class="proof-panel" data-slot="work-rentabox" data-kind="product" data-alt="Four Flutter mobile screens from Rent-a-Box SQLite app">
+                <div class="proof-panel__head" data-keep>
+                  <span class="bench-title">Flutter APK</span>
+                  <span class="bench-tag">SQLite 3</span>
+                </div>
+                <div class="shot-grid--portrait" data-keep>
+                  <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/instant-vacancy-check.png" data-caption="Rent-a-Box: Instant Box Vacancy Check">
+                    <img src="assets/images/rent-a-box/instant-vacancy-check.png" width="1024" height="1536" alt="Rent-a-Box Instant Vacancy Check screen" loading="lazy">
+                  </button>
+                  <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/fast-box-assignment.png" data-caption="Rent-a-Box: Fast Box Assignment">
+                    <img src="assets/images/rent-a-box/fast-box-assignment.png" width="1024" height="1536" alt="Rent-a-Box Fast Box Assignment screen" loading="lazy">
+                  </button>
+                  <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/meticulous-sales-logging.png" data-caption="Rent-a-Box: Meticulous Sales Logging">
+                    <img src="assets/images/rent-a-box/meticulous-sales-logging.png" width="1024" height="1536" alt="Rent-a-Box Sales Logging screen" loading="lazy">
+                  </button>
+                  <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/unified-payout-finance-control.png" data-caption="Rent-a-Box: Unified Payout &amp; Finance Control">
+                    <img src="assets/images/rent-a-box/unified-payout-finance-control.png" width="1024" height="1536" alt="Rent-a-Box Payout and Finance screen" loading="lazy">
+                  </button>
+                </div>
+              </figure>
+            </article>
+
+            <!-- 05: MIS Calendar & Viber Alerts -->
+            <article class="work-item" data-keywords="mis calendar viber alerts supabase postgresql edge functions webhooks">
+              <div class="work-item__text">
+                <h3>MIS Calendar &amp; Viber Alerts</h3>
+                <p>Supabase PostgreSQL scheduler dispatching automated Viber bot alerts.</p>
+                <a href="https://codexus-calendar.netlify.app" target="_blank" rel="noopener" class="btn btn--quiet">Live calendar</a>
+              </div>
+
+              <figure class="proof-panel" data-slot="work-mis" data-kind="product" data-alt="MIS Calendar and Viber webhook dispatch screenshots">
+                <div class="proof-panel__head" data-keep>
+                  <span class="bench-title">MIS Calendar</span>
+                  <span class="bench-tag">PostgreSQL</span>
+                </div>
+                <div class="shot-grid--landscape" data-keep>
+                  <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/calendar-overview.png" data-caption="MIS Calendar: Monthly Operations Overview">
+                    <img src="assets/images/mis-calendar/calendar-overview.png" width="1920" height="1080" alt="MIS Calendar monthly schedule overview" loading="lazy">
+                  </button>
+                  <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/calendar-details.png" data-caption="MIS Calendar: Field Visitation Drawer">
+                    <img src="assets/images/mis-calendar/calendar-details.png" width="1920" height="1080" alt="MIS Calendar field visitation drawer" loading="lazy">
+                  </button>
+                  <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/viber-dispatch.png" data-caption="MIS Calendar: Automated Viber Bot Dispatch">
+                    <img src="assets/images/mis-calendar/viber-dispatch.png" width="1087" height="812" alt="MIS Calendar Viber bot notification dispatch" loading="lazy">
+                  </button>
+                  <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/login-screen.png" data-caption="MIS Calendar: Role-Guarded Portal Sign-in">
+                    <img src="assets/images/mis-calendar/login-screen.png" width="764" height="485" alt="MIS Calendar company sign-in portal" loading="lazy">
+                  </button>
+                </div>
+              </figure>
+            </article>
+
+          </div>
         </div>
 
-        <div class="work-stack" id="workStack">
-
-          <!-- 01: JRF Pitch Film -->
-          <article class="split-row work-item" data-keywords="jrf pitch film spring boot java remotion react claude motion video logistics">
-            <div class="split-text">
-              <h3>JRF Pitch Film</h3>
-              <p>Remotion film for enterprise logistics and repair workflows backed by Spring Boot and Java.</p>
-              <button type="button" class="btn btn--quiet js-reel-restart" data-target="videoJrf">Replay</button>
-            </div>
-
-            <figure class="proof-panel video-card-wrapper" data-slot="work-jrf" data-kind="product" data-alt="JRF Pitch Film Remotion video player">
-              <div class="proof-panel__head" data-keep>
-                <span class="bench-title">JRF Pitch Film</span>
-                <span class="bench-tag">Spring Boot + Remotion</span>
-              </div>
-              <div class="video-stage" data-keep>
-                <video id="videoJrf" muted loop playsinline preload="metadata" poster="assets/images/jrf-poster.png">
-                  <source src="assets/videos/jrf-pitch.mp4" type="video/mp4">
-                </video>
-              </div>
-              <div class="scrubber-bar" data-keep>
-                <button type="button" class="chip-tab video-play-btn" aria-label="Play or pause JRF film">
-                  <span class="play-icon">Play</span>
-                  <span class="pause-icon" hidden>Pause</span>
-                </button>
-                <div class="scrubber-track" role="progressbar" aria-label="JRF film progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                  <div class="scrubber-fill"></div>
-                </div>
-                <span class="timecode js-timecode">00:00.00</span>
-                <button type="button" class="chip-tab video-mute-btn" aria-label="Mute or unmute JRF film">
-                  <span class="mute-icon">Unmute</span>
-                  <span class="unmute-icon" hidden>Mute</span>
-                </button>
-                <button type="button" class="chip-tab video-fullscreen-btn" aria-label="Fullscreen JRF film">Fullscreen</button>
-              </div>
-            </figure>
-          </article>
-
-          <!-- 02: Race Clock PWA -->
-          <article class="split-row work-item" data-keywords="race clock led wall pwa typescript vite wakelock offline">
-            <div class="split-text">
-              <h3>Race Clock LED Wall PWA</h3>
-              <p>Multi-category race timer syncing operator controls and stage LED walls.</p>
-              <a href="https://race-clock-ten.vercel.app/" target="_blank" rel="noopener" class="btn btn--quiet">Live PWA</a>
-            </div>
-
-            <figure class="proof-panel" data-slot="work-raceclock" data-kind="product" data-alt="Interactive dual-screen Race Clock synchronizer">
-              <div class="proof-panel__head" data-keep>
-                <span class="bench-title">Storage event bus</span>
-                <button type="button" class="chip-tab" id="triggerLapBtn">Record split</button>
-              </div>
-              <div class="sync-sim" data-keep>
-                <div class="sync-screen">
-                  <span class="signoff-label">Operator</span>
-                  <div class="sync-screen__clock" id="simClockA">00:42:18.45</div>
-                  <div class="sync-lap-log" id="simLogA">
-                    <span>Lap 01 / 00:14:02.11</span>
-                    <span>Lap 02 / 00:28:19.84</span>
-                  </div>
-                </div>
-                <div class="sync-screen">
-                  <span class="signoff-label">Stage LED</span>
-                  <div class="sync-screen__clock" id="ledWallTimer">00:42:18.45</div>
-                  <div class="sync-lap-log" id="simLogB">
-                    <span>4.2 ms localStorage</span>
-                    <span id="simLastSplit">Awaiting split…</span>
-                  </div>
-                </div>
-              </div>
-            </figure>
-          </article>
-
-          <!-- 03: Langga Loan Tracker -->
-          <article class="split-row work-item" data-keywords="langga loan tracker react native expo reanimated mobile motion">
-            <div class="split-text">
-              <h3>Langga Loan Tracker</h3>
-              <p>Mobile loan ledger with 60 fps Reanimated physics and Remotion reel.</p>
-              <button type="button" class="btn btn--quiet js-reel-restart" data-target="videoLangga">Replay</button>
-            </div>
-
-            <figure class="proof-panel video-card-wrapper" data-slot="work-langga" data-kind="product" data-alt="Langga Loan Tracker Remotion video player">
-              <div class="proof-panel__head" data-keep>
-                <span class="bench-title">Langga Loan Tracker</span>
-                <span class="bench-tag">React Native + Expo</span>
-              </div>
-              <div class="video-stage" data-keep>
-                <video id="videoLangga" muted loop playsinline preload="metadata" poster="assets/images/langga-poster.png">
-                  <source src="assets/videos/langga-reel.mp4" type="video/mp4">
-                </video>
-              </div>
-              <div class="scrubber-bar" data-keep>
-                <button type="button" class="chip-tab video-play-btn" aria-label="Play or pause Langga film">
-                  <span class="play-icon">Play</span>
-                  <span class="pause-icon" hidden>Pause</span>
-                </button>
-                <div class="scrubber-track" role="progressbar" aria-label="Langga film progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                  <div class="scrubber-fill"></div>
-                </div>
-                <span class="timecode js-timecode">00:00.00</span>
-                <button type="button" class="chip-tab video-mute-btn" aria-label="Mute or unmute Langga film">
-                  <span class="mute-icon">Unmute</span>
-                  <span class="unmute-icon" hidden>Mute</span>
-                </button>
-                <button type="button" class="chip-tab video-fullscreen-btn" aria-label="Fullscreen Langga film">Fullscreen</button>
-              </div>
-            </figure>
-          </article>
-
-          <!-- 04: Rent-a-Box System -->
-          <article class="split-row work-item" data-keywords="rent-a-box flutter dart sqlite local-first mobile apk ledger">
-            <div class="split-text">
-              <h3>Rent-a-Box SQLite Ledger</h3>
-              <p>Offline Flutter APK for vacancy checks, box assignment, and payouts.</p>
-              <a href="https://github.com/jiggy025/rent-a-box-sys" target="_blank" rel="noopener" class="btn btn--quiet">Repository</a>
-            </div>
-
-            <figure class="proof-panel" data-slot="work-rentabox" data-kind="product" data-alt="Four Flutter mobile screens from Rent-a-Box SQLite app">
-              <div class="proof-panel__head" data-keep>
-                <span class="bench-title">Flutter APK</span>
-                <span class="bench-tag">SQLite 3</span>
-              </div>
-              <div class="shot-grid--portrait" data-keep>
-                <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/instant-vacancy-check.png" data-caption="Rent-a-Box: Instant Box Vacancy Check">
-                  <img src="assets/images/rent-a-box/instant-vacancy-check.png" width="1024" height="1536" alt="Rent-a-Box Instant Vacancy Check screen" loading="lazy">
-                </button>
-                <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/fast-box-assignment.png" data-caption="Rent-a-Box: Fast Box Assignment">
-                  <img src="assets/images/rent-a-box/fast-box-assignment.png" width="1024" height="1536" alt="Rent-a-Box Fast Box Assignment screen" loading="lazy">
-                </button>
-                <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/meticulous-sales-logging.png" data-caption="Rent-a-Box: Meticulous Sales Logging">
-                  <img src="assets/images/rent-a-box/meticulous-sales-logging.png" width="1024" height="1536" alt="Rent-a-Box Sales Logging screen" loading="lazy">
-                </button>
-                <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/unified-payout-finance-control.png" data-caption="Rent-a-Box: Unified Payout &amp; Finance Control">
-                  <img src="assets/images/rent-a-box/unified-payout-finance-control.png" width="1024" height="1536" alt="Rent-a-Box Payout and Finance screen" loading="lazy">
-                </button>
-              </div>
-            </figure>
-          </article>
-
-          <!-- 05: MIS Calendar & Viber Alerts -->
-          <article class="split-row work-item" data-keywords="mis calendar viber alerts supabase postgresql edge functions webhooks">
-            <div class="split-text">
-              <h3>MIS Calendar &amp; Viber Alerts</h3>
-              <p>Supabase PostgreSQL scheduler dispatching automated Viber bot alerts.</p>
-              <a href="https://codexus-calendar.netlify.app" target="_blank" rel="noopener" class="btn btn--quiet">Live calendar</a>
-            </div>
-
-            <figure class="proof-panel" data-slot="work-mis" data-kind="product" data-alt="MIS Calendar and Viber webhook dispatch screenshots">
-              <div class="proof-panel__head" data-keep>
-                <span class="bench-title">MIS Calendar</span>
-                <span class="bench-tag">PostgreSQL</span>
-              </div>
-              <div class="shot-grid--landscape" data-keep>
-                <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/calendar-overview.png" data-caption="MIS Calendar: Monthly Operations Overview">
-                  <img src="assets/images/mis-calendar/calendar-overview.png" width="1920" height="1080" alt="MIS Calendar monthly schedule overview" loading="lazy">
-                </button>
-                <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/calendar-details.png" data-caption="MIS Calendar: Field Visitation Drawer">
-                  <img src="assets/images/mis-calendar/calendar-details.png" width="1920" height="1080" alt="MIS Calendar field visitation drawer" loading="lazy">
-                </button>
-                <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/viber-dispatch.png" data-caption="MIS Calendar: Automated Viber Bot Dispatch">
-                  <img src="assets/images/mis-calendar/viber-dispatch.png" width="1087" height="812" alt="MIS Calendar Viber bot notification dispatch" loading="lazy">
-                </button>
-                <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/login-screen.png" data-caption="MIS Calendar: Role-Guarded Portal Sign-in">
-                  <img src="assets/images/mis-calendar/login-screen.png" width="764" height="485" alt="MIS Calendar company sign-in portal" loading="lazy">
-                </button>
-              </div>
-            </figure>
-          </article>
-
+        <div class="container work-index" aria-hidden="true">
+          <ol class="work-index__list" data-work-index>
+            <li>JRF Pitch Film</li>
+            <li>Race Clock</li>
+            <li>Langga</li>
+            <li>Rent-a-Box</li>
+            <li>MIS Calendar</li>
+          </ol>
+          <div class="meter"><span data-work-meter></span></div>
         </div>
       </div>
     </section>
 
-    <!-- Section 4: Specification Table (Composition: Table, replacing Grid) -->
+    <!-- 5 · Statement head scrubs word by word, then the spec table -->
     <section id="arsenal" class="section-spec">
       <div class="container">
-        <div class="section-header">
-          <h2>Java 7 to 21, Spring Boot, Flutter, MySQL, Remotion.</h2>
-        </div>
+        <h2 class="statement-head" data-scrub-words>Java 7 to 21, Spring Boot, Flutter, MySQL, Remotion.</h2>
 
         <div class="spec-table-wrap">
-          <table class="spec-table">
+          <table class="spec-table" data-spec-table>
             <thead>
               <tr>
                 <th scope="col">Category</th>
@@ -487,11 +520,12 @@
       </div>
     </section>
 
-    <!-- Section 5: Direct Contact (Split Studio Close) -->
+    <!-- 6 · The close: the head rises letter by letter -->
     <section id="contact" class="section-contact">
-      <div class="container split-row split-row--equal">
-        <div class="split-text">
-          <h2>Talk to Jiggy.</h2>
+      <div class="container contact-grid">
+        <h2 class="contact-head" data-rise-chars>Talk to Jiggy.</h2>
+
+        <div class="contact-copy">
           <p class="lead">Open to engineering roles in General Santos and remote.</p>
           <div class="hero-actions">
             <button type="button" id="copyEmailBtn" class="btn btn--primary">
@@ -505,7 +539,7 @@
           </div>
         </div>
 
-        <dl class="meta-dl">
+        <dl class="meta-dl contact-dl">
           <div class="meta-dl__row">
             <dt>Location</dt>
             <dd>General Santos, PH (UTC+8)</dd>
@@ -527,27 +561,17 @@
     </section>
   </main>
 
-  <!-- Letter Close Footer (footer: letter close) -->
+  <!-- footer: colophon block -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="letter-close">
-        <div>
-          <p class="letter-signoff">Signed in General Santos City by Jiggy B. Palconit.</p>
-          <p class="letter-date">2026-10-26 · Console</p>
-        </div>
+    <div class="container footer-grid">
+      <p class="colophon">Signed in General Santos City by Jiggy B. Palconit, Software Developer. Built by hand in HTML and CSS, set in Mona Sans, moved with GSAP and Lenis. <time datetime="2026-10-27">27 October 2026</time>.</p>
 
-        <ul class="footer-links">
-          <li><a href="#hero" class="nav-link">Top</a></li>
-          <li><a href="https://github.com/jiggy025" target="_blank" rel="noopener" class="nav-link">GitHub</a></li>
-          <li><a href="https://race-clock-ten.vercel.app/" target="_blank" rel="noopener" class="nav-link">Race Clock</a></li>
-          <li><a href="https://codexus-calendar.netlify.app" target="_blank" rel="noopener" class="nav-link">MIS Calendar</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-colophon">
-        <span>Jiggy B. Palconit · Software Developer</span>
-        <span>General Santos City, Philippines</span>
-      </div>
+      <ul class="footer-links">
+        <li><a href="#hero" class="nav-link">Top</a></li>
+        <li><a href="https://github.com/jiggy025" target="_blank" rel="noopener" class="nav-link">GitHub</a></li>
+        <li><a href="https://race-clock-ten.vercel.app/" target="_blank" rel="noopener" class="nav-link">Race Clock</a></li>
+        <li><a href="https://codexus-calendar.netlify.app" target="_blank" rel="noopener" class="nav-link">MIS Calendar</a></li>
+      </ul>
     </div>
   </footer>
 
@@ -823,6 +847,11 @@
         };
 
         stepXray();
+
+        // Scroll hook: js/motion.js calls this while the inspector is pinned, so scrolling sweeps the curtain (0 to 100)
+        window.xrayScrub = (pct) => {
+          targetX = Math.max(0, Math.min(100, pct));
+        };
       }
 
       // 2. Viajero Case Study Tabs (Audit trail vs Schema diff)
