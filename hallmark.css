@@ -5,8 +5,8 @@
 /* Hallmark · waive 59 · hero to X-ray gap is 64px · the stage is the hero's own picture; it is a separate section only so it can carry its heading */
 /* Hallmark · dropped data-xray-preset cells · the tabs already switch presets, so the four hover cells were a second control for one job */
 /* Hallmark · dropped copyEmailIcon · a hand-drawn SVG icon; the button label says what it does */
-@import url("./tokens.css");
-@import url("./base.css");
+@import url("./tokens.css?v=20261027b");
+@import url("./base.css?v=20261027b");
 
 /* ---------- Controls ---------- */
 .skip { position: absolute; left: var(--space-md); top: -100px; z-index: var(--z-modal); padding: var(--space-xs) var(--space-md); background: var(--color-ink); color: var(--color-paper); border-radius: var(--radius-control); }
