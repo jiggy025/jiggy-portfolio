@@ -235,8 +235,7 @@
 .screenshot-thumb:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
 
 .phones { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap-columns); align-items: start; }
-.phones .screenshot-thumb:first-child { aspect-ratio: 434 / 410; }
-.phones .screenshot-thumb:last-child { aspect-ratio: 557 / 670; }
+.phones .screenshot-thumb { aspect-ratio: 9 / 20; }
 
 .mosaic { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); grid-template-rows: repeat(3, auto); gap: var(--space-md); }
 .mosaic .screenshot-thumb { aspect-ratio: 16 / 10; }
