@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jiggy B. Palconit, Software Developer in General Santos City</title>
   <meta name="description" content="Software developer specializing in enterprise Java, Spring Boot, cross-platform Flutter, and high-performance database architectures.">
-  <meta name="theme-color" content="#060b1f">
+  <meta name="theme-color" content="#f8f9fa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0f12" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://jiggy-portfolio.vercel.app">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="favicon.svg">
@@ -21,134 +22,62 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100,400;100,500;125,300&family=Atkinson+Hyperlegible+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="hallmark.css">
 
-  <!-- Motion engine: GSAP ScrollTrigger for the scroll scenes, Lenis for inertia scroll. Deferred, so they run after the page and its inline script. -->
+  <!-- Motion: GSAP ScrollTrigger drives three scroll-linked moments in js/motion.js. Deferred, so it runs after the page and its inline script. -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
   <script defer src="js/motion.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <div class="spine" aria-hidden="true"></div>
 
-  <!-- nav: search-led bar -->
   <header class="site-header">
     <div class="container nav-bar">
-      <a href="#hero" class="brand-mark" aria-label="Jiggy B. Palconit home">
-        <span class="brand-mark__name">Jiggy B. Palconit</span>
-        <span class="brand-mark__meta">General Santos, PH</span>
-      </a>
-
-      <div class="nav-search" role="search">
-        <label for="cmdSearch" class="visually-hidden">Filter systems or stack</label>
-        <input id="cmdSearch" name="q" type="search" class="nav-search__input" placeholder="Filter systems (Spring Boot, Java, Flutter)…" autocomplete="off">
-        <span class="nav-search__key" aria-hidden="true">/</span>
-      </div>
-
+      <a href="#hero" class="wordmark" aria-label="Jiggy B. Palconit home">Jiggy B. Palconit</a>
       <nav aria-label="Primary">
         <ul class="nav-links">
+          <li><a href="#work" class="nav-link">Work</a></li>
           <li><a href="#experience" class="nav-link">Viajero ERP</a></li>
-          <li><a href="#work" class="nav-link">Systems</a></li>
           <li><a href="#arsenal" class="nav-link">Stack</a></li>
-          <li><a href="#contact" class="btn btn--quiet btn--nav">Contact me</a></li>
+          <li><a href="#contact" class="btn btn--primary btn--nav">Contact me</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- 1 · Poster hero: the headline is the canvas -->
-    <section id="hero" class="hero-poster">
-      <div class="container hero-poster__inner">
-        <h1 class="hero-poster__head" data-hero-head>
-          <span class="line"><span class="line__in">Production ERPs, </span></span>
-          <span class="line"><span class="line__in">offline Flutter, </span></span>
-          <span class="line"><span class="line__in">live race clocks.</span></span>
-        </h1>
-
-        <div class="hero-poster__foot">
-          <div class="hero-poster__copy" data-hero-copy>
-            <p class="lead">Software Developer at <span class="signoff-person">Viajero Motorcycles Inc.</span> shipping Java, Spring Boot, and SQL.</p>
-            <div class="hero-actions">
-              <a href="#contact" class="btn btn--primary">Contact me</a>
-              <a href="#work" class="btn btn--quiet">Inspect 5 systems</a>
-            </div>
-          </div>
-
-          <dl class="hero-telemetry" data-hero-copy>
-            <div class="hero-telemetry__cell" data-xray-preset="spring">
-              <dt>Backend</dt>
-              <dd>Java, Spring Boot &amp; SQL</dd>
-            </div>
-            <div class="hero-telemetry__cell" data-xray-preset="flutter">
-              <dt>Mobile</dt>
-              <dd>Cross-Platform Flutter</dd>
-            </div>
-            <div class="hero-telemetry__cell" data-xray-preset="pwa">
-              <dt>Realtime</dt>
-              <dd>Race PWA &amp; Remotion</dd>
-            </div>
-            <div class="hero-telemetry__cell" data-xray-preset="spring">
-              <dt>Base</dt>
-              <dd>General Santos, PH</dd>
-            </div>
-          </dl>
+    <section id="hero" class="hero">
+      <div class="container hero__inner">
+        <h1 class="hero__head" data-hero-copy>I build the ERP at <span class="hero__org">Viajero Motorcycles</span>.</h1>
+        <p class="lead" data-hero-copy>Also offline Flutter apps and LED race clocks, from General Santos City.</p>
+        <div class="hero-actions" data-hero-copy>
+          <a href="#contact" class="btn btn--primary">Contact me</a>
+          <a href="#work" class="btn btn--quiet">See the work</a>
         </div>
       </div>
     </section>
 
-    <!-- 2 · Pinned split: scrolling sweeps the X-ray curtain -->
-    <section id="inspect" class="section-xray">
-      <div class="container xray-pin" data-xray-pin>
-        <div class="xray-copy">
-          <h2>One request, screen and source.</h2>
-          <p class="lead">Scroll, or sweep the cursor, to peel the shipped UI back to its code.</p>
+    <!-- Signature: the shipped screen, and the source behind it. Scrolling past sweeps the curtain from one to the other. -->
+    <section id="inspect" class="section-xray" aria-labelledby="xrayTitle">
+      <div class="container">
+        <div class="xray-bar">
+          <h2 id="xrayTitle" class="xray-bar__title">Screen and source</h2>
+          <div class="segmented" role="tablist" aria-label="Which system to inspect">
+            <button type="button" class="chip-tab" role="tab" aria-selected="true" data-xray-tab="spring">Spring Boot</button>
+            <button type="button" class="chip-tab" role="tab" aria-selected="false" data-xray-tab="flutter" tabindex="-1">Flutter APK</button>
+            <button type="button" class="chip-tab" role="tab" aria-selected="false" data-xray-tab="pwa" tabindex="-1">Race PWA</button>
+          </div>
+          <button type="button" class="chip-tab chip-tab--solo" id="xrayModeBtn" aria-pressed="false">Loupe</button>
         </div>
 
-        <figure class="hero-stage-card" data-slot="hero" data-kind="product" data-alt="Interactive X-Ray code-to-UI inspector peeling back product interfaces to reveal Spring Boot and Flutter source code">
-          <div class="hero-stage__head" data-keep>
-            <span class="bench-title">X-ray inspector</span>
-            <div class="channel-strip" role="tablist" aria-label="X-Ray stack layer">
-              <button type="button" class="chip-tab" role="tab" aria-selected="true" data-xray-tab="spring">Spring Boot</button>
-              <button type="button" class="chip-tab" role="tab" aria-selected="false" data-xray-tab="flutter" tabindex="-1">Flutter APK</button>
-              <button type="button" class="chip-tab" role="tab" aria-selected="false" data-xray-tab="pwa" tabindex="-1">Race PWA</button>
-              <button type="button" class="chip-tab" id="xrayModeBtn" aria-pressed="false">Loupe</button>
-            </div>
-          </div>
-
-          <div class="hero-stage__viewport" id="xrayViewport" data-keep>
-            <!-- Layer 1: Shipped UI Surface -->
-            <div class="xray-layer xray-layer--ui" aria-hidden="true">
-              <div class="xray-ui-head">
-                <span class="xray-ui-title" id="xrayUiTitle">JRF Tracking · VG-000014</span>
-                <span class="xray-ui-status" id="xrayUiStatus">Confirmed Fixed</span>
-              </div>
-
-              <div class="xray-ui-rows">
-                <div class="xray-ui-row">
-                  <span class="xray-ui-key" id="xrayKey1">Asset &amp; Dossier</span>
-                  <span class="xray-ui-value" id="xrayVal1">C2025A000325 · 5+ repairs</span>
-                </div>
-                <div class="xray-ui-row">
-                  <span class="xray-ui-key" id="xrayKey2">Workflow Rail</span>
-                  <span class="xray-ui-value" id="xrayVal2">Validated -&gt; In Service</span>
-                </div>
-                <div class="xray-ui-row">
-                  <span class="xray-ui-key" id="xrayKey3">Branch &amp; Tech</span>
-                  <span class="xray-ui-value" id="xrayVal3">VMI Central · Tech Boboi</span>
-                </div>
-              </div>
-
-              <div class="xray-ui-foot">
-                <span class="xray-ui-total" id="xrayUiTotal">Ref: VG-000014</span>
-                <button type="button" class="chip-tab" id="xrayActionBtn">Mark work done</button>
-              </div>
+        <figure class="xray" data-xray>
+          <div class="xray__viewport" id="xrayViewport">
+            <div class="xray-layer xray-layer--ui">
+              <img id="xrayShot" src="assets/images/jrf-poster.png" width="1920" height="1080" alt="JRF tracking screen for request VG-000014, showing the five workflow steps from Submitted to Completed">
             </div>
 
-            <!-- Layer 2: Clipped Source Code Underneath -->
             <div class="xray-layer xray-layer--code" aria-hidden="true">
               <div class="xray-code-grid">
                 <pre class="xray-code-sheet xray-code-sheet--plan" id="xrayPlanSheet">
@@ -174,398 +103,291 @@
               </div>
             </div>
 
-            <!-- X-Ray Curtain Laser & Handle -->
             <div class="xray-divider" aria-hidden="true"></div>
-            <span class="xray-handle-code" aria-hidden="true">X-Ray</span>
-
-            <!-- X-Ray Circular Loupe Ring -->
             <div class="xray-loupe-ring" aria-hidden="true"></div>
           </div>
 
-          <figcaption class="hero-stage__foot" data-keep>
-            <span class="bench-title" id="heroStageTitle">Sweep cursor across to X-Ray the source code</span>
-            <span class="bench-tag" id="heroStageTag">50% X-Ray / Spring Boot</span>
+          <figcaption class="xray__caption">
+            <div class="xray-record">
+              <p class="xray-record__title"><span id="xrayUiTitle">JRF tracking, VG-000014</span> <span class="xray-record__status" id="xrayUiStatus">Confirmed Fixed</span></p>
+              <dl class="xray-record__rows">
+                <div><dt id="xrayKey1">Asset &amp; Dossier</dt><dd id="xrayVal1">C2025A000325, 5+ repairs</dd></div>
+                <div><dt id="xrayKey2">Workflow Rail</dt><dd id="xrayVal2">Validated -&gt; In Service</dd></div>
+                <div><dt id="xrayKey3">Branch &amp; Tech</dt><dd id="xrayVal3">VMI Central, Tech Boboi</dd></div>
+                <div><dt>Total</dt><dd id="xrayUiTotal">Ref: VG-000014</dd></div>
+              </dl>
+            </div>
+            <div class="xray-meta">
+              <span id="heroStageTitle">JRF System: Spring Boot 4, JobRules state machine &amp; MySQL</span>
+              <span class="xray-meta__tag" id="heroStageTag">0% Code / Spring Boot</span>
+              <button type="button" class="chip-tab chip-tab--solo" id="xrayActionBtn">Mark work done</button>
+            </div>
           </figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- 3 · Pinned night log: the Viajero audit trail lights row by row -->
     <section id="experience" class="section-case">
-      <div class="container case-pin" data-case-pin>
-        <div class="case-head">
-          <h2>Viajero Motorcycles ERP.</h2>
-          <p class="lead">Java, Spring Boot, Swing, and MySQL dealership operations.</p>
-
-          <dl class="meta-dl">
-            <div class="meta-dl__row">
-              <dt>Active duty</dt>
-              <dd>Feb 2026 to present (9 mos)</dd>
-            </div>
-            <div class="meta-dl__row">
-              <dt>Backend</dt>
-              <dd>Java 7/8/17/21, Spring Boot, Swing, MySQL</dd>
-            </div>
-            <div class="meta-dl__row">
-              <dt>Prior</dt>
-              <dd>Prime Developments VA, LGU Gensan-ICTD</dd>
-            </div>
-            <div class="meta-dl__row">
-              <dt>Credentials</dt>
-              <dd>BSIT STI GenSan, CSS NC II, SAP B1</dd>
-            </div>
-          </dl>
-
-          <a href="#work" class="btn btn--quiet">Shipped systems</a>
-        </div>
-
-        <figure class="proof-panel case-log" data-slot="case-viajero" data-kind="product" data-alt="Viajero Motorcycles ERP audit trail and MySQL execution diff">
-          <div class="proof-panel__head" data-keep>
-            <span class="bench-title">Viajero Motorcycles · ERP</span>
-            <div class="channel-strip" role="tablist" aria-label="Viajero ERP view">
-              <button type="button" class="chip-tab" role="tab" aria-selected="true" data-case-tab="trail">Audit trail</button>
-              <button type="button" class="chip-tab" role="tab" aria-selected="false" data-case-tab="diff" tabindex="-1">Schema diff</button>
-            </div>
-          </div>
-
-          <div class="proof-panel__body" id="casePanelTrail" data-keep>
-            <ol class="audit-trail" data-audit>
-              <li class="audit-trail__item">
-                <span class="audit-trail__ver">2026-09</span>
-                <span class="audit-trail__who">J. Palconit</span>
-                <span class="audit-trail__why">Spring Boot services &amp; ERP deploys.</span>
-              </li>
-              <li class="audit-trail__item">
-                <span class="audit-trail__ver">2026-06</span>
-                <span class="audit-trail__who">J. Palconit</span>
-                <span class="audit-trail__why">Moved Java 7/8 Swing off EventQueue.</span>
-              </li>
-              <li class="audit-trail__item">
-                <span class="audit-trail__ver">2026-04</span>
-                <span class="audit-trail__who">J. Palconit</span>
-                <span class="audit-trail__why">Tuned MySQL inventory queries.</span>
-              </li>
-              <li class="audit-trail__item">
-                <span class="audit-trail__ver">2026-02</span>
-                <span class="audit-trail__who">J. Palconit</span>
-                <span class="audit-trail__why">Started Java &amp; Spring Boot ERP duty.</span>
-              </li>
-            </ol>
-          </div>
-
-          <div class="proof-panel__body" id="casePanelDiff" hidden data-keep>
-            <div class="diff-rows">
-              <div class="diff-row diff-row--minus">
-                <span class="diff-sign--minus">-</span>
-                <span>Statement.executeQuery(sql) on EDT</span>
-                <span class="diff-val">Blocked</span>
-              </div>
-              <div class="diff-row diff-row--plus">
-                <span class="diff-sign--plus">+</span>
-                <span>PreparedStatement index (branch_id)</span>
-                <span class="diff-val">18 ms</span>
-              </div>
-              <div class="diff-row diff-row--plus">
-                <span class="diff-sign--plus">+</span>
-                <span>Spring Boot API + SwingWorker sync</span>
-                <span class="diff-val">60 fps</span>
-              </div>
-            </div>
-          </div>
-
-          <figcaption class="proof-panel__foot" data-keep>
-            <span class="signoff-label">General Santos City, PH</span>
-            <span class="signoff-instrument">Spring Boot + Swing + MySQL</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- 4 · Pinned rail: five systems travel sideways as you scroll down -->
-    <section id="work" class="section-work">
-      <div class="container work-head">
-        <h2>Spring Boot workflows, LED race clocks, Flutter APKs.</h2>
-        <p class="lead">Live interfaces, reels, repositories.</p>
-      </div>
-
-      <div class="work-pin" data-work-pin>
-        <div class="work-viewport">
-          <div class="work-stack" id="workStack" data-work-track>
-
-            <!-- 01: JRF Pitch Film -->
-            <article class="work-item" data-keywords="jrf pitch film spring boot java remotion react claude motion video logistics">
-              <div class="work-item__text">
-                <h3>JRF Pitch Film</h3>
-                <p>Remotion film for enterprise logistics and repair workflows backed by Spring Boot and Java.</p>
-                <button type="button" class="btn btn--quiet js-reel-restart" data-target="videoJrf">Replay</button>
-              </div>
-
-              <figure class="proof-panel video-card-wrapper" data-slot="work-jrf" data-kind="product" data-alt="JRF Pitch Film Remotion video player">
-                <div class="proof-panel__head" data-keep>
-                  <span class="bench-title">JRF Pitch Film</span>
-                  <span class="bench-tag">Spring Boot + Remotion</span>
-                </div>
-                <div class="video-stage" data-keep>
-                  <video id="videoJrf" muted loop playsinline preload="metadata" poster="assets/images/jrf-poster.png">
-                    <source src="assets/videos/jrf-pitch.mp4" type="video/mp4">
-                  </video>
-                </div>
-                <div class="scrubber-bar" data-keep>
-                  <button type="button" class="chip-tab video-play-btn" aria-label="Play or pause JRF film">
-                    <span class="play-icon">Play</span>
-                    <span class="pause-icon" hidden>Pause</span>
-                  </button>
-                  <div class="scrubber-track" role="progressbar" aria-label="JRF film progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <div class="scrubber-fill"></div>
-                  </div>
-                  <span class="timecode js-timecode">00:00.00</span>
-                  <button type="button" class="chip-tab video-mute-btn" aria-label="Mute or unmute JRF film">
-                    <span class="mute-icon">Unmute</span>
-                    <span class="unmute-icon" hidden>Mute</span>
-                  </button>
-                  <button type="button" class="chip-tab video-fullscreen-btn" aria-label="Fullscreen JRF film">Fullscreen</button>
-                </div>
-              </figure>
-            </article>
-
-            <!-- 02: Race Clock PWA -->
-            <article class="work-item" data-keywords="race clock led wall pwa typescript vite wakelock offline">
-              <div class="work-item__text">
-                <h3>Race Clock LED Wall PWA</h3>
-                <p>Multi-category race timer syncing operator controls and stage LED walls.</p>
-                <a href="https://race-clock-ten.vercel.app/" target="_blank" rel="noopener" class="btn btn--quiet">Live PWA</a>
-              </div>
-
-              <figure class="proof-panel" data-slot="work-raceclock" data-kind="product" data-alt="Interactive dual-screen Race Clock synchronizer">
-                <div class="proof-panel__head" data-keep>
-                  <span class="bench-title">Storage event bus</span>
-                  <button type="button" class="chip-tab" id="triggerLapBtn">Record split</button>
-                </div>
-                <div class="sync-sim" data-keep>
-                  <div class="sync-screen">
-                    <span class="signoff-label">Operator</span>
-                    <div class="sync-screen__clock" id="simClockA">00:42:18.45</div>
-                    <div class="sync-lap-log" id="simLogA">
-                      <span>Lap 01 / 00:14:02.11</span>
-                      <span>Lap 02 / 00:28:19.84</span>
-                    </div>
-                  </div>
-                  <div class="sync-screen">
-                    <span class="signoff-label">Stage LED</span>
-                    <div class="sync-screen__clock" id="ledWallTimer">00:42:18.45</div>
-                    <div class="sync-lap-log" id="simLogB">
-                      <span>4.2 ms localStorage</span>
-                      <span id="simLastSplit">Awaiting split…</span>
-                    </div>
-                  </div>
-                </div>
-              </figure>
-            </article>
-
-            <!-- 03: Langga Loan Tracker -->
-            <article class="work-item" data-keywords="langga loan tracker react native expo reanimated mobile motion">
-              <div class="work-item__text">
-                <h3>Langga Loan Tracker</h3>
-                <p>Mobile loan ledger with 60 fps Reanimated physics and Remotion reel.</p>
-                <button type="button" class="btn btn--quiet js-reel-restart" data-target="videoLangga">Replay</button>
-              </div>
-
-              <figure class="proof-panel video-card-wrapper" data-slot="work-langga" data-kind="product" data-alt="Langga Loan Tracker Remotion video player">
-                <div class="proof-panel__head" data-keep>
-                  <span class="bench-title">Langga Loan Tracker</span>
-                  <span class="bench-tag">React Native + Expo</span>
-                </div>
-                <div class="video-stage" data-keep>
-                  <video id="videoLangga" muted loop playsinline preload="metadata" poster="assets/images/langga-poster.png">
-                    <source src="assets/videos/langga-reel.mp4" type="video/mp4">
-                  </video>
-                </div>
-                <div class="scrubber-bar" data-keep>
-                  <button type="button" class="chip-tab video-play-btn" aria-label="Play or pause Langga film">
-                    <span class="play-icon">Play</span>
-                    <span class="pause-icon" hidden>Pause</span>
-                  </button>
-                  <div class="scrubber-track" role="progressbar" aria-label="Langga film progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <div class="scrubber-fill"></div>
-                  </div>
-                  <span class="timecode js-timecode">00:00.00</span>
-                  <button type="button" class="chip-tab video-mute-btn" aria-label="Mute or unmute Langga film">
-                    <span class="mute-icon">Unmute</span>
-                    <span class="unmute-icon" hidden>Mute</span>
-                  </button>
-                  <button type="button" class="chip-tab video-fullscreen-btn" aria-label="Fullscreen Langga film">Fullscreen</button>
-                </div>
-              </figure>
-            </article>
-
-            <!-- 04: Rent-a-Box System -->
-            <article class="work-item" data-keywords="rent-a-box flutter dart sqlite local-first mobile apk ledger">
-              <div class="work-item__text">
-                <h3>Rent-a-Box SQLite Ledger</h3>
-                <p>Offline Flutter APK for vacancy checks, box assignment, and payouts.</p>
-                <a href="https://github.com/jiggy025/rent-a-box-sys" target="_blank" rel="noopener" class="btn btn--quiet">Repository</a>
-              </div>
-
-              <figure class="proof-panel" data-slot="work-rentabox" data-kind="product" data-alt="Four Flutter mobile screens from Rent-a-Box SQLite app">
-                <div class="proof-panel__head" data-keep>
-                  <span class="bench-title">Flutter APK</span>
-                  <span class="bench-tag">SQLite 3</span>
-                </div>
-                <div class="shot-grid--portrait" data-keep>
-                  <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/instant-vacancy-check.png" data-caption="Rent-a-Box: Instant Box Vacancy Check">
-                    <img src="assets/images/rent-a-box/instant-vacancy-check.png" width="1024" height="1536" alt="Rent-a-Box Instant Vacancy Check screen" loading="lazy">
-                  </button>
-                  <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/fast-box-assignment.png" data-caption="Rent-a-Box: Fast Box Assignment">
-                    <img src="assets/images/rent-a-box/fast-box-assignment.png" width="1024" height="1536" alt="Rent-a-Box Fast Box Assignment screen" loading="lazy">
-                  </button>
-                  <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/meticulous-sales-logging.png" data-caption="Rent-a-Box: Meticulous Sales Logging">
-                    <img src="assets/images/rent-a-box/meticulous-sales-logging.png" width="1024" height="1536" alt="Rent-a-Box Sales Logging screen" loading="lazy">
-                  </button>
-                  <button type="button" class="screenshot-thumb screenshot-thumb--portrait" data-img="assets/images/rent-a-box/unified-payout-finance-control.png" data-caption="Rent-a-Box: Unified Payout &amp; Finance Control">
-                    <img src="assets/images/rent-a-box/unified-payout-finance-control.png" width="1024" height="1536" alt="Rent-a-Box Payout and Finance screen" loading="lazy">
-                  </button>
-                </div>
-              </figure>
-            </article>
-
-            <!-- 05: MIS Calendar & Viber Alerts -->
-            <article class="work-item" data-keywords="mis calendar viber alerts supabase postgresql edge functions webhooks">
-              <div class="work-item__text">
-                <h3>MIS Calendar &amp; Viber Alerts</h3>
-                <p>Supabase PostgreSQL scheduler dispatching automated Viber bot alerts.</p>
-                <a href="https://codexus-calendar.netlify.app" target="_blank" rel="noopener" class="btn btn--quiet">Live calendar</a>
-              </div>
-
-              <figure class="proof-panel" data-slot="work-mis" data-kind="product" data-alt="MIS Calendar and Viber webhook dispatch screenshots">
-                <div class="proof-panel__head" data-keep>
-                  <span class="bench-title">MIS Calendar</span>
-                  <span class="bench-tag">PostgreSQL</span>
-                </div>
-                <div class="shot-grid--landscape" data-keep>
-                  <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/calendar-overview.png" data-caption="MIS Calendar: Monthly Operations Overview">
-                    <img src="assets/images/mis-calendar/calendar-overview.png" width="1920" height="1080" alt="MIS Calendar monthly schedule overview" loading="lazy">
-                  </button>
-                  <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/calendar-details.png" data-caption="MIS Calendar: Field Visitation Drawer">
-                    <img src="assets/images/mis-calendar/calendar-details.png" width="1920" height="1080" alt="MIS Calendar field visitation drawer" loading="lazy">
-                  </button>
-                  <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/viber-dispatch.png" data-caption="MIS Calendar: Automated Viber Bot Dispatch">
-                    <img src="assets/images/mis-calendar/viber-dispatch.png" width="1087" height="812" alt="MIS Calendar Viber bot notification dispatch" loading="lazy">
-                  </button>
-                  <button type="button" class="screenshot-thumb screenshot-thumb--landscape" data-img="assets/images/mis-calendar/login-screen.png" data-caption="MIS Calendar: Role-Guarded Portal Sign-in">
-                    <img src="assets/images/mis-calendar/login-screen.png" width="764" height="485" alt="MIS Calendar company sign-in portal" loading="lazy">
-                  </button>
-                </div>
-              </figure>
-            </article>
-
-          </div>
-        </div>
-
-        <div class="container work-index" aria-hidden="true">
-          <ol class="work-index__list" data-work-index>
-            <li>JRF Pitch Film</li>
-            <li>Race Clock</li>
-            <li>Langga</li>
-            <li>Rent-a-Box</li>
-            <li>MIS Calendar</li>
-          </ol>
-          <div class="meter"><span data-work-meter></span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5 · Statement head scrubs word by word, then the spec table -->
-    <section id="arsenal" class="section-spec">
       <div class="container">
-        <h2 class="statement-head" data-scrub-words>Java 7 to 21, Spring Boot, Flutter, MySQL, Remotion.</h2>
+        <div class="case-head">
+          <h2>Nine months on the Viajero Motorcycles ERP.</h2>
+          <p class="lead">Java, Spring Boot, Swing, and MySQL for dealership operations.</p>
+        </div>
 
-        <div class="spec-table-wrap">
-          <table class="spec-table" data-spec-table>
-            <thead>
-              <tr>
-                <th scope="col">Category</th>
-                <th scope="col">Tech Stack</th>
-                <th scope="col">System</th>
-                <th scope="col">Benchmark</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Backend</td>
-                <td>Java 7/8/17/21, Spring Boot, Swing</td>
-                <td>Viajero ERP, JRF</td>
-                <td class="measured-col">18 ms</td>
-              </tr>
-              <tr>
-                <td>Database</td>
-                <td>MySQL, SQLite 3, Supabase</td>
-                <td>Viajero ERP, Rent-a-Box, MIS-Calendar</td>
-                <td class="measured-col">ACID</td>
-              </tr>
-              <tr>
-                <td>Mobile</td>
-                <td>Flutter (BLoC), Dart, React Native, Expo</td>
-                <td>Rent-a-Box, Loan-Tracker</td>
-                <td class="measured-col">Offline</td>
-              </tr>
-              <tr>
-                <td>Web &amp; Motion</td>
-                <td>TypeScript, Vite, Remotion, Reanimated</td>
-                <td>Race Clock, MIS-Calendar, Loan-Tracker</td>
-                <td class="measured-col">60 fps</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="segmented case-tabs" role="tablist" aria-label="Viajero ERP view">
+          <button type="button" class="chip-tab" role="tab" aria-selected="true" data-case-tab="trail">Timeline</button>
+          <button type="button" class="chip-tab" role="tab" aria-selected="false" data-case-tab="diff" tabindex="-1">What changed</button>
+        </div>
+
+        <div id="casePanelTrail">
+          <ol class="timeline" data-timeline>
+            <li class="timeline__item">
+              <time datetime="2026-02">Feb 2026</time>
+              <p>Started Java &amp; Spring Boot ERP duty.</p>
+            </li>
+            <li class="timeline__item">
+              <time datetime="2026-04">Apr 2026</time>
+              <p>Tuned MySQL inventory queries.</p>
+            </li>
+            <li class="timeline__item">
+              <time datetime="2026-06">Jun 2026</time>
+              <p>Moved Java 7/8 Swing off EventQueue.</p>
+            </li>
+            <li class="timeline__item">
+              <time datetime="2026-09">Sep 2026</time>
+              <p>Spring Boot services &amp; ERP deploys.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div id="casePanelDiff" hidden>
+          <ul class="diff">
+            <li class="diff__row diff__row--minus"><span class="diff__sign">-</span><code>Statement.executeQuery(sql) on EDT</code><span class="diff__val">Blocked</span></li>
+            <li class="diff__row diff__row--plus"><span class="diff__sign">+</span><code>PreparedStatement index (branch_id)</code><span class="diff__val">18 ms</span></li>
+            <li class="diff__row diff__row--plus"><span class="diff__sign">+</span><code>Spring Boot API + SwingWorker sync</code><span class="diff__val">60 fps</span></li>
+          </ul>
+        </div>
+
+        <dl class="facts">
+          <div><dt>Active duty</dt><dd>Feb 2026 to present</dd></div>
+          <div><dt>Backend</dt><dd>Java 7/8/17/21, Spring Boot, Swing, MySQL</dd></div>
+          <div><dt>Prior</dt><dd>Prime Developments VA, LGU Gensan-ICTD</dd></div>
+          <div><dt>Credentials</dt><dd>BSIT STI GenSan, CSS NC II, SAP B1</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="work" class="section-work">
+      <div class="container">
+        <div class="work-head">
+          <h2>Five systems, shipped and in use.</h2>
+          <div class="work-filter" role="search">
+            <label for="cmdSearch">Filter by stack</label>
+            <input id="cmdSearch" name="q" type="search" placeholder="Spring Boot, Flutter, SQLite" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="work-stack" id="workStack">
+
+          <article class="work-item work-item--film" data-keywords="jrf pitch film spring boot java remotion react claude motion video logistics">
+            <div class="work-item__text">
+              <h3>JRF Pitch Film</h3>
+              <p>Remotion film for enterprise logistics and repair workflows backed by Spring Boot and Java.</p>
+              <button type="button" class="btn btn--quiet js-reel-restart" data-target="videoJrf">Replay</button>
+            </div>
+            <figure class="media video-card-wrapper" data-reveal>
+              <div class="video-stage">
+                <video id="videoJrf" muted loop playsinline preload="metadata" poster="assets/images/jrf-film-poster.jpg">
+                  <source src="assets/videos/jrf-pitch.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="scrubber-bar">
+                <button type="button" class="chip-tab video-play-btn" aria-label="Play or pause JRF film">
+                  <span class="play-icon">Play</span>
+                  <span class="pause-icon" hidden>Pause</span>
+                </button>
+                <div class="scrubber-track" role="progressbar" aria-label="JRF film progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                  <div class="scrubber-fill"></div>
+                </div>
+                <span class="timecode js-timecode">00:00.00</span>
+                <button type="button" class="chip-tab video-mute-btn" aria-label="Mute or unmute JRF film">
+                  <span class="mute-icon">Unmute</span>
+                  <span class="unmute-icon" hidden>Mute</span>
+                </button>
+                <button type="button" class="chip-tab video-fullscreen-btn" aria-label="Fullscreen JRF film">Fullscreen</button>
+              </div>
+            </figure>
+          </article>
+
+          <article class="work-item work-item--clock" data-keywords="race clock led wall pwa typescript vite wakelock offline">
+            <figure class="media media--band" data-reveal>
+              <img src="assets/images/race-clock-operator.png" width="2880" height="680" alt="Race Clock operator screen with the 5 km and 10 km timers running and the 21 km heat waiting to start" loading="lazy">
+            </figure>
+            <div class="work-item__text">
+              <h3>Race Clock LED Wall PWA</h3>
+              <p>Multi-category race timer syncing operator controls and stage LED walls.</p>
+              <a href="https://race-clock-ten.vercel.app/" target="_blank" rel="noopener" class="btn btn--quiet">Live PWA</a>
+            </div>
+            <div class="sync-sim" aria-label="Two clocks kept in step over a storage event bus">
+              <div class="sync-screen">
+                <span class="sync-screen__label">Operator</span>
+                <div class="sync-screen__clock" id="simClockA">00:42:18.45</div>
+                <div class="sync-lap-log" id="simLogA">
+                  <span>Lap 01 / 00:14:02.11</span>
+                  <span>Lap 02 / 00:28:19.84</span>
+                </div>
+              </div>
+              <div class="sync-screen">
+                <span class="sync-screen__label">Stage LED</span>
+                <div class="sync-screen__clock" id="ledWallTimer">00:42:18.45</div>
+                <div class="sync-lap-log" id="simLogB">
+                  <span>4.2 ms localStorage</span>
+                  <span id="simLastSplit">Awaiting split</span>
+                </div>
+              </div>
+              <button type="button" class="btn btn--primary sync-sim__btn" id="triggerLapBtn">Record split</button>
+            </div>
+          </article>
+
+          <article class="work-item work-item--reel" data-keywords="langga loan tracker react native expo reanimated mobile motion">
+            <figure class="media video-card-wrapper" data-reveal>
+              <div class="video-stage">
+                <video id="videoLangga" muted loop playsinline preload="metadata" poster="assets/images/langga-poster.png">
+                  <source src="assets/videos/langga-reel.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="scrubber-bar">
+                <button type="button" class="chip-tab video-play-btn" aria-label="Play or pause Langga film">
+                  <span class="play-icon">Play</span>
+                  <span class="pause-icon" hidden>Pause</span>
+                </button>
+                <div class="scrubber-track" role="progressbar" aria-label="Langga film progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                  <div class="scrubber-fill"></div>
+                </div>
+                <span class="timecode js-timecode">00:00.00</span>
+                <button type="button" class="chip-tab video-mute-btn" aria-label="Mute or unmute Langga film">
+                  <span class="mute-icon">Unmute</span>
+                  <span class="unmute-icon" hidden>Mute</span>
+                </button>
+                <button type="button" class="chip-tab video-fullscreen-btn" aria-label="Fullscreen Langga film">Fullscreen</button>
+              </div>
+            </figure>
+            <div class="work-item__text">
+              <h3>Langga Loan Tracker</h3>
+              <p>Mobile loan ledger with 60 fps Reanimated physics and Remotion reel.</p>
+              <button type="button" class="btn btn--quiet js-reel-restart" data-target="videoLangga">Replay</button>
+            </div>
+          </article>
+
+          <article class="work-item work-item--phones" data-keywords="rent-a-box flutter dart sqlite local-first mobile apk ledger espasyo">
+            <div class="work-item__text">
+              <h3>Rent-a-Box SQLite Ledger</h3>
+              <p>Offline Flutter APK for vacancy checks, box assignment, and payouts.</p>
+              <a href="https://github.com/jiggy025/rent-a-box-sys" target="_blank" rel="noopener" class="btn btn--quiet">Repository</a>
+            </div>
+            <div class="phones" data-reveal>
+              <button type="button" class="screenshot-thumb" data-img="assets/images/rent-a-box/screen-vacancy.png" data-caption="Rent-a-Box: box detail, vacant">
+                <img src="assets/images/rent-a-box/screen-vacancy.png" width="434" height="410" alt="Rent-a-Box box detail screen showing Box 1 as vacant with an Occupy button" loading="lazy">
+              </button>
+              <button type="button" class="screenshot-thumb" data-img="assets/images/rent-a-box/screen-payout.png" data-caption="Rent-a-Box: seller balance and payouts">
+                <img src="assets/images/rent-a-box/screen-payout.png" width="557" height="670" alt="Rent-a-Box seller screen with available balance, lifetime sales and cash-out actions" loading="lazy">
+              </button>
+            </div>
+          </article>
+
+          <article class="work-item work-item--mosaic" data-keywords="mis calendar viber alerts supabase postgresql edge functions webhooks">
+            <div class="work-item__text">
+              <h3>MIS Calendar &amp; Viber Alerts</h3>
+              <p>Supabase PostgreSQL scheduler dispatching automated Viber bot alerts.</p>
+              <a href="https://codexus-calendar.netlify.app" target="_blank" rel="noopener" class="btn btn--quiet">Live calendar</a>
+            </div>
+            <div class="mosaic" data-reveal>
+              <button type="button" class="screenshot-thumb mosaic__main" data-img="assets/images/mis-calendar/calendar-overview.png" data-caption="MIS Calendar: monthly operations overview">
+                <img src="assets/images/mis-calendar/calendar-overview.png" width="1920" height="1080" alt="MIS Calendar monthly schedule overview" loading="lazy">
+              </button>
+              <button type="button" class="screenshot-thumb" data-img="assets/images/mis-calendar/viber-dispatch.png" data-caption="MIS Calendar: automated Viber bot dispatch">
+                <img src="assets/images/mis-calendar/viber-dispatch.png" width="1087" height="812" alt="MIS Calendar Viber bot notification dispatch" loading="lazy">
+              </button>
+              <button type="button" class="screenshot-thumb" data-img="assets/images/mis-calendar/calendar-details.png" data-caption="MIS Calendar: field visitation drawer">
+                <img src="assets/images/mis-calendar/calendar-details.png" width="1920" height="1080" alt="MIS Calendar field visitation drawer" loading="lazy">
+              </button>
+              <button type="button" class="screenshot-thumb" data-img="assets/images/mis-calendar/login-screen.png" data-caption="MIS Calendar: role-guarded sign-in">
+                <img src="assets/images/mis-calendar/login-screen.png" width="764" height="485" alt="MIS Calendar company sign-in portal" loading="lazy">
+              </button>
+            </div>
+          </article>
+
+        </div>
+        <p class="work-empty" id="workEmpty" hidden>No system matches that filter.</p>
+      </div>
+    </section>
+
+    <section id="arsenal" class="section-stack">
+      <div class="container">
+        <h2>Java 7 to 21, Spring Boot, Flutter, MySQL, Remotion.</h2>
+        <div class="stack-grid">
+          <div class="stack-cell">
+            <h3>Backend</h3>
+            <p class="stack-cell__figure">18 ms</p>
+            <dl>
+              <div><dt>Stack</dt><dd>Java 7/8/17/21, Spring Boot, Swing</dd></div>
+              <div><dt>Runs in</dt><dd>Viajero ERP, JRF</dd></div>
+            </dl>
+          </div>
+          <div class="stack-cell">
+            <h3>Database</h3>
+            <p class="stack-cell__figure">ACID</p>
+            <dl>
+              <div><dt>Stack</dt><dd>MySQL, SQLite 3, Supabase</dd></div>
+              <div><dt>Runs in</dt><dd>Viajero ERP, Rent-a-Box, MIS-Calendar</dd></div>
+            </dl>
+          </div>
+          <div class="stack-cell">
+            <h3>Mobile</h3>
+            <p class="stack-cell__figure">Offline</p>
+            <dl>
+              <div><dt>Stack</dt><dd>Flutter (BLoC), Dart, React Native, Expo</dd></div>
+              <div><dt>Runs in</dt><dd>Rent-a-Box, Loan-Tracker</dd></div>
+            </dl>
+          </div>
+          <div class="stack-cell">
+            <h3>Web &amp; Motion</h3>
+            <p class="stack-cell__figure">60 fps</p>
+            <dl>
+              <div><dt>Stack</dt><dd>TypeScript, Vite, Remotion, Reanimated</dd></div>
+              <div><dt>Runs in</dt><dd>Race Clock, MIS-Calendar, Loan-Tracker</dd></div>
+            </dl>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 6 · The close: the head rises letter by letter -->
     <section id="contact" class="section-contact">
       <div class="container contact-grid">
-        <h2 class="contact-head" data-rise-chars>Talk to Jiggy.</h2>
-
         <div class="contact-copy">
+          <h2>Hiring for Java, Spring Boot or Flutter?</h2>
           <p class="lead">Open to engineering roles in General Santos and remote.</p>
           <div class="hero-actions">
             <button type="button" id="copyEmailBtn" class="btn btn--primary">
-              <svg id="copyEmailIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-              </svg>
               <span id="copyEmailText">Copy jigspals025@gmail.com</span>
             </button>
             <a href="tel:09929131887" class="btn btn--quiet">Call 0992 913 1887</a>
           </div>
         </div>
 
-        <dl class="meta-dl contact-dl">
-          <div class="meta-dl__row">
-            <dt>Location</dt>
-            <dd>General Santos, PH (UTC+8)</dd>
-          </div>
-          <div class="meta-dl__row">
-            <dt>Email</dt>
-            <dd>jigspals025@gmail.com</dd>
-          </div>
-          <div class="meta-dl__row">
-            <dt>Phone</dt>
-            <dd><a href="tel:09929131887">0992 913 1887</a></dd>
-          </div>
-          <div class="meta-dl__row">
-            <dt>GitHub</dt>
-            <dd><a href="https://github.com/jiggy025" target="_blank" rel="noopener">github.com/jiggy025</a></dd>
-          </div>
+        <dl class="contact-dl">
+          <div><dt>Location</dt><dd>General Santos, PH (UTC+8)</dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:jigspals025@gmail.com">jigspals025@gmail.com</a></dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:09929131887">0992 913 1887</a></dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/jiggy025" target="_blank" rel="noopener">github.com/jiggy025</a></dd></div>
         </dl>
       </div>
     </section>
   </main>
 
-  <!-- footer: colophon block -->
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p class="colophon">Signed in General Santos City by Jiggy B. Palconit, Software Developer. Built by hand in HTML and CSS, set in Mona Sans, moved with GSAP and Lenis. <time datetime="2026-10-27">27 October 2026</time>.</p>
-
+      <p class="footer-note"><span class="wordmark">Jiggy B. Palconit</span> Software Developer in General Santos City. Built by hand in HTML and CSS.</p>
       <ul class="footer-links">
         <li><a href="#hero" class="nav-link">Top</a></li>
         <li><a href="https://github.com/jiggy025" target="_blank" rel="noopener" class="nav-link">GitHub</a></li>
@@ -579,17 +401,13 @@
   <div id="imageLightbox" class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Screenshot preview" hidden>
     <button type="button" id="lightboxClose" class="btn btn--quiet btn--nav">Close preview (Esc)</button>
     <figure class="lightbox-frame">
-      <img id="lightboxImg" src="assets/images/rent-a-box/instant-vacancy-check.png" width="1024" height="1536" alt="System screenshot preview">
+      <img id="lightboxImg" src="assets/images/rent-a-box/screen-vacancy.png" width="434" height="410" alt="System screenshot preview">
       <figcaption id="lightboxCaption" class="lightbox-caption"></figcaption>
     </figure>
   </div>
 
   <!-- Preserved Toast Hook -->
   <div id="toastNotification" class="toast-hook" role="status" aria-live="polite" hidden></div>
-
-  <!-- Hallmark Slot Script -->
-  <script>window.hallmarkSlots = (m) => { for (const [k, v] of Object.entries(m)) { const s = document.querySelector(`[data-slot="${k}"]`); if (!s) continue; const im = new Image(); im.src = typeof v === 'string' ? v : v.src; im.alt = (typeof v === 'object' && v.alt) || s.dataset.alt || ''; s.querySelectorAll(':scope > img').forEach((o) => o.remove()); s.prepend(im); } };
-  document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });</script>
 
   <!-- Console Instrument & Motion Controller -->
   <script>
@@ -602,7 +420,6 @@
       const xrayModeBtn = document.getElementById('xrayModeBtn');
       const xrayActionBtn = document.getElementById('xrayActionBtn');
       const xrayTabs = document.querySelectorAll('[data-xray-tab]');
-      const xrayPresetCells = document.querySelectorAll('[data-xray-preset]');
       const elHeroTitle = document.getElementById('heroStageTitle');
       const elHeroTag = document.getElementById('heroStageTag');
 
@@ -618,6 +435,7 @@
         const elUiTotal = document.getElementById('xrayUiTotal');
         const elPlanSheet = document.getElementById('xrayPlanSheet');
         const elCodeSheet = document.getElementById('xrayCodeSheet');
+        const elShot = document.getElementById('xrayShot');
 
         let txCounter = 14;
         let currentPreset = 'spring';
@@ -633,11 +451,13 @@
             spring: {
               tag: 'Spring Boot',
               foot: 'JRF System: Spring Boot 4, JobRules state machine & MySQL',
-              uiTitle: `JRF Tracking · VG-${padRef}`,
+              img: 'assets/images/jrf-poster.png',
+              alt: 'JRF tracking screen for request VG-000014, showing the five workflow steps from Submitted to Completed',
+              uiTitle: `JRF tracking, VG-${padRef}`,
               uiStatus: 'Confirmed Fixed',
-              k1: 'Asset & Dossier', v1: 'C2025A000325 · 5+ repairs',
+              k1: 'Asset & Dossier', v1: 'C2025A000325, 5+ repairs',
               k2: 'Workflow Rail', v2: 'Validated -> In Service',
-              k3: 'Branch & Tech', v3: 'VMI Central · Tech Boboi',
+              k3: 'Branch & Tech', v3: 'VMI Central, Tech Boboi',
               total: `Ref: VG-${padRef}`,
               btn: 'Mark work done',
               plan: [
@@ -666,6 +486,8 @@
             flutter: {
               tag: 'Flutter + SQLite',
               foot: 'Rent-a-Box APK: Offline-first Flutter BLoC & SQLite 3 WAL',
+              img: 'assets/images/rent-a-box/screen-payout.png',
+              alt: 'Rent-a-Box seller screen with available balance, lifetime sales and cash-out actions',
               uiTitle: 'Rent-a-Box Payout',
               uiStatus: 'Saved Offline',
               k1: 'Box & Tenant', v1: `Box #B-14 / #RNB-${idNum}`,
@@ -699,6 +521,8 @@
             pwa: {
               tag: 'Race PWA',
               foot: 'Race Clock LED Wall: WakeLock API + cross-window storage bus',
+              img: 'assets/images/race-clock-operator.png',
+              alt: 'Race Clock operator screen with the 5 km and 10 km timers running',
               uiTitle: 'Race Clock Broadcast',
               uiStatus: 'WakeLock Active',
               k1: 'Heat & Split', v1: `21K Elite / #SPL-${idNum}`,
@@ -736,6 +560,11 @@
         const renderPreset = (key) => {
           currentPreset = key;
           const p = buildPreset(key, txCounter);
+          if (elShot && p.img && !elShot.src.endsWith(p.img)) {
+            elShot.src = p.img;
+            elShot.alt = p.alt || '';
+          }
+          xrayViewport.dataset.preset = key;
           if (elUiTitle) elUiTitle.textContent = p.uiTitle;
           if (elUiStatus) elUiStatus.textContent = p.uiStatus;
           if (elKey1) elKey1.textContent = p.k1;
@@ -767,16 +596,6 @@
         xrayTabs.forEach((btn) => {
           btn.addEventListener('click', () => {
             const key = btn.getAttribute('data-xray-tab');
-            if (key) renderPreset(key);
-          });
-        });
-
-        xrayPresetCells.forEach((cell) => {
-          const key = cell.getAttribute('data-xray-preset');
-          cell.addEventListener('pointerenter', () => {
-            if (key) renderPreset(key);
-          });
-          cell.addEventListener('click', () => {
             if (key) renderPreset(key);
           });
         });
@@ -1039,10 +858,15 @@
         });
         cmdSearch.addEventListener('input', () => {
           const q = cmdSearch.value.trim().toLowerCase();
+          let shown = 0;
           workItems.forEach((item) => {
             const hay = (item.getAttribute('data-keywords') || '') + ' ' + item.innerText.toLowerCase();
-            item.classList.toggle('is-filtered-out', Boolean(q && !hay.includes(q)));
+            const out = Boolean(q && !hay.includes(q));
+            item.classList.toggle('is-filtered-out', out);
+            if (!out) shown += 1;
           });
+          const empty = document.getElementById('workEmpty');
+          if (empty) empty.hidden = shown > 0;
         });
       }
 
