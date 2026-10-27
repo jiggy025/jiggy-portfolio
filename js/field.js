@@ -1,10 +1,11 @@
 /**
  * Hero field: the JRF request stream drawn as characters on an 8 by 16 grid.
  *
- * Left of the axis, raw requests arrive as dense, noisy packets carrying real payload fragments.
- * At the axis each one becomes a typed job state and travels on as a thin stream to its label,
- * which sits at the right edge of the content. Now and then a request loses the @Version race:
- * its lane shows 409 Conflict, the stream stalls, and the next pass retries it.
+ * Each lane carries one request at a time, in four phases:
+ *   raw    a dense, noisy packet drags its JSON fragment toward the axis, where the fragment scrambles as it is typed
+ *   typed  the job state slides from the axis to the content edge, a short trail behind it
+ *   hold   (only when the request lost the @Version race) the state stalls in red with 409, then is retried
+ *   done   at the edge it shows a check and 200, and fades out
  *
  * Density decides the character (" .:-=+*#%@") and its tint (the theme's four glyph colours, then cobalt).
  * Runs at 30 fps, pauses off screen, follows the pointer with a small lens,
@@ -21,22 +22,25 @@
   const CELL_W = 8;
   const CELL_H = 16;
   const RAMP = ' .:-=+*#%@';
-  const TRAIL = 26; // how many cells a packet's dense tail spans
+  const TRAIL = 26; // cells of dense tail behind a raw packet
+  const HOLD = 1.6; // seconds a failed request waits before its retry
+  const DONE = 1.1; // seconds the check stays before it has faded out
+  const STALL = 0.28; // how far along the typed side a failed request gets before it stalls
 
   // The five JRF states and a real fragment of each request's payload (from the X-ray's plan sheet)
   const LANES = [
-    { state: 'Submitted', raw: '"asset":"C2025A000325"' },
-    { state: 'Validated', raw: '"rail":"Submitted -> Validated"' },
-    { state: 'In Service', raw: '"tech":"Boboi"' },
-    { state: 'Delivered', raw: '"trip":"Delivered -> At Branch"' },
-    { state: 'Completed', raw: '"audit":"job_request_event"' },
+    { state: 'Submitted', raw: '{"asset":"C2025A000325"}' },
+    { state: 'Validated', raw: '{"rail":"Submitted -> Validated"}' },
+    { state: 'In Service', raw: '{"tech":"Boboi"}' },
+    { state: 'Delivered', raw: '{"trip":"Delivered -> At Branch"}' },
+    { state: 'Completed', raw: '{"audit":"job_request_event"}' },
   ];
 
   // Read the theme's colours from the tokens, so the canvas never carries its own literals
   const css = getComputedStyle(document.documentElement);
   const token = (name) => css.getPropertyValue(name).trim();
   const TINTS = ['--color-glyph-1', '--color-glyph-2', '--color-glyph-3', '--color-glyph-4', '--color-accent-deep'].map(token);
-  const INK = token('--color-ink-2');
+  const INK = token('--color-ink');
   const MUTED = token('--color-muted');
   const ACCENT = token('--color-accent');
   const ERROR = token('--color-error');
@@ -62,15 +66,17 @@
   };
   const clamp01 = (n) => Math.max(0, Math.min(1, n));
   const ramp = (from, to, n) => clamp01((n - from) / (to - from));
+  const easeInOut = (n) => (n < 0.5 ? 4 * n * n * n : 1 - Math.pow(-2 * n + 2, 3) / 2);
+  const easeOut = (n) => 1 - Math.pow(1 - n, 3);
 
   // Layout in cells, recomputed on resize
   let cols = 0;
   let rows = 0;
   let laneRows = [];
-  let fieldStart = 0; // where raw packets begin on lanes that share rows with the text
-  let laneStart = []; // per lane: lanes clear of the text start from the left edge of the content
+  let laneStart = []; // per lane: lanes clear of the text start from the content's left edge
+  let fieldStart = 0;
   let axisCol = 0; // where raw becomes typed
-  let labelEnd = 0; // the right edge of the content box: labels end here
+  let edgeCol = 0; // the right edge of the content box: typed states travel to here
   let textBox = null; // the headline block, in cells, which the field keeps clear of
   let wide = true;
   let pointer = null;
@@ -91,7 +97,7 @@
     const pad = parseFloat(getComputedStyle(inner).paddingLeft) || 0;
     const left = box.left - heroBox.left + pad;
     const width = box.width - pad * 2;
-    labelEnd = Math.floor((left + width) / CELL_W);
+    edgeCol = Math.floor((left + width) / CELL_W);
 
     // The text block: the union of the headline, the sentence and the buttons, padded by a few cells.
     // A Range measures the text itself; the elements' own boxes stretch to the full container width.
@@ -108,39 +114,62 @@
     wide = w >= 960;
     if (wide) {
       fieldStart = Math.max(textBox.r, Math.floor((left + width * 0.5) / CELL_W));
-      axisCol = Math.floor((left + width * 0.76) / CELL_W);
-      const top = Math.floor(rows * 0.12);
-      const span = Math.floor(rows * 0.76);
+      axisCol = Math.floor((left + width * 0.66) / CELL_W);
+      const top = Math.floor(rows * 0.18);
+      const span = Math.floor(rows * 0.64);
       laneRows = LANES.map((_, i) => top + Math.round((span * i) / (LANES.length - 1)));
-      // A lane above or below the text block wraps around it, so its raw side starts at the content's left edge
       const contentLeft = Math.floor(left / CELL_W);
       laneStart = laneRows.map((r) => (r < textBox.t - 2 || r > textBox.b + 2 ? contentLeft : fieldStart));
     } else {
       // Narrow: the field is a band under the text, lanes stacked at the bottom
       fieldStart = Math.floor(left / CELL_W);
-      axisCol = Math.floor((left + width * 0.42) / CELL_W);
+      axisCol = Math.floor((left + width * 0.36) / CELL_W);
       const top = rows - 13;
       laneRows = LANES.map((_, i) => top + i * 2);
       laneStart = laneRows.map(() => fieldStart);
     }
   };
 
-  // Each lane's packet runs on a loop: across the raw side at lane speed, then along the typed side three times faster.
-  // Every loop is one request.
-  const TYPED_SPEED = 3;
-  const laneSpeed = (i) => 9 + i * 1.7;
-  const packetAt = (i, t) => {
-    const from = laneStart[i];
-    const rawLen = axisCol - (from - 10);
-    const typedLen = (labelEnd + TRAIL - axisCol) / TYPED_SPEED;
-    const period = Math.max(20, rawLen + typedLen);
-    const travel = t * laneSpeed(i) + i * 37;
-    const cycle = Math.floor(travel / period);
-    const pos = travel % period;
-    const head = pos < rawLen ? from - 10 + pos : axisCol + (pos - rawLen) * TYPED_SPEED;
-    // About one request in four loses the @Version race (the same pseudo-random pick each time this cycle comes round)
-    const failed = hash(cycle, i + 11) < 0.25;
-    return { head, failed };
+  // One request per lane per loop. The loop length is fixed, so a failed request (hold, then retry)
+  // and a clean one take the same time: the clean one simply travels the typed side more slowly.
+  const laneSpeed = (i) => 10 + i * 1.6;
+  const requestAt = (i, t) => {
+    const speed = laneSpeed(i);
+    const from = laneStart[i] - 10;
+    const rawDur = (axisCol - from) / speed;
+    const typedDur = Math.max(1.4, (edgeCol - axisCol) / (speed * 2.2));
+    const period = rawDur + HOLD + typedDur + DONE;
+    const shifted = t + hash(i, 5) * period;
+    const cycle = Math.floor(shifted / period);
+    const tau = shifted - cycle * period;
+    const failed = hash(cycle, i + 11) < 0.3;
+    const req = { rawHead: from + tau * speed, failed, phase: 'raw', p: 0, done: 0, retried: false };
+    if (tau < rawDur) return req;
+
+    const s = tau - rawDur;
+    if (failed) {
+      if (s < HOLD) {
+        req.phase = 'hold';
+        req.p = STALL * easeOut(Math.min(1, s / 0.45));
+      } else if (s < HOLD + typedDur) {
+        req.phase = 'typed';
+        req.retried = true;
+        req.p = STALL + (1 - STALL) * easeInOut((s - HOLD) / typedDur);
+      } else {
+        req.phase = 'done';
+        req.retried = true;
+        req.p = 1;
+        req.done = (s - HOLD - typedDur) / DONE;
+      }
+    } else if (s < HOLD + typedDur) {
+      req.phase = 'typed';
+      req.p = easeInOut(s / (HOLD + typedDur));
+    } else {
+      req.phase = 'done';
+      req.p = 1;
+      req.done = (s - HOLD - typedDur) / DONE;
+    }
+    return req;
   };
 
   // A cell is kept clear when it sits under the text block; the edge of the block fades in over a few cells
@@ -156,18 +185,20 @@
     ctx.clearRect(0, 0, cols * CELL_W, rows * CELL_H);
     ctx.font = `400 ${CELL_H * 0.72}px "JetBrains Mono", ui-monospace, monospace`;
     ctx.textBaseline = 'top';
+    const charW = ctx.measureText('0').width;
 
-    const packets = LANES.map((_, i) => packetAt(i, t));
-    let showingError = false;
-    packets.forEach((pk) => {
-      if (pk.failed && pk.head > axisCol) {
-        if (showingError) pk.failed = false;
-        showingError = true;
+    const reqs = LANES.map((_, i) => requestAt(i, t));
+    // Only one lane is ever in trouble at a time, so an error reads as an event and not as noise
+    let errorShown = false;
+    reqs.forEach((q) => {
+      if (q.failed && q.phase === 'hold') {
+        if (errorShown) q.failed = false;
+        errorShown = true;
       }
     });
-    const startRow = wide ? 0 : laneRows[0] - 3;
 
-    // 1. Raw side: turbulence shaped into streams around each lane, plus a faint ambient cloud around the text
+    // 1. Raw side: turbulence shaped into streams around each lane
+    const startRow = wide ? 0 : laneRows[0] - 3;
     for (let r = Math.max(0, startRow); r < rows; r += 1) {
       let lane = 0;
       let laneDist = Infinity;
@@ -176,20 +207,20 @@
         if (d < laneDist) { laneDist = d; lane = i; }
       }
       const laneWeight = Math.exp(-(laneDist * laneDist) / (wide ? 10 : 3));
-      const { head, failed } = packets[lane];
+      const q = reqs[lane];
 
       for (let c = 0; c < axisCol; c += 1) {
         const clear = textClear(c, r);
         if (clear === 0) continue;
         const x = c * CELL_W;
         const y = r * CELL_H;
-        const inLanes = wide ? ramp(laneStart[lane] - 2, laneStart[lane] + 10, c) : 1;
-        const behind = head - c;
+        const inLane = wide ? ramp(laneStart[lane] - 2, laneStart[lane] + 10, c) : 1;
+        const behind = q.rawHead - c;
         const packet = behind > 0 && behind < TRAIL ? Math.exp(-behind / 9) : 0;
         const turb = noise(c * 0.09 - t * 0.55, r * 0.21 + lane * 3.1);
-        // A failed request piles up against the axis while it waits to retry
-        const queue = failed && head > axisCol && c > axisCol - 10 ? 0.35 * laneWeight : 0;
-        let d = (turb * 0.55 * laneWeight + packet * laneWeight * 0.95 + turb * 0.12) * inLanes + queue;
+        // A request waiting on its retry piles up against the axis
+        const queue = q.phase === 'hold' && q.failed && c > axisCol - 10 ? 0.4 * laneWeight : 0;
+        let d = ((turb * 0.55 + packet * 0.95) * laneWeight + turb * 0.12) * inLane + queue;
         d *= clear;
         if (pointer) {
           const dx = (x - pointer.x) / 90;
@@ -203,85 +234,97 @@
       }
     }
 
-    // 2. Payload fragments ride behind their packet until it reaches the axis
+    const axisX = axisCol * CELL_W + CELL_W / 2;
+    const edgeX = edgeCol * CELL_W;
+
+    // 2. The JSON fragment rides behind its packet and scrambles as it reaches the axis, where it is typed
     LANES.forEach((ln, i) => {
-      const { head } = packets[i];
-      if (head > axisCol + 4) return;
-      const textW = ctx.measureText(ln.raw).width;
-      const startX = Math.round(head - 8) * CELL_W - textW;
-      if (startX < (laneStart[i] + 4) * CELL_W || startX + textW > (axisCol - 1) * CELL_W) return;
+      const q = reqs[i];
+      const endX = (q.rawHead - 6) * CELL_W;
+      const startX = endX - ln.raw.length * charW;
+      if (endX < (laneStart[i] + 6) * CELL_W || startX > axisX) return;
       const y = laneRows[i] * CELL_H;
       ctx.fillStyle = PAPER;
-      ctx.fillRect(startX - 4, y, textW + 8, CELL_H);
-      ctx.fillStyle = TINTS[3];
-      ctx.fillText(ln.raw, startX, y);
+      ctx.fillRect(Math.max(startX - 4, 0), y, Math.min(endX, axisX) - startX + 6, CELL_H);
+      for (let k = 0; k < ln.raw.length; k += 1) {
+        const cx = startX + k * charW;
+        if (cx > axisX - charW) break;
+        const near = (cx - (axisX - 10 * CELL_W)) / (10 * CELL_W); // 0 far from the axis, 1 at it
+        const scramble = near > 0 && hash(k + i * 31, Math.floor(t * 14)) < near * 0.8;
+        ctx.fillStyle = scramble ? TINTS[4] : TINTS[3];
+        ctx.fillText(scramble ? RAMP[2 + Math.floor(hash(k, Math.floor(t * 20)) * 7)] : ln.raw[k], cx, y);
+      }
     });
 
-    // 3. The axis, where a raw request becomes a typed job state
-    const axisX = axisCol * CELL_W + CELL_W / 2;
+    // 3. The axis: a dotted rule with end caps, labelled with where requests come from and where they land
+    const axisTop = (laneRows[0] - 1.5) * CELL_H;
+    const axisBottom = (laneRows[laneRows.length - 1] + 2) * CELL_H;
     ctx.fillStyle = ACCENT;
-    ctx.fillRect(axisX, laneRows[0] * CELL_H - CELL_H * 1.5, 1, (laneRows[laneRows.length - 1] - laneRows[0] + 3) * CELL_H);
+    for (let y = axisTop; y < axisBottom; y += 4) ctx.fillRect(axisX, y, 1, 2);
+    ctx.fillRect(axisX - 4, axisTop, 9, 1);
+    ctx.fillRect(axisX - 4, axisBottom, 9, 1);
     if (wide) {
-      const labelY = (laneRows[0] - 3) * CELL_H;
+      const labelY = axisTop - CELL_H * 1.6;
       const left = 'POST /api/requests';
       const leftW = ctx.measureText(left).width;
       ctx.fillStyle = PAPER;
-      ctx.fillRect(axisX - leftW - 18, labelY - 2, leftW + 12, CELL_H + 4);
-      ctx.fillStyle = MUTED;
-      ctx.fillText(left, axisX - leftW - 12, labelY);
+      ctx.fillRect(axisX - leftW / 2 - 6, labelY - 2, leftW + 12, CELL_H + 4);
+      ctx.fillStyle = INK;
+      ctx.fillText(left, axisX - leftW / 2, labelY);
       const right = 'job_request_event';
-      ctx.fillText(right, labelEnd * CELL_W - ctx.measureText(right).width, labelY);
+      ctx.fillText(right, edgeX - ctx.measureText(right).width, labelY);
     }
 
-    // 4. Typed side: a hairline from the axis to each label, the packet's typed stream running along it
+    // 4. Typed side: the state travels to the edge, stalls in red when it has to retry, and checks out at the edge
     LANES.forEach((ln, i) => {
-      const { head, failed } = packets[i];
+      const q = reqs[i];
       const y = laneRows[i] * CELL_H;
       const midY = y + CELL_H / 2;
-      const stateW = ctx.measureText(ln.state).width;
-      const labelX = labelEnd * CELL_W - stateW;
-      const lineEnd = labelX - CELL_W;
-      const passed = head > axisCol;
-      const stallX = axisX + (lineEnd - axisX) * 0.4;
 
-      // The leader: a dotted hairline in the lightest glyph tint
+      // Lane texture: a dotted hairline the whole way across
       ctx.fillStyle = TINTS[1];
-      for (let x = axisX + CELL_W; x < lineEnd; x += 4) ctx.fillRect(x, midY, 2, 1);
+      for (let x = axisX + CELL_W; x < edgeX; x += 4) ctx.fillRect(x, midY, 2, 1);
+      if (q.phase === 'raw') return;
 
-      if (passed && failed) {
-        // 409: the stream stops partway, dashed in the error colour, with the status beside the axis
-        ctx.fillStyle = ERROR;
-        const reach = Math.min(stallX, axisX + (head - axisCol) * CELL_W);
-        for (let x = axisX + 2; x < reach; x += 6) ctx.fillRect(x, midY - 0.5, 4, 2);
-        ctx.fillRect(reach, y + 3, 1, CELL_H - 6);
-        const code = wide ? '409 Conflict, retrying' : '409';
-        const codeW = ctx.measureText(code).width;
-        const codeX = axisX + 10;
+      const stateW = ctx.measureText(ln.state).width;
+      const travel = edgeX - stateW - (axisX + 14);
+      const labelX = axisX + 14 + q.p * travel;
+
+      if (q.phase === 'done') {
+        // 200: the check sits in front of the state at the edge, and the pair fades out
+        ctx.globalAlpha = 1 - easeOut(clamp01(q.done));
+        const ok = '✓ 200';
+        const okW = ctx.measureText(ok).width;
         ctx.fillStyle = PAPER;
-        ctx.fillRect(codeX - 4, y - CELL_H, codeW + 8, CELL_H);
-        ctx.fillStyle = ERROR;
-        ctx.fillText(code, codeX, y - CELL_H + 1);
-      } else if (passed) {
-        // Typed and on its way: a short solid run that slides from the axis to the label
-        const tip = Math.min(lineEnd, axisX + (head - axisCol) * CELL_W);
-        const tail = Math.max(axisX, tip - CELL_W * 8);
+        ctx.fillRect(labelX - okW - 14, y, okW + stateW + 18, CELL_H);
         ctx.fillStyle = ACCENT;
-        ctx.fillRect(tail, midY - 0.5, tip - tail, 2);
+        ctx.fillText(ok, labelX - okW - 10, y);
+        ctx.fillStyle = q.retried ? ACCENT : INK;
+        ctx.fillText(ln.state, labelX, y);
+        ctx.globalAlpha = 1;
+        return;
       }
 
-      // The state's label at the edge of the content; it lights up as its request arrives
-      const arrived = passed && !failed && head > labelEnd - 6 && head < labelEnd + TRAIL - 6;
-      ctx.fillStyle = PAPER;
-      ctx.fillRect(labelX - 4, y, stateW + 8, CELL_H);
-      ctx.fillStyle = arrived || i === LANES.length - 1 ? ACCENT : INK;
-      ctx.fillText(ln.state, labelX, y);
+      const holding = q.phase === 'hold' && q.failed;
+      // The trail: a short solid run behind the state, dashed red while it waits on a retry
+      const trailEnd = labelX - 6;
+      const trailStart = Math.max(axisX + 2, trailEnd - CELL_W * 9);
+      ctx.fillStyle = holding ? ERROR : ACCENT;
+      if (holding) {
+        for (let x = trailStart; x < trailEnd; x += 6) ctx.fillRect(x, midY - 0.5, 3, 2);
+      } else {
+        ctx.fillRect(trailStart, midY - 0.5, trailEnd - trailStart, 2);
+      }
 
-      // Past the content edge, the typed events keep streaming into the gutter
-      if (wide) {
-        ctx.fillStyle = TINTS[0];
-        for (let c = labelEnd + 2; c < cols; c += 1) {
-          ctx.fillText(noise(c * 0.6 - t * 2.2, i * 5.3) > 0.45 ? '|' : ':', c * CELL_W, y);
-        }
+      const tag = holding ? '409 ↻' : q.retried ? '↻ 1' : '';
+      const tagW = tag ? ctx.measureText(tag).width + 8 : 0;
+      ctx.fillStyle = PAPER;
+      ctx.fillRect(labelX - 4, y, stateW + tagW + 8, CELL_H);
+      ctx.fillStyle = holding ? ERROR : q.retried ? ACCENT : INK;
+      ctx.fillText(ln.state, labelX, y);
+      if (tag) {
+        ctx.fillStyle = holding ? ERROR : MUTED;
+        ctx.fillText(tag, labelX + stateW + 8, y);
       }
     });
   };
@@ -290,8 +333,8 @@
   document.documentElement.classList.add('has-field');
 
   if (reducedMotion) {
-    // One composed still: a moment with packets in flight and one lane retrying
-    const still = () => { resize(); draw(6.4); };
+    // One composed still: packets in flight, a state on its way, one request waiting on its retry
+    const still = () => { resize(); draw(7.3); };
     still();
     window.addEventListener('resize', still);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(still);

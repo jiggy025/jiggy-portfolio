@@ -82,6 +82,12 @@
 .hero-field { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
 .hero::before { content: ""; position: absolute; inset: 0; z-index: 0; background-image: radial-gradient(circle, var(--color-glyph-2) 1px, transparent 1.2px); background-size: var(--cell-w) var(--cell-h); -webkit-mask-image: linear-gradient(90deg, transparent 45%, black 70%); mask-image: linear-gradient(90deg, transparent 45%, black 70%); }
 .has-field .hero::before { display: none; }
+/* The key to the field, bottom right of the hero, like a chart legend */
+.field-legend { position: absolute; z-index: var(--z-raised); right: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter))); bottom: var(--space-xl); display: flex; gap: var(--space-lg); padding: var(--space-sm) var(--space-md); border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-card); background: var(--color-paper); box-shadow: var(--shadow-card); font: 500 var(--text-sm)/1.2 var(--font-display); color: var(--color-ink-2); }
+.field-legend code { margin-right: var(--space-xs); font-family: var(--font-code); color: var(--color-accent); }
+.field-legend .field-legend__ink { color: var(--color-ink); }
+.field-legend .field-legend__error { color: var(--color-error); }
+@supports (corner-shape: bevel) { .field-legend { border-radius: var(--cut-l) 4px var(--cut-l) 4px; corner-shape: bevel round bevel round; } }
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); padding-top: var(--space-xs); }
 
 /* ---------- Screen and source (the X-ray) ---------- */
@@ -271,6 +277,7 @@
 
 /* ---------- Narrow screens: every split stacks to one column ---------- */
 @media (max-width: 60rem) {
+  .field-legend { display: none; }
   .hero__inner { min-height: 0; padding-bottom: 288px; }
   .hero::before { -webkit-mask-image: linear-gradient(180deg, transparent 55%, black 80%); mask-image: linear-gradient(180deg, transparent 55%, black 80%); }
   .nav-links { gap: var(--space-lg); }
