@@ -28,6 +28,6 @@ A portfolio that shows each system as it really runs: real screenshots and films
 ## Architecture & Motion Engineering
 
 - **Motion Engine:** [GSAP ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) for three scroll-linked moments in `js/motion.js` (X-ray curtain sweep, Viajero timeline draw, one media reveal). Native scrolling, nothing pinned.
-- **Styling:** Hand-written CSS on custom tokens (`tokens.css`, `base.css`, `hallmark.css`): cool paper, the Race Clock's amber, set in Rethink Sans and JetBrains Mono. Light and dark follow the system setting.
+- **Styling:** Hand-written CSS on Hallmark's Cobalt tokens (`tokens.css`, `base.css`, `hallmark.css`): cool paper, one cobalt signal, keycap buttons and cut-corner panels, set in Familjen Grotesk, IBM Plex Sans and JetBrains Mono. The hero field (`js/field.js`) draws the JRF request flow as an ASCII canvas.
 - **Accessibility:** Automatic degradation under `prefers-reduced-motion: reduce`.
 - **Hosting:** Optimized for [Vercel](https://vercel.com) with immutable asset caching.
