@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="hallmark.css?v=20261027h">
+  <link rel="stylesheet" href="hallmark.css?v=20261027j">
 
   <!-- Motion: GSAP ScrollTrigger drives the scroll-linked moments in js/motion.js; js/field.js draws the hero field. Deferred, so both run after the page and its inline script. -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -72,7 +72,7 @@
           <h2 id="xrayTitle" class="xray-bar__title">Screen and source</h2>
           <div class="segmented" role="tablist" aria-label="Which system to inspect">
             <button type="button" class="chip-tab" role="tab" aria-selected="true" data-xray-tab="spring">Spring Boot</button>
-            <button type="button" class="chip-tab" role="tab" aria-selected="false" data-xray-tab="flutter" tabindex="-1">Flutter APK</button>
+            <button type="button" class="chip-tab" role="tab" aria-selected="false" data-xray-tab="mis" tabindex="-1">MIS Calendar</button>
             <button type="button" class="chip-tab" role="tab" aria-selected="false" data-xray-tab="pwa" tabindex="-1">Race PWA</button>
           </div>
           <button type="button" class="chip-tab chip-tab--solo" id="xrayModeBtn" aria-pressed="false">Loupe</button>
@@ -489,73 +489,73 @@
                 ['09', `}`]
               ]
             },
-            flutter: {
-              tag: 'Flutter + SQLite',
-              foot: 'Rent-a-Box APK: Offline-first Flutter BLoC & SQLite 3 WAL',
-              img: 'assets/images/rent-a-box/screen-payout.png',
-              alt: 'Rent-a-Box seller screen with available balance, lifetime sales and cash-out actions',
-              uiTitle: 'Rent-a-Box Payout',
-              uiStatus: 'Saved Offline',
-              k1: 'Box & Tenant', v1: `Box #B-14 / #RNB-${idNum}`,
-              k2: 'Storage Engine', v2: 'Local SQLite 3 WAL',
-              k3: 'Network State', v3: 'Zero hops (0 dropped)',
-              total: 'PHP 18,400.00',
-              btn: 'Commit SQLite row',
+            mis: {
+              tag: 'Supabase SQL',
+              foot: 'MIS Calendar: Supabase Postgres, pg_cron and pg_net post to Viber (from viber-alerts.sql)',
+              img: 'assets/images/mis-calendar/calendar-overview.png',
+              alt: 'MIS Calendar month view for October 2026 with scheduled branch visits',
+              uiTitle: 'MIS Calendar, today',
+              uiStatus: 'Viber alert sent',
+              k1: 'Schedule', v1: 'pg_cron, 07:30 Manila',
+              k2: 'Trigger', v2: 'After insert on dispatches',
+              k3: 'Channel', v3: 'Viber, MIS Team',
+              total: 'post_today_visits()',
+              btn: 'Run the 07:30 job',
               plan: [
-                `<span class="xray-code-kw">SQLITE</span> <span class="xray-code-str">"rent_a_box.db"</span>`,
-                `<span class="xray-code-cmt">// Local WAL journal</span>`,
-                `<span class="xray-code-fn">mode</span>: <span class="xray-code-str">"PRAGMA wal"</span>`,
-                `<span class="xray-code-fn">box_id</span>: <span class="xray-code-str">"B-14"</span>`,
-                `<span class="xray-code-fn">receipt</span>: <span class="xray-code-str">"RNB-${idNum}"</span>`,
-                `<span class="xray-code-fn">network</span>: <span class="xray-code-str">"OFFLINE_SAFE"</span>`,
-                `<span class="xray-code-fn">amount</span>: <span class="xray-code-num">18400.00</span>`,
-                `<span class="xray-code-fn">fsync</span>: <span class="xray-code-str">1.4 ms</span>`,
-                `<span class="xray-code-kw">ACID OK</span> <span class="xray-code-str">WAL_LOCKED</span>`
+                `<span class="xray-code-cmt">-- every day at 07:30 Manila</span>`,
+                `<span class="xray-code-fn">cron.schedule</span>(<span class="xray-code-str">'mis-daily-visits'</span>,`,
+                `  <span class="xray-code-str">'30 23 * * *'</span>,`,
+                `  <span class="xray-code-str">'select private.post_today_visits()'</span>);`,
+                `<span class="xray-code-cmt">-- and the moment a visit lands today</span>`,
+                `<span class="xray-code-kw">create trigger</span> dispatches_alert_today`,
+                `  <span class="xray-code-kw">after insert on</span> public.dispatches`,
+                `  <span class="xray-code-kw">for each row execute function</span>`,
+                `  private.<span class="xray-code-fn">alert_new_today</span>();`
               ],
               code: [
-                ['01', `<span class="xray-code-kw">Future</span>&lt;Receipt&gt; <span class="xray-code-fn">commitBox</span>(int id) {`],
-                ['02', `  <span class="xray-code-cmt">// Offline SQLite 3 transaction</span>`],
-                ['03', `  <span class="xray-code-kw">return</span> db.<span class="xray-code-fn">transaction</span>((tx) <span class="xray-code-kw">async</span> {`],
-                ['04', `    <span class="xray-code-kw">await</span> tx.<span class="xray-code-fn">insert</span>(<span class="xray-code-str">'ledger'</span>, {`],
-                ['05', `      <span class="xray-code-str">'ref'</span>: <span class="xray-code-str">'RNB-${idNum}'</span>,`],
-                ['06', `      <span class="xray-code-str">'amt'</span>: <span class="xray-code-num">18400</span>`],
-                ['07', `    });`],
-                ['08', `    <span class="xray-code-kw">return</span> Receipt.<span class="xray-code-fn">ok</span>(<span class="xray-code-str">'RNB-${idNum}'</span>);`],
-                ['09', `  });`]
+                ['01', `<span class="xray-code-kw">create function</span> private.<span class="xray-code-fn">viber_post</span>(msg text)`],
+                ['02', `<span class="xray-code-kw">returns</span> void <span class="xray-code-kw">language</span> plpgsql <span class="xray-code-kw">as</span> $$`],
+                ['03', `<span class="xray-code-kw">declare</span> s private.viber_settings;`],
+                ['04', `<span class="xray-code-kw">begin</span>`],
+                ['05', `  <span class="xray-code-kw">select</span> * <span class="xray-code-kw">into</span> s <span class="xray-code-kw">from</span> private.viber_settings;`],
+                ['06', `  <span class="xray-code-kw">perform</span> net.<span class="xray-code-fn">http_post</span>(`],
+                ['07', `    url  := <span class="xray-code-str">'https://chatapi.viber.com/pa/post'</span>,`],
+                ['08', `    body := <span class="xray-code-fn">jsonb_build_object</span>(<span class="xray-code-str">'text'</span>, msg));`],
+                ['09', `<span class="xray-code-kw">end</span> $$;`]
               ]
             },
             pwa: {
               tag: 'Race PWA',
-              foot: 'Race Clock LED Wall: WakeLock API + cross-window storage bus',
-              img: 'assets/images/race-clock-operator.png',
-              alt: 'Race Clock operator screen with the 5 km and 10 km timers running',
-              uiTitle: 'Race Clock Broadcast',
-              uiStatus: 'WakeLock Active',
-              k1: 'Heat & Split', v1: `21K Elite / #SPL-${idNum}`,
-              k2: 'Stage Sync', v2: 'Cross-window storage bus',
-              k3: 'Frame Latency', v3: '4.2 ms LED wall lock',
-              total: '00:42:18.45',
-              btn: 'Broadcast split',
+              foot: 'Race Clock: the operator saves state, the LED display window reads it (src/core/storage.ts)',
+              img: 'assets/images/race-clock-display.png',
+              alt: 'Race Clock LED display showing the 10 km heat at seven seconds',
+              uiTitle: 'Race Clock, 10KM display',
+              uiStatus: 'Running',
+              k1: 'Heat', v1: '10KM',
+              k2: 'Sync', v2: 'localStorage race-clock:state',
+              k3: 'Display', v3: 'Second screen, Window Management API',
+              total: '00:00:07',
+              btn: 'Save state',
               plan: [
-                `<span class="xray-code-kw">EVENT</span> <span class="xray-code-str">"RACE_CLOCK_BUS"</span>`,
-                `<span class="xray-code-cmt">// Stage LED IPC payload</span>`,
-                `<span class="xray-code-fn">lock</span>: <span class="xray-code-str">"screen:active"</span>`,
-                `<span class="xray-code-fn">heat</span>: <span class="xray-code-str">"21K_ELITE"</span>`,
-                `<span class="xray-code-fn">split</span>: <span class="xray-code-str">"SPL-${idNum}"</span>`,
-                `<span class="xray-code-fn">clock</span>: <span class="xray-code-str">"00:42:18.45"</span>`,
-                `<span class="xray-code-fn">drift</span>: <span class="xray-code-num">0.00</span> ms`,
-                `<span class="xray-code-fn">bus</span>: <span class="xray-code-str">4.2 ms</span>`,
-                `<span class="xray-code-kw">SYNCED</span> <span class="xray-code-str">STAGE_LED</span>`
+                `<span class="xray-code-kw">localStorage</span> <span class="xray-code-str">"race-clock:state"</span>`,
+                `<span class="xray-code-cmt">// what the display window reads</span>`,
+                `<span class="xray-code-fn">categories</span>: [`,
+                `  { label: <span class="xray-code-str">"5KM"</span>,  gunAt: <span class="xray-code-str">14:19:58</span> },`,
+                `  { label: <span class="xray-code-str">"10KM"</span>, gunAt: <span class="xray-code-str">14:20:01</span> },`,
+                `  { label: <span class="xray-code-str">"21KM"</span>, gunAt: <span class="xray-code-kw">null</span> }`,
+                `]`,
+                `<span class="xray-code-fn">stoppedAt</span>: <span class="xray-code-kw">null</span>`,
+                `<span class="xray-code-kw">saved</span> <span class="xray-code-str">true</span>`
               ],
               code: [
-                ['01', `<span class="xray-code-kw">async function</span> <span class="xray-code-fn">emitSplit</span>(heat) {`],
-                ['02', `  <span class="xray-code-cmt">// Lock stage LED projector</span>`],
-                ['03', `  <span class="xray-code-kw">await</span> wakeLock.<span class="xray-code-fn">request</span>(<span class="xray-code-str">'screen'</span>);`],
-                ['04', `  <span class="xray-code-kw">const</span> msg = { id: <span class="xray-code-str">'SPL-${idNum}'</span> };`],
-                ['05', `  storage.<span class="xray-code-fn">set</span>(<span class="xray-code-str">'BUS'</span>, JSON.<span class="xray-code-fn">stringify</span>(msg));`],
-                ['06', `  window.<span class="xray-code-fn">dispatchEvent</span>(`],
-                ['07', `    <span class="xray-code-kw">new</span> StorageEvent(<span class="xray-code-str">'storage'</span>)`],
-                ['08', `  );`],
+                ['01', `<span class="xray-code-kw">export function</span> <span class="xray-code-fn">saveState</span>(storage, state) {`],
+                ['02', `  <span class="xray-code-kw">if</span> (storage === <span class="xray-code-kw">null</span>) <span class="xray-code-kw">return false</span>;`],
+                ['03', `  <span class="xray-code-kw">try</span> {`],
+                ['04', `    storage.<span class="xray-code-fn">setItem</span>(STORAGE_KEY, JSON.<span class="xray-code-fn">stringify</span>(state));`],
+                ['05', `    <span class="xray-code-kw">return true</span>;`],
+                ['06', `  } <span class="xray-code-kw">catch</span> {`],
+                ['07', `    <span class="xray-code-kw">return false</span>; <span class="xray-code-cmt">// storage blocked or full</span>`],
+                ['08', `  }`],
                 ['09', `}`]
               ]
             }
