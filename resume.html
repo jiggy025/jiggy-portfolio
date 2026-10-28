@@ -7,7 +7,7 @@
   <meta name="description" content="One-page resume of Jiggy B. Palconit, Software Developer specializing in Java, Spring Boot, Flutter, and TypeScript.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
-    /* 1-Page High-Impact Tech Resume */
+    /* 1-Page High-Impact Tech Resume — Full-Page Balanced Typography */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -33,15 +33,15 @@
       background: var(--bg);
       color: var(--ink);
       font-family: var(--font-sans);
-      font-size: 11.5px;
-      line-height: 1.45;
+      font-size: 13px;
+      line-height: 1.55;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
       overflow-x: hidden;
     }
 
     body {
-      padding: 24px 16px;
+      padding: 32px 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -50,20 +50,20 @@
     /* Top Action Bar (Screen Only) */
     .top-bar {
       width: 100%;
-      max-width: 800px;
+      max-width: 820px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       gap: 12px;
     }
 
     .btn-back {
       color: var(--ink-muted);
       text-decoration: none;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 500;
-      padding: 6px 12px;
+      padding: 7px 14px;
       border-radius: 6px;
       border: 1px solid var(--border);
       background: #ffffff;
@@ -83,14 +83,14 @@
       border: none;
       background: var(--accent);
       color: #ffffff;
-      padding: 6px 16px;
-      font-size: 12px;
+      padding: 7px 18px;
+      font-size: 13px;
       font-weight: 600;
       border-radius: 6px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       transition: background 0.15s ease;
       font-family: inherit;
     }
@@ -102,19 +102,19 @@
     /* 1-Page Paper Sheet */
     .sheet {
       width: 100%;
-      max-width: 800px;
+      max-width: 820px;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 6px;
-      box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
-      padding: 32px 36px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+      padding: 40px 44px;
     }
 
     /* Header */
     .header {
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       border-bottom: 1.5px solid var(--border);
-      padding-bottom: 10px;
+      padding-bottom: 14px;
     }
 
     .header-main {
@@ -126,7 +126,7 @@
     }
 
     .header-name {
-      font-size: 24px;
+      font-size: 27px;
       font-weight: 800;
       letter-spacing: -0.025em;
       color: var(--ink);
@@ -134,7 +134,7 @@
     }
 
     .header-role {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--accent);
       font-family: var(--font-mono);
@@ -144,10 +144,10 @@
     .contact-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px 12px;
-      font-size: 10.5px;
+      gap: 6px 14px;
+      font-size: 11.5px;
       color: var(--ink-subtle);
-      margin-top: 6px;
+      margin-top: 8px;
       font-family: var(--font-mono);
     }
 
@@ -167,19 +167,19 @@
 
     /* Section Structure */
     .section {
-      margin-bottom: 12px;
+      margin-bottom: 18px;
     }
 
     .section-title {
-      font-size: 10.5px;
+      font-size: 11.5px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.07em;
       color: var(--accent);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .section-title::after {
@@ -189,17 +189,24 @@
       background: var(--border);
     }
 
-    /* Skills: Tight matrix */
+    /* Summary */
+    .summary-text {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* Skills: Readable matrix */
     .skills-table {
       display: grid;
-      gap: 3px;
-      font-size: 10.5px;
+      gap: 5px;
+      font-size: 12px;
     }
 
     .skills-row {
       display: grid;
-      grid-template-columns: 110px minmax(0, 1fr);
-      gap: 8px;
+      grid-template-columns: 130px minmax(0, 1fr);
+      gap: 10px;
       align-items: baseline;
     }
 
@@ -207,58 +214,62 @@
       font-weight: 700;
       color: var(--ink);
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.02em;
     }
 
     .skills-body {
       color: var(--ink-muted);
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     /* Experience */
     .role-block {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .role-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
 
     .role-title {
-      font-size: 12px;
+      font-size: 13.5px;
       font-weight: 700;
       color: var(--ink);
     }
 
     .role-company {
-      font-size: 11.5px;
+      font-size: 13px;
       font-weight: 600;
       color: var(--ink-muted);
     }
 
     .role-date {
       font-family: var(--font-mono);
-      font-size: 10.5px;
+      font-size: 11.5px;
       color: var(--ink-subtle);
       white-space: nowrap;
     }
 
     .role-bullets {
       list-style-type: disc;
-      padding-left: 14px;
-      margin-top: 2px;
+      padding-left: 16px;
+      margin-top: 4px;
     }
 
     .role-bullets li {
-      font-size: 10.5px;
+      font-size: 12px;
       color: var(--ink-muted);
-      margin-bottom: 2.5px;
-      line-height: 1.4;
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .role-bullets li:last-child {
+      margin-bottom: 0;
     }
 
     .role-bullets strong {
@@ -269,10 +280,12 @@
     /* Prior Experience (1-line compact) */
     .prior-list {
       display: grid;
-      gap: 2px;
-      font-size: 10.5px;
+      gap: 4px;
+      font-size: 11.5px;
       color: var(--ink-muted);
-      margin-top: 2px;
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px dashed var(--border);
     }
 
     .prior-item {
@@ -285,17 +298,17 @@
       color: var(--ink-subtle);
     }
 
-    /* Projects: 2-column compact grid */
+    /* Projects: 2-column readable grid */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px 12px;
+      gap: 10px 14px;
     }
 
     .proj-item {
       border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 7px 10px;
+      border-radius: 6px;
+      padding: 10px 12px;
       background: #fafafa;
     }
 
@@ -303,18 +316,18 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
 
     .proj-name {
       font-weight: 700;
-      font-size: 11px;
+      font-size: 12.5px;
       color: var(--ink);
     }
 
     .proj-link {
       font-family: var(--font-mono);
-      font-size: 9.5px;
+      font-size: 10.5px;
       color: var(--accent);
       text-decoration: none;
       font-weight: 600;
@@ -325,15 +338,15 @@
     }
 
     .proj-desc {
-      font-size: 10px;
+      font-size: 11.5px;
       color: var(--ink-muted);
-      line-height: 1.35;
-      margin-bottom: 3px;
+      line-height: 1.45;
+      margin-bottom: 4px;
     }
 
     .proj-tech {
       font-family: var(--font-mono);
-      font-size: 9px;
+      font-size: 10px;
       color: var(--ink-subtle);
     }
 
@@ -341,19 +354,21 @@
     .edu-row {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 6px 16px;
-      font-size: 10.5px;
+      gap: 8px 16px;
+      font-size: 12px;
     }
 
     .edu-entry-title {
       font-weight: 700;
       color: var(--ink);
+      font-size: 12.5px;
     }
 
     .edu-entry-sub {
       color: var(--ink-subtle);
-      font-size: 10px;
+      font-size: 11px;
       font-family: var(--font-mono);
+      margin-top: 2px;
     }
 
     /* Print Optimization: Strict 1-Page A4 */
@@ -381,13 +396,22 @@
         background: #ffffff;
       }
 
+      .section {
+        margin-bottom: 14px;
+      }
+
       .proj-item {
         background: transparent;
         border: 1px solid var(--border);
+        padding: 8px 10px;
+      }
+
+      .role-bullets li {
+        margin-bottom: 3px;
       }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .projects-grid, .edu-row {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -396,7 +420,7 @@
         gap: 2px;
       }
       .sheet {
-        padding: 20px 16px;
+        padding: 24px 18px;
       }
     }
   </style>
@@ -409,7 +433,7 @@
       &larr; Back to Portfolio
     </a>
     <button type="button" class="btn-print" onclick="window.print()">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <polyline points="6 9 6 2 18 2 18 9"></polyline>
         <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
         <rect x="6" y="14" width="12" height="8"></rect>
@@ -439,6 +463,14 @@
         <a href="https://jiggy025.github.io" target="_blank" rel="noopener">jiggy025.github.io</a>
       </div>
     </header>
+
+    <!-- Professional Summary -->
+    <section class="section">
+      <h2 class="section-title">Summary</h2>
+      <p class="summary-text">
+        Software developer specializing in modern Java (Spring Boot) and enterprise legacy systems, offline-first Flutter/SQLite apps, and real-time TypeScript systems. Proven track record maintaining production ERP modules, engineering greenfield microservices with optimistic concurrency, adhering to strict architectural conventions (such as <code>AutoCloseable</code> session lifecycles), and designing event-driven architectures.
+      </p>
+    </section>
 
     <!-- Technical Skills -->
     <section class="section">

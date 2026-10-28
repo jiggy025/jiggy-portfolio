@@ -5,6 +5,11 @@ General Santos City, PH | +63 992 913 1887 | jigspals025@gmail.com
 
 ---
 
+## Summary
+Software developer specializing in modern Java (Spring Boot) and enterprise legacy systems, offline-first Flutter/SQLite apps, and real-time TypeScript systems. Proven track record maintaining production ERP modules, engineering greenfield microservices with optimistic concurrency, adhering to strict architectural conventions (such as `AutoCloseable` session lifecycles), and designing event-driven architectures.
+
+---
+
 ## Technical Skills
 - **Languages:** Java (7/8, 17, 21), Dart, TypeScript, JavaScript, SQL (MySQL, PostgreSQL, SQLite), HTML5/CSS3
 - **Backend & ERP:** Spring Boot 3.3 (Web, Security, Actuator), Java Swing, Hibernate/JPA, JDBC, JasperReports, Java RMI
