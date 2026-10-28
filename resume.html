@@ -78,25 +78,51 @@
       border-color: #cbd5e1;
     }
 
-    .btn-print {
-      appearance: none;
-      border: none;
-      background: var(--accent);
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-download {
       color: #ffffff;
-      padding: 7px 18px;
+      background: var(--accent);
+      text-decoration: none;
       font-size: 13px;
       font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: background 0.15s ease;
+      box-shadow: 0 1px 2px rgba(29, 78, 216, 0.2);
+    }
+
+    .btn-download:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-print {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--ink-muted);
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 500;
       border-radius: 6px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      transition: background 0.15s ease;
+      gap: 7px;
+      transition: all 0.15s ease;
       font-family: inherit;
     }
 
     .btn-print:hover {
-      background: var(--accent-hover);
+      color: var(--accent);
+      border-color: #cbd5e1;
     }
 
     /* 1-Page Paper Sheet */
@@ -432,14 +458,24 @@
     <a href="index.html" class="btn-back">
       &larr; Back to Portfolio
     </a>
-    <button type="button" class="btn-print" onclick="window.print()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline points="6 9 6 2 18 2 18 9"></polyline>
-        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-        <rect x="6" y="14" width="12" height="8"></rect>
-      </svg>
-      Print 1-Page PDF
-    </button>
+    <div class="top-actions">
+      <a href="resume.pdf" download="Jiggy-Palconit-Resume.pdf" class="btn-download">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Download .PDF
+      </a>
+      <button type="button" class="btn-print" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Print
+      </button>
+    </div>
   </div>
 
   <!-- 1-Page Sheet -->
