@@ -22,8 +22,8 @@ A portfolio that shows each system as it really runs: real screenshots and films
 ## Production Foundation
 
 - **Software Developer at Viajero Motorcycles Inc. (Feb 2026 - Present, 9 Months)**
-  - Core Enterprise Dealership Workflows (Java Swing Desktop ERP, MySQL schema tuning)
-  - Legacy Java 7/8 modernization and zero-regression production maintenance
+  - JRF System: Built Job Request Form workflow in Spring Boot (Java 17) bridging legacy Java 7/8 ERP data.
+  - Enterprise ERP Maintenance: Polished Java Swing ERP modules, adhering to AutoCloseable session patterns and tuning MySQL performance.
 
 ## Architecture & Motion Engineering
 

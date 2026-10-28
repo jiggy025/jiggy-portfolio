@@ -39,7 +39,7 @@
       <nav aria-label="Primary">
         <ul class="nav-links">
           <li><a href="#work" class="nav-link">Work</a></li>
-          <li><a href="#experience" class="nav-link">Viajero ERP</a></li>
+          <li><a href="#experience" class="nav-link">Viajero &amp; JRF</a></li>
           <li><a href="#arsenal" class="nav-link">Stack</a></li>
           <li><a href="#contact" class="btn btn--primary btn--nav">Contact me</a></li>
         </ul>
@@ -51,7 +51,7 @@
     <section id="hero" class="hero">
       <canvas class="hero-field" data-field aria-hidden="true"></canvas>
       <div class="container hero__inner">
-        <h1 class="hero__head" data-hero-copy>I build the ERP at <span class="hero__org">Viajero Motorcycles</span>.</h1>
+        <h1 class="hero__head" data-hero-copy>I build JRF and maintain <span class="hero__org">Viajero ERP</span>.</h1>
         <p class="lead" data-hero-copy>Also offline Flutter apps and LED race clocks, from General Santos City.</p>
         <div class="hero-actions" data-hero-copy>
           <a href="#contact" class="btn btn--primary">Contact me</a>
@@ -124,7 +124,7 @@
               </dl>
             </div>
             <div class="xray-meta">
-              <span id="heroStageTitle">JRF System: Spring Boot 4, JobRules state machine &amp; MySQL</span>
+              <span id="heroStageTitle">JRF System: Spring Boot (Java 17) bridging to legacy Java 7/8 ERP</span>
               <span class="xray-meta__tag" id="heroStageTag">0% Code / Spring Boot</span>
               <button type="button" class="chip-tab chip-tab--solo" id="xrayActionBtn">Mark work done</button>
             </div>
@@ -136,11 +136,11 @@
     <section id="experience" class="section-case">
       <div class="container">
         <div class="case-head">
-          <h2>Nine months on the Viajero Motorcycles ERP.</h2>
-          <p class="lead">Java, Spring Boot, Swing, and MySQL for dealership operations.</p>
+          <h2>Nine months maintaining the ERP and engineering JRF.</h2>
+          <p class="lead">Polishing established Java 7/8 Swing modules and building Java 17 Spring Boot services.</p>
         </div>
 
-        <div class="segmented case-tabs" role="tablist" aria-label="Viajero ERP view">
+        <div class="segmented case-tabs" role="tablist" aria-label="Viajero and JRF view">
           <button type="button" class="chip-tab" role="tab" aria-selected="true" data-case-tab="trail">Timeline</button>
           <button type="button" class="chip-tab" role="tab" aria-selected="false" data-case-tab="diff" tabindex="-1">What changed</button>
         </div>
@@ -149,28 +149,28 @@
           <ol class="timeline" data-timeline>
             <li class="timeline__item">
               <time datetime="2026-02">Feb 2026</time>
-              <p>Started Java &amp; Spring Boot ERP duty.</p>
+              <p>Onboarded to established Java &amp; Swing ERP architecture.</p>
             </li>
             <li class="timeline__item">
               <time datetime="2026-04">Apr 2026</time>
-              <p>Tuned MySQL inventory queries.</p>
+              <p>Polished modules &amp; tuned MySQL query performance.</p>
             </li>
             <li class="timeline__item">
               <time datetime="2026-06">Jun 2026</time>
-              <p>Moved Java 7/8 Swing off EventQueue.</p>
+              <p>Maintained AutoCloseable sessions &amp; Swing background workers.</p>
             </li>
             <li class="timeline__item">
               <time datetime="2026-09">Sep 2026</time>
-              <p>Spring Boot services &amp; ERP deploys.</p>
+              <p>Engineered JRF: Java 17 Spring Boot bridging to legacy Java 7/8.</p>
             </li>
           </ol>
         </div>
 
         <div id="casePanelDiff" hidden>
           <ul class="diff">
-            <li class="diff__row diff__row--minus"><span class="diff__sign">-</span><code>Statement.executeQuery(sql) on EDT</code><span class="diff__val">Blocked</span></li>
-            <li class="diff__row diff__row--plus"><span class="diff__sign">+</span><code>PreparedStatement index (branch_id)</code><span class="diff__val">18 ms</span></li>
-            <li class="diff__row diff__row--plus"><span class="diff__sign">+</span><code>Spring Boot API + SwingWorker sync</code><span class="diff__val">60 fps</span></li>
+            <li class="diff__row diff__row--minus"><span class="diff__sign">-</span><code>Raw queries &amp; unindexed scans on EDT</code><span class="diff__val">Blocked</span></li>
+            <li class="diff__row diff__row--plus"><span class="diff__sign">+</span><code>Indexed PreparedStatement &amp; AutoCloseable sessions</code><span class="diff__val">18 ms</span></li>
+            <li class="diff__row diff__row--plus"><span class="diff__sign">+</span><code>JRF bridge: Spring Boot (Java 17) to legacy ERP (Java 7/8)</code><span class="diff__val">Active</span></li>
           </ul>
         </div>
 
@@ -195,10 +195,10 @@
 
         <div class="work-stack" id="workStack">
 
-          <article class="work-item work-item--film" data-keywords="jrf pitch film spring boot java remotion react claude motion video logistics">
+          <article class="work-item work-item--film" data-keywords="jrf job request form pitch film spring boot java 17 remotion react claude motion video logistics">
             <div class="work-item__text">
-              <h3>JRF Pitch Film</h3>
-              <p>Remotion film for enterprise logistics and repair workflows backed by Spring Boot and Java.</p>
+              <h3>JRF System &amp; Pitch Film</h3>
+              <p>Enterprise Job Request Form workflow built with Spring Boot (Java 17) bridging legacy ERP data, with a Remotion motion pitch.</p>
               <button type="button" class="btn btn--quiet js-reel-restart" data-target="videoJrf">Replay</button>
             </div>
             <figure class="media video-card-wrapper" data-reveal>
@@ -457,7 +457,7 @@
           const PRESETS = {
             spring: {
               tag: 'Spring Boot',
-              foot: 'JRF System: Spring Boot 4, JobRules state machine & MySQL',
+              foot: 'JRF System: Spring Boot (Java 17) bridging to legacy Java 7/8 ERP',
               img: 'assets/images/jrf-poster.png',
               alt: 'JRF tracking screen for request VG-000014, showing the five workflow steps from Submitted to Completed',
               uiTitle: `JRF tracking, VG-${padRef}`,
