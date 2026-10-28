@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jiggy B. Palconit: Resume</title>
+  <meta name="description" content="Resume of Jiggy B. Palconit, Software Developer specializing in Java, Spring Boot, Flutter, and TypeScript.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    /* Hallmark stamp: minimal print-ready developer resume */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-variant-ligatures: none;
+      font-feature-settings: "liga" 0, "clig" 0;
+    }
+
+    html, body {
+      overflow-x: clip;
+      background: var(--color-paper-2);
+      color: var(--color-ink);
+      font-family: var(--font-body);
+      font-size: 13px;
+      line-height: 1.55;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      padding: var(--space-xl) var(--space-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Focus visible */
+    :focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+
+    /* Screen toolbar */
+    .toolbar {
+      width: 100%;
+      max-width: 820px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-lg);
+      gap: var(--space-sm);
+    }
+
+    .toolbar-link {
+      color: var(--color-ink-2);
+      text-decoration: none;
+      font-size: var(--text-xs);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--radius-input);
+      border: var(--rule-hair) solid var(--color-rule);
+      background: var(--color-paper);
+      box-shadow: var(--shadow-card);
+      transition: color var(--dur-micro) ease, border-color var(--dur-micro) ease;
+    }
+
+    .toolbar-link:hover {
+      color: var(--color-accent);
+      border-color: var(--color-accent-2);
+    }
+
+    .toolbar-link:active {
+      transform: translateY(1px);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .btn-print {
+      appearance: none;
+      border: var(--rule-hair) solid var(--color-accent-edge);
+      background: var(--color-accent);
+      color: var(--color-accent-ink);
+      padding: var(--space-xs) var(--space-md);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      border-radius: var(--radius-input);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      box-shadow: var(--shadow-key-accent);
+      transition: background-color var(--dur-micro) ease, transform var(--dur-micro) ease;
+      font-family: inherit;
+    }
+
+    .btn-print:hover {
+      background: var(--color-accent-deep);
+    }
+
+    .btn-print:active {
+      transform: translateY(1px);
+      box-shadow: var(--shadow-key-press);
+    }
+
+    .btn-print:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Document Sheet */
+    .sheet {
+      width: 100%;
+      max-width: 820px;
+      background: var(--color-paper);
+      border: var(--rule-hair) solid var(--color-rule);
+      border-radius: var(--radius-card);
+      box-shadow: 0 4px 20px -4px oklch(21% 0.028 262 / 0.08);
+      padding: var(--space-xl) var(--space-xl);
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: var(--space-lg);
+      border-bottom: var(--rule-hair) solid var(--color-rule);
+      padding-bottom: var(--space-md);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-2xs);
+    }
+
+    .header-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--color-ink);
+      line-height: 1.15;
+    }
+
+    .header-role {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-accent);
+      font-family: var(--font-outlier);
+    }
+
+    .contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      font-size: var(--text-xs);
+      color: var(--color-muted);
+      margin-top: var(--space-xs);
+      font-family: var(--font-outlier);
+    }
+
+    .contact-line a {
+      color: var(--color-ink-2);
+      text-decoration: none;
+      transition: color var(--dur-micro) ease;
+    }
+
+    .contact-line a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    .contact-line a:active {
+      color: var(--color-accent-deep);
+    }
+
+    .contact-sep {
+      color: var(--color-rule-2);
+      user-select: none;
+    }
+
+    /* Section components */
+    .section {
+      margin-bottom: var(--space-lg);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-accent);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--color-rule);
+    }
+
+    /* Summary */
+    .summary-text {
+      font-size: var(--text-sm);
+      color: var(--color-ink-2);
+      line-height: 1.6;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      gap: var(--space-xs);
+      font-size: var(--text-xs);
+    }
+
+    .skills-row {
+      display: grid;
+      grid-template-columns: 148px minmax(0, 1fr);
+      gap: var(--space-sm);
+      align-items: baseline;
+    }
+
+    .skills-cat {
+      font-family: var(--font-outlier);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+
+    .skills-items {
+      color: var(--color-ink-2);
+      line-height: 1.5;
+    }
+
+    /* Experience entries */
+    .entry {
+      margin-bottom: var(--space-md);
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: var(--space-2xs);
+      gap: var(--space-sm);
+    }
+
+    .entry-title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-ink);
+    }
+
+    .entry-company {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-ink-2);
+    }
+
+    .entry-date {
+      font-family: var(--font-outlier);
+      font-size: var(--text-xs);
+      color: var(--color-muted);
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .entry-location {
+      font-size: var(--text-xs);
+      color: var(--color-muted);
+      margin-bottom: var(--space-xs);
+    }
+
+    .entry ul {
+      list-style-type: disc;
+      padding-left: var(--space-md);
+      margin-top: var(--space-2xs);
+    }
+
+    .entry li {
+      font-size: var(--text-xs);
+      color: var(--color-ink-2);
+      margin-bottom: var(--space-2xs);
+      line-height: 1.5;
+    }
+
+    .entry li:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry li strong {
+      color: var(--color-ink);
+      font-weight: 600;
+    }
+
+    /* Projects grid */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .project-card {
+      border: var(--rule-hair) solid var(--color-rule);
+      border-radius: var(--radius-card);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-paper-2);
+    }
+
+    .project-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: var(--space-2xs);
+      gap: var(--space-xs);
+    }
+
+    .project-name {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-ink);
+    }
+
+    .project-link {
+      font-family: var(--font-outlier);
+      font-size: var(--text-xs);
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .project-desc {
+      font-size: var(--text-xs);
+      color: var(--color-ink-2);
+      line-height: 1.45;
+      margin-bottom: var(--space-xs);
+    }
+
+    .project-tech {
+      font-family: var(--font-outlier);
+      font-size: var(--text-xs);
+      color: var(--color-muted);
+    }
+
+    /* Education */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .edu-item {
+      font-size: var(--text-xs);
+    }
+
+    .edu-deg {
+      font-weight: 700;
+      color: var(--color-ink);
+    }
+
+    .edu-school {
+      color: var(--color-ink-2);
+      font-size: var(--text-xs);
+    }
+
+    .edu-meta {
+      font-family: var(--font-outlier);
+      font-size: var(--text-xs);
+      color: var(--color-muted);
+      margin-top: var(--space-3xs);
+    }
+
+    /* Print Styles */
+    @media print {
+      html, body {
+        background: #ffffff;
+        padding: 0;
+        margin: 0;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 10mm 14mm 10mm 14mm;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .sheet {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+        border-radius: 0;
+        background: #ffffff;
+      }
+
+      .entry, .project-card, .edu-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .section-title {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      .project-card {
+        background: transparent;
+        border: 1px solid var(--color-rule);
+      }
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: var(--space-md) var(--space-xs);
+      }
+
+      .sheet {
+        padding: var(--space-lg) var(--space-md);
+      }
+
+      .skills-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-2xs);
+      }
+
+      .project-grid, .edu-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen-only Toolbar -->
+  <div class="toolbar no-print">
+    <a href="index.html" class="toolbar-link" aria-label="Return to portfolio">
+      Return to portfolio
+    </a>
+    <div class="toolbar-actions">
+      <button type="button" class="btn-print" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Print / Save PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- Resume Sheet -->
+  <main class="sheet">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <h1 class="header-title">Jiggy B. Palconit</h1>
+        <div class="header-role">Software Developer</div>
+      </div>
+      <div class="contact-line">
+        <span>General Santos City, PH</span>
+        <span class="contact-sep">|</span>
+        <a href="tel:+639929131887">+63 992 913 1887</a>
+        <span class="contact-sep">|</span>
+        <a href="mailto:jigspals025@gmail.com">jigspals025@gmail.com</a>
+        <span class="contact-sep">|</span>
+        <a href="https://github.com/jiggy025" target="_blank" rel="noopener">github.com/jiggy025</a>
+        <span class="contact-sep">|</span>
+        <a href="https://jiggy025.github.io" target="_blank" rel="noopener">Portfolio</a>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="section">
+      <h2 class="section-title">Professional Summary</h2>
+      <p class="summary-text">
+        Software developer experienced in building modern backend services and maintaining production enterprise systems. Proven capability engineering greenfield systems in <strong>Spring Boot (Java 17)</strong> that bridge into established <strong>Java 7/8</strong> enterprise backends with optimistic concurrency control and zero regressions. Highly disciplined in following established architecture standards, including <code>AutoCloseable</code> session lifecycles, background worker isolation off the Swing EDT, and query indexing. Experienced in local-first mobile engineering with <strong>Flutter / SQLite</strong> and real-time frontend systems in <strong>TypeScript</strong>.
+      </p>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="section">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skills-row">
+          <div class="skills-cat">Languages</div>
+          <div class="skills-items">Java (7/8, 17, 21), Dart, TypeScript, JavaScript, SQL (MySQL, PostgreSQL, SQLite), HTML5, CSS3</div>
+        </div>
+        <div class="skills-row">
+          <div class="skills-cat">Backend &amp; ERP</div>
+          <div class="skills-items">Spring Boot (Web, Security, Actuator), Java Swing, Hibernate / JDBC, JasperReports, Java RMI, REST APIs</div>
+        </div>
+        <div class="skills-row">
+          <div class="skills-cat">Mobile &amp; Web</div>
+          <div class="skills-items">Flutter (BLoC architecture, SQLite, local-first), React Native (Expo, Reanimated), Vite, PWA, Supabase</div>
+        </div>
+        <div class="skills-row">
+          <div class="skills-cat">Architecture</div>
+          <div class="skills-items">Legacy Modernization, Concurrency Control (Optimistic <code>@Version</code>, Queue-Locking), Multi-Branch Sync, Git</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section class="section">
+      <h2 class="section-title">Professional Experience</h2>
+
+      <article class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Software Developer</span>
+            <span class="contact-sep">|</span>
+            <span class="entry-company">Viajero Motorcycles Inc.</span>
+          </div>
+          <div class="entry-date">Feb 2026 – Present</div>
+        </div>
+        <div class="entry-location">General Santos City, Philippines &bull; Full-time</div>
+        <ul>
+          <li><strong>JRF System Engineering:</strong> Built the Job Request Form tracking workflow in <strong>Spring Boot</strong> and <strong>Java 17</strong>, connecting modern web architecture to legacy <strong>Java 7/8</strong> database records. Implemented guarded state transitions (<code>JobRules</code>), optimistic locking (<code>@Version</code>), and direct menu bar integration in Swing clients (<code>JobRequestLauncher</code>).</li>
+          <li><strong>ERP Maintenance &amp; Module Extension:</strong> Maintained and enhanced established enterprise modules (Inventory, Accounting, Financing, Asset Management, POS). Maintained strict compliance with existing architecture patterns, including <code>AutoCloseable</code> session lifecycles and background worker thread separation off the Swing EDT.</li>
+          <li><strong>Inventory Optimization &amp; Demand Forecasting:</strong> Built forecasting and ordering modules (<code>PnlOrdering</code>, <code>PnlDemandABC</code>, <code>PnlStockMonth</code>). Implemented algorithmic reorder point calculations (ROQ: <code>AMC &times; (ABC - SM)</code>), day-anchored windowing, and automated QR code generation for Asset Label Printing.</li>
+          <li><strong>Cross-Branch Guards &amp; Concurrency:</strong> Implemented transaction locking and out-of-stock guard restrictions for multi-store transfers (Viajero &harr; Jicjam), eliminating database concurrency race conditions.</li>
+          <li><strong>Inter-Module Accounting Bridge:</strong> Engineered bidirectional <code>FACC &harr; ACC</code> bridge adapter with reusable transaction components, in-memory report caching (<code>HashMap</code>), and synchronized payroll queue locking.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Technical Support VA</span>
+            <span class="contact-sep">|</span>
+            <span class="entry-company">Prime Developments</span>
+          </div>
+          <div class="entry-date">2024 – 2025</div>
+        </div>
+        <div class="entry-location">Remote &bull; Contract</div>
+        <ul>
+          <li>Handled front-line technical support, interface troubleshooting, account synchronization issues, and operational data management across virtual environments.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">IT Support (SPES Beneficiary)</span>
+            <span class="contact-sep">|</span>
+            <span class="entry-company">LGU General Santos City — ICTD</span>
+          </div>
+          <div class="entry-date">2023</div>
+        </div>
+        <div class="entry-location">General Santos City, Philippines &bull; Seasonal</div>
+        <ul>
+          <li>Diagnosed hardware, PC systems, and network peripherals; structured and tested LAN cabling and router configurations across local government offices.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Technical &amp; Design Assistant</span>
+            <span class="contact-sep">|</span>
+            <span class="entry-company">DPI Print Solutions</span>
+          </div>
+          <div class="entry-date">2018 – 2019</div>
+        </div>
+        <div class="entry-location">General Santos City, Philippines</div>
+        <ul>
+          <li>Prepared digital graphic layouts and web assets while diagnosing and troubleshooting commercial digital printing machinery and office computer systems.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Key Projects -->
+    <section class="section">
+      <h2 class="section-title">Key Projects &amp; Systems</h2>
+      <div class="project-grid">
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <span class="project-name">Rent-a-Box SQLite Ledger</span>
+            <a href="https://github.com/jiggy025/rent-a-box-sys" target="_blank" rel="noopener" class="project-link">GitHub</a>
+          </div>
+          <p class="project-desc">Offline-first Flutter retail management APK for box rental hubs. Features real-time counter dashboards, vacancy audits, and automated seller payouts backed by local SQLite transactions.</p>
+          <div class="project-tech">Flutter, Dart, SQLite, BLoC</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <span class="project-name">Race Clock LED Wall PWA</span>
+            <a href="https://race-clock-ten.vercel.app/" target="_blank" rel="noopener" class="project-link">Live App</a>
+          </div>
+          <p class="project-desc">Real-time dual-screen timing application syncing race director controls with stage LED walls under 5ms latency via <code>localStorage</code> event bus and WakeLock API. Shipped to live sporting events.</p>
+          <div class="project-tech">TypeScript, Vite, WakeLock, PWA</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <span class="project-name">MIS Calendar &amp; Alerts</span>
+            <a href="https://codexus-calendar.netlify.app" target="_blank" rel="noopener" class="project-link">Live App</a>
+          </div>
+          <p class="project-desc">Enterprise operations calendar with Supabase PostgreSQL, automated daily 07:30 cron dispatches (<code>pg_cron</code>), and webhook notifications pushed automatically to company Viber channels.</p>
+          <div class="project-tech">Supabase, PostgreSQL, Edge Functions</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <span class="project-name">Langga Loan Tracker</span>
+            <span class="project-tech">Mobile</span>
+          </div>
+          <p class="project-desc">Mobile debt ledger app featuring 60 FPS Reanimated spring physics, intuitive amortization schedules, and zero-latency local state persistence.</p>
+          <div class="project-tech">React Native, Expo, Reanimated</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section class="section">
+      <h2 class="section-title">Education &amp; Credentials</h2>
+      <div class="edu-grid">
+        <div class="edu-item">
+          <div class="edu-deg">Bachelor of Science in Information Technology (BSIT)</div>
+          <div class="edu-school">STI College General Santos City</div>
+          <div class="edu-meta">2019 – 2024 | DICT Scholar</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-deg">Computer Systems Servicing NC II (CSS NC II)</div>
+          <div class="edu-school">Technical Education and Skills Development Authority (TESDA)</div>
+          <div class="edu-meta">Certified 2024</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-deg">SAP Business One Certification (SAP Basic)</div>
+          <div class="edu-school">STI College</div>
+          <div class="edu-meta">Certified 2024</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-deg">Secondary Education (TVL Track - ICT Major)</div>
+          <div class="edu-school">Bula National School of Fisheries</div>
+          <div class="edu-meta">2012 – 2018</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
