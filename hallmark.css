@@ -40,6 +40,8 @@
 .btn:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
 .btn:disabled, .btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; transform: none; }
 .btn[aria-busy="true"] { cursor: progress; }
+/* The Dark mode key: pressed down while dark mode is on, like the chosen X-ray tab */
+.btn[aria-pressed="true"] { transform: translateY(3px); box-shadow: var(--shadow-key-press); background: var(--color-paper-2); }
 .btn--nav { min-height: 40px; padding: 0 var(--space-md); font-size: var(--text-sm); }
 
 /* Options: keys on a sunken paper-3 tray, the chosen one pressed */
@@ -67,7 +69,7 @@
 /* ---------- Nav ---------- */
 .site-header { position: sticky; top: 0; z-index: var(--z-sticky-nav); background: var(--color-paper); border-bottom: var(--rule-hair) solid var(--color-rule); }
 .nav-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); min-height: 68px; }
-.wordmark { font-family: var(--font-display); font-weight: 600; font-size: var(--text-lg); letter-spacing: -0.02em; text-decoration: none; }
+.wordmark { white-space: nowrap; font-family: var(--font-display); font-weight: 600; font-size: var(--text-lg); letter-spacing: -0.02em; text-decoration: none; }
 .nav-links { display: flex; align-items: center; gap: var(--space-xl); list-style: none; }
 .nav-link { font: 500 var(--text-sm)/1.2 var(--font-display); color: var(--color-ink-2); text-decoration: none; }
 .nav-link:hover { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-accent); }
@@ -281,7 +283,7 @@
   .hero__inner { min-height: 0; padding-bottom: 288px; }
   .hero::before { -webkit-mask-image: linear-gradient(180deg, transparent 55%, black 80%); mask-image: linear-gradient(180deg, transparent 55%, black 80%); }
   .nav-links { gap: var(--space-lg); }
-  .nav-links li:not(:last-child) { display: none; }
+  .nav-links li:not(:last-child):not(.nav-links__theme) { display: none; }
   .xray__caption { grid-template-columns: minmax(0, 1fr); }
   .xray-meta { justify-items: start; text-align: left; max-width: none; }
   .xray-record__rows { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -297,6 +299,8 @@
   .stack-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 40rem) {
+  .nav-links { gap: var(--space-sm); }
+  .theme-word { display: none; }
   .xray__viewport { aspect-ratio: 4 / 3; }
   .timeline, .facts { grid-template-columns: minmax(0, 1fr); }
   .sync-sim { grid-template-columns: minmax(0, 1fr); }
