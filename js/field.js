@@ -36,15 +36,21 @@
     { state: 'Completed', raw: '{"audit":"job_request_event"}' },
   ];
 
-  // Read the theme's colours from the tokens, so the canvas never carries its own literals
+  // Read the theme's colours from the tokens, so the canvas never carries its own literals.
+  // They are re-read whenever light/dark mode changes (js/theme.js fires 'themechange').
   const css = getComputedStyle(document.documentElement);
   const token = (name) => css.getPropertyValue(name).trim();
-  const TINTS = ['--color-glyph-1', '--color-glyph-2', '--color-glyph-3', '--color-glyph-4', '--color-accent-deep'].map(token);
-  const INK = token('--color-ink');
-  const MUTED = token('--color-muted');
-  const ACCENT = token('--color-accent');
-  const ERROR = token('--color-error');
-  const PAPER = token('--color-paper');
+  let TINTS, INK, MUTED, ACCENT, ERROR, PAPER;
+  const readColors = () => {
+    TINTS = ['--color-glyph-1', '--color-glyph-2', '--color-glyph-3', '--color-glyph-4', '--color-accent-deep'].map(token);
+    INK = token('--color-ink');
+    MUTED = token('--color-muted');
+    ACCENT = token('--color-accent');
+    ERROR = token('--color-error');
+    PAPER = token('--color-paper');
+  };
+  readColors();
+  window.addEventListener('themechange', readColors);
 
   // Value noise: a smooth random field, the classic building block for organic patterns
   const hash = (x, y) => {
@@ -337,6 +343,7 @@
     const still = () => { resize(); draw(7.3); };
     still();
     window.addEventListener('resize', still);
+    window.addEventListener('themechange', still);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(still);
     return;
   }
