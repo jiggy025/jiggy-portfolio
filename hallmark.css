@@ -42,6 +42,11 @@
 .btn[aria-busy="true"] { cursor: progress; }
 /* The Dark mode key: pressed down while dark mode is on, like the chosen X-ray tab */
 .btn[aria-pressed="true"] { transform: translateY(3px); box-shadow: var(--shadow-key-press); background: var(--color-paper-2); }
+/* An icon-only key: square, the icon centred. Light mode shows the moon (go dark), dark mode the sun (go light). */
+.btn--nav.btn--icon { width: 40px; padding: 0; }
+.theme-icon { display: block; flex: none; }
+.theme-icon--sun, .btn--icon[aria-pressed="true"] .theme-icon--moon { display: none; }
+.btn--icon[aria-pressed="true"] .theme-icon--sun { display: block; }
 .btn--nav { min-height: 40px; padding: 0 var(--space-md); font-size: var(--text-sm); }
 
 /* Options: keys on a sunken paper-3 tray, the chosen one pressed */
@@ -300,7 +305,6 @@
 }
 @media (max-width: 40rem) {
   .nav-links { gap: var(--space-sm); }
-  .theme-word { display: none; }
   .xray__viewport { aspect-ratio: 4 / 3; }
   .timeline, .facts { grid-template-columns: minmax(0, 1fr); }
   .sync-sim { grid-template-columns: minmax(0, 1fr); }
